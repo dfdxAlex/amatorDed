@@ -23,37 +23,53 @@ abstract class INavMenu
      * Если будут изменения данных свойств, то они будут делаться через
      * контейнер свойств Синглтон.
      */
-    protected $navbar='navbar';
-    protected $navbarExpandLg='navbar-expand-lg';
-    protected $navbarLight='navbar-light';
-    protected $bgLight='bg-light';
-    protected $containerFluid='container-fluid';
-    protected $navbarBrand='navbar-brand';
-    protected $navbarBrandHref='#';
-    protected $navbarBrandName='Navbar';
-    protected $navbarToggler='navbar-toggler';
-    protected $navbarTogglerIcon='navbar-toggler-icon';
-    protected $navbarTogglerIconSpan='';
-    protected $collapse='collapse';
-    protected $navbarCollapse='navbar-collapse';
-    protected $navbarNav='navbar-nav';
-    protected $meAuto='me-auto';
-    protected $mb2='mb-2';
-    protected $mbLg0='mb-lg-0';
-    protected $navItem='nav-item';
-    protected $navLink='nav-link';
-    protected $active='active';
-    protected $dropdown='dropdown';
-    protected $dropdownToggle='dropdown-toggle';
-    protected $dropdownMenu='dropdown-menu';
-    protected $dropdownDivider='dropdown-divider';
-    protected $dFlex='d-flex';
-    protected $formControl='form-control';
-    protected $me2='me-2';
-    protected $btn='btn';
-    protected $btnOutlineSuccess='btn-outline-success';
+    private $navbar='navbar';
+    private $navbarExpandLg='navbar-expand-lg';
+    private $navbarLight='navbar-light';
+    private $bgLight='bg-light';
+    private $containerFluid='container-fluid';
+    private $navbarBrand='navbar-brand';
+    private $navbarBrandHref='#';
+    private $navbarBrandName='Navbar';
+    private $navbarToggler='navbar-toggler';
+    private $navbarTogglerIcon='navbar-toggler-icon';
+    private $navbarTogglerIconSpan='';
+    private $collapse='collapse';
+    private $navbarCollapse='navbar-collapse';
+    private $navbarNav='navbar-nav';
+    private $meAuto='me-auto';
+    private $mb2='mb-2';
+    private $mbLg0='mb-lg-0';
+    private $navItem='nav-item';
+    private $navLink='nav-link';
+    private $active='active';
+    private $dropdown='dropdown';
+    private $dropdownToggle='dropdown-toggle';
+    private $dropdownMenu='dropdown-menu';
+    private $dropdownDivider='dropdown-divider';
+    private $dFlex='d-flex';
+    private $formControl='form-control';
+    private $me2='me-2';
+    private $btn='btn';
+    private $btnOutlineSuccess='btn-outline-success';
+
+    /**
+     * свойство определяет ставить ли из бутстрапа поле поиска и кнопку Search
+     * по умолчанию ставить.
+     */
+    private $buttonSearch=true;
+
+    public function setProperty($nameProperty, $dataProperty)
+    {
+        $this->$nameProperty = $dataProperty;
+    }
+
+    protected function getProperty($name)
+    {
+        return $this->$name;
+    }
 
 
-    abstract public function getNameButton();
+    // abstract public function getNameButton();
 
 }

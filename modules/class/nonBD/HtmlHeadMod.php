@@ -50,7 +50,7 @@ namespace class\nonBD;
  * $headNew->echoHead();
  */
 
-class HtmlHeadMod extends PropertyContainer
+class HtmlHeadMod extends propertyContainers\PropertyContainer
 {
     private $in; 
     public function __construct(interface\IHtmlHead $in)
