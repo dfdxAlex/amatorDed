@@ -6,7 +6,7 @@ namespace class\nonBD\navBootstrap;
  * реализовать шаблон Composite
  */
 
-class NavMenu extends INavMenu
+class NavMenu extends INavMenuDiff
 {
     public function addNavBar()
     {

@@ -11,16 +11,28 @@
 
 
    /**
-    * создать объект navbar и поставить его
+    * создать объект navbar
     */
-
     $navbarMenuUp = new \class\nonBD\navBootstrap\NavMenu();
 
     //изменение свойств навбара
     $navbarMenuUp->setProperty('buttonSearch',false);
     $navbarMenuUp->setProperty('navbarBrandHref','?str1');
     $navbarMenuUp->setProperty('navbarBrandName','AmatorDed');
+    /**
+     * публикация разметки навбара
+     */
     echo $navbarMenuUp->addNavBar();
+
+    $fff = new \class\nonBD\navBootstrap\ElementNavBar();
+    $navbarMenuUp->addElement($fff);
+
+    $navbarMenuUp->writeContainerObjects();
+
+    // var_dump ($navbarMenuUp->valuePatternName('navbar'));
+
+
+
 
     /**
      * Поставить futter

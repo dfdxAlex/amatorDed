@@ -14,5 +14,15 @@ namespace class\nonBD\navBootstrap;
 
 abstract class INavMenuDiff extends INavMenu
 {
-    abstract public function addElement($element);
+    private $masObject = [];
+
+    public function addElement(INavMenu $element)
+    {
+        $this->masObject[] = $element;
+    }
+
+    public function writeContainerObjects()
+    {
+        var_dump($this->masObject);
+    }
 }

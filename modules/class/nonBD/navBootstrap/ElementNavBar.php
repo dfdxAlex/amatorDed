@@ -7,3 +7,8 @@ namespace class\nonBD\navBootstrap;
  * Должен быть метод, который возвращает готовый елемент.
  *  
  */
+
+ class ElementNavBar extends INavMenu
+ {
+
+ }
