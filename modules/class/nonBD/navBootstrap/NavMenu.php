@@ -8,6 +8,8 @@ namespace class\nonBD\navBootstrap;
 
 class NavMenu extends INavMenuDiff
 {
+    private $masObject = [];
+
     public function writeElement()
     {
         /**
@@ -17,12 +19,8 @@ class NavMenu extends INavMenuDiff
          */
         $this->firstLevel();  
                 
-               echo '
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>';
 
-                foreach ($this->getContainer() as $value) {
+                foreach ($this->masObject as $value) {
                     $value->writeElement();
                 }
 
@@ -44,9 +42,6 @@ class NavMenu extends INavMenuDiff
                  */
                 echo '</ul>';
 
-                // <li class="nav-item">
-                //   <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                // </li>
 
                 /**
                  * Функция выводит внопку Search и поле для ввода поиска, если свойство
@@ -118,5 +113,10 @@ class NavMenu extends INavMenuDiff
               </form>
 
         ';
+    }
+
+    public function addElement(INavMenu $element)
+    {
+        $this->masObject[] = $element;
     }
 }

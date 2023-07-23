@@ -109,10 +109,6 @@ abstract class INavMenu
                 $rez.=ucfirst($value);
             }
         }
-
         return $rez;
     } 
-
-    // abstract public function getNameButton();
-
 }
