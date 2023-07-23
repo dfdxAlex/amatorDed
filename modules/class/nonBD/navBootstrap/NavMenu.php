@@ -8,7 +8,7 @@ namespace class\nonBD\navBootstrap;
 
 class NavMenu extends INavMenuDiff
 {
-    public function addNavBar()
+    public function writeElement()
     {
         /**
          * функция выводит первую часть навбара, которая постоянна по разметке.
@@ -22,9 +22,9 @@ class NavMenu extends INavMenuDiff
                   <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>';
 
-                // <li class="nav-item">
-                //   <a class="nav-link" href="#">Link</a>
-                // </li>
+                foreach ($this->getContainer() as $value) {
+                    $value->writeElement();
+                }
 
                 echo '
                 <li class="nav-item dropdown">

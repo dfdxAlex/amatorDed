@@ -17,7 +17,7 @@ abstract class INavMenu
 {
     private $nameButton;
 
-    
+    abstract public function writeElement();
 
     /**
      * Данные свойства - это в основном классы стилизации навмгационного меню от бутстрапа
@@ -54,12 +54,20 @@ abstract class INavMenu
     private $me2='me-2';//
     private $btn='btn';//
     private $btnOutlineSuccess='btn-outline-success';
+    private $home='Home';
 
     /**
      * свойство определяет ставить ли из бутстрапа поле поиска и кнопку Search
      * по умолчанию ставить.
      */
     private $buttonSearch=true;
+
+    /**
+     * Свойство хранит в себе линк для очередного пункта меню
+     * В конце обработки каждого пункта меню параметр должен
+     * скидываться в решетку.
+     */
+    private $link = '#';
 
     public function setProperty($nameProperty, $dataProperty)
     {
@@ -69,7 +77,8 @@ abstract class INavMenu
 
     protected function getProperty($name)
     {
-        return $this->$name;
+        $realName = $this->valuePatternName($name);
+        return $this->$realName;
     }
 
     /**
@@ -82,6 +91,8 @@ abstract class INavMenu
      */
     private function valuePatternName($name)
     {
+        if ($name === 'Home') 
+            return 'home';
         if ($name === '#') 
             return 'navbarBrandHref';
         if ($name === 'Navbar') 

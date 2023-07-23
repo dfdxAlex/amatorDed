@@ -25,4 +25,9 @@ abstract class INavMenuDiff extends INavMenu
     {
         var_dump($this->masObject);
     }
+
+    public function getContainer()
+    {
+        return $this->masObject;
+    }
 }

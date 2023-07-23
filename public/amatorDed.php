@@ -19,19 +19,33 @@
     $navbarMenuUp->setProperty('buttonSearch',false);
     $navbarMenuUp->setProperty('navbarBrandHref','?str1');
     $navbarMenuUp->setProperty('navbarBrandName','AmatorDed');
+
+    /**
+     * Создать простой елемент-объект для навбара
+     */
+    $navbarMenuUp->setProperty('Home','Первая');
+    $navbarMenuUp->setProperty('link','?1');
+    $element1 = new \class\nonBD\navBootstrap\ElementNavBar($navbarMenuUp);
+     /**
+     * Создать простой елемент-объект для навбара
+     */
+    $navbarMenuUp->setProperty('Home','Вторая');
+    $navbarMenuUp->setProperty('link','?2');
+    $element2 = new \class\nonBD\navBootstrap\ElementNavBar($navbarMenuUp);
+    
+    /**
+     * Поместить объект простого элемента в главый класс
+     */
+   
+    $navbarMenuUp->addElement($element1);
+    $navbarMenuUp->addElement($element2);
+    
     /**
      * публикация разметки навбара
      */
-    echo $navbarMenuUp->addNavBar();
+    echo $navbarMenuUp->writeElement();
 
-    $fff = new \class\nonBD\navBootstrap\ElementNavBar();
-    $navbarMenuUp->addElement($fff);
-
-    $navbarMenuUp->writeContainerObjects();
-
-    // var_dump ($navbarMenuUp->valuePatternName('navbar'));
-
-
+    
 
 
     /**
