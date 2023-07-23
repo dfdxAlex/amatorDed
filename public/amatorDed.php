@@ -32,6 +32,8 @@
     $navbarMenuUp->setProperty('Home','Вторая');
     $navbarMenuUp->setProperty('link','?2');
     $element2 = new \class\nonBD\navBootstrap\ElementNavBar($navbarMenuUp);
+    $navbarMenuUp->setProperty('Home','Третья');
+    $navbarMenuUp->setProperty('link','?3');
     $element3 = new \class\nonBD\navBootstrap\ElementNavBar($navbarMenuUp,true);
     
     /**
@@ -39,6 +41,7 @@
      */
     $navbarMenuUp->addElement($element1);
     $navbarMenuUp->addElement($element2);
+    $navbarMenuUp->addElement($element3);
 
     /**
      * Создать сложное меню
