@@ -50,6 +50,15 @@ namespace class\nonBD\navBootstrap;
  * выпадающее меню, а в классе главном NavMenu - это вывод всего 
  * меню.
  * 
+ * Чтобы сделать разделительную горизонтальную черту, 
+ * работает только тогда, когда простой объект передается
+ * сложному, создающему выпадающие меню (BoxNavMenu), следует 
+ * создать простой объект с любыми параметрами, но в конструктор
+ * передать вторым параметром true;
+ * Такой объект самостоятельно установит кнопку со своими свойствами,
+ * но если его передать в данный сложный объект, который создает
+ * выпадающее меню, он установит горизонтальную разделительную линию.
+ * 
  * Данная библиотека navBootstrap построена по правилам шаблона Composite
  */
 
@@ -57,9 +66,19 @@ namespace class\nonBD\navBootstrap;
 
  class ElementNavBar extends INavMenu
  {
-     public function __construct(INavMenu $in)
+     private $home;
+     private $link;
+     private $hr; 
+
+     public function __construct(INavMenu $in, $hr=false)
      {
+         $this->hr=$hr;
          $this->in = $in;
+         /**
+          * Сохранить имя-название кнопки в глобальное для класса 
+          * переменной
+          */
+         $this->home = $this->in->getProperty('Home');
         /**
          * Получение ссылки для пункта меню. Берется ссылка из
          * глобального свойства $link, по умолчанию #.
@@ -68,7 +87,7 @@ namespace class\nonBD\navBootstrap;
          * пример:
          *  $obj->setProperty('link', 'google.com')
          */
-        $link = $this->in->getProperty('link');
+        $this->link = $this->in->getProperty('link');
         
         /**
          * Сбросс параметра ссылки сразу, после прочтения.
@@ -82,14 +101,27 @@ namespace class\nonBD\navBootstrap;
             $this->in->getProperty('nav-link').' '.
             $this->in->getProperty('active').'" 
             aria-current="page" 
-            href="'.$link.'"
+            href="'.$this->link.'"
            >
-           '.$this->in->getProperty('Home').'</a>
+           '.$this->home.'</a>
         </li>';
      }
 
      public function writeElement()
      {
          echo $this->rez;
+     }
+
+     public function getLink()
+     {
+        return $this->link;
+     }
+     public function getHome()
+     {
+        return $this->home;
+     }
+     public function getHr()
+     {
+      return $this->hr;
      }
  }

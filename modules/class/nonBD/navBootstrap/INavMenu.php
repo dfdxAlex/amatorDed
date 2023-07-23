@@ -49,6 +49,7 @@ abstract class INavMenu
     private $dropdownToggle='dropdown-toggle';
     private $dropdownMenu='dropdown-menu';
     private $dropdownDivider='dropdown-divider';
+    private $dropdownItem='dropdown-item';
     private $dFlex='d-flex';
     private $formControl='form-control';
     private $me2='me-2';//

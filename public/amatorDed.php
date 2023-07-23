@@ -32,21 +32,31 @@
     $navbarMenuUp->setProperty('Home','Вторая');
     $navbarMenuUp->setProperty('link','?2');
     $element2 = new \class\nonBD\navBootstrap\ElementNavBar($navbarMenuUp);
+    $element3 = new \class\nonBD\navBootstrap\ElementNavBar($navbarMenuUp,true);
     
     /**
      * Поместить объект простого элемента в главый класс
      */
-   
     $navbarMenuUp->addElement($element1);
     $navbarMenuUp->addElement($element2);
-    
+
+    /**
+     * Создать сложное меню
+     */
+    $boxMenu = new \class\nonBD\navBootstrap\BoxNavMenu($navbarMenuUp);
+    $boxMenu->addElement($element1);
+    $boxMenu->addElement($element1);
+    $boxMenu->addElement($element1);
+    $boxMenu->addElement($element3);
+    $boxMenu->addElement($element2);
+    $boxMenu->addElement($element2);
+    $boxMenu->addElement($element2);
+
+    $navbarMenuUp->addElement($boxMenu);
     /**
      * публикация разметки навбара
      */
     echo $navbarMenuUp->writeElement();
-
-    
-
 
     /**
      * Поставить futter
