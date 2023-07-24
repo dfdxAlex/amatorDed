@@ -43,6 +43,8 @@
     $navbarMenuUp->addElement($element2);
     $navbarMenuUp->addElement($element3);
 
+    // $navbarMenuUp->renameElement($element3);
+
     /**
      * Создать сложное меню
      */

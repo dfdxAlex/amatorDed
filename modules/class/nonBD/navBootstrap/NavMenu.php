@@ -110,4 +110,14 @@ class NavMenu extends INavMenuDiff
     {
         $this->masObject[] = $element;
     }
+
+    public function renameElement(INavMenu $element)
+    {
+        foreach($this->masObject as $key=>$value) {
+            if ($value === $element) {
+                unset($this->masObject[$key]);
+                return true;
+            }
+        }
+    }
 }

@@ -94,4 +94,14 @@ namespace class\nonBD\navBootstrap;
 
         echo $rez;
     }
+    
+    public function renameElement(INavMenu $element)
+    {
+        foreach($this->masObject as $key=>$value) {
+            if ($value === $element) {
+                unset($this->masObject[$key]);
+                return true;
+            }
+        }
+    }
  }

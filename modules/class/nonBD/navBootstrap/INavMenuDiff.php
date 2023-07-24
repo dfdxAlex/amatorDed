@@ -16,4 +16,5 @@ abstract class INavMenuDiff extends INavMenu
 {
     abstract public function addElement(INavMenu $element);
 
+    abstract public function renameElement(INavMenu $element);
 }
