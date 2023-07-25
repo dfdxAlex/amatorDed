@@ -2,6 +2,10 @@
 namespace class\nonBD\navBootstrap;
 
 /**
+  * the class should draw a menu from different objects
+  * implement the Composite pattern
+  */
+/**
  * класс должен нарисовать меню из разных объектов
  * реализовать шаблон Composite
  */

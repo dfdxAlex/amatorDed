@@ -2,6 +2,43 @@
 namespace class\nonBD\navBootstrap;
 
 /**
+  * The class creates dropdown menus from simple objects
+  *
+  * To create an object from this class, use the constructor:
+  * $boxMenu = new BoxNavMenu($navbarMenuUp);
+  * the $navbarMenuUp parameter is the main object to which all
+  * objects are simple and complex.
+  *
+  * After creating an object from this class, it should
+  * add simple objects that will create a dropdown
+  * menu. Simple objects are added using the addElement() method
+  * example:
+  * $boxMenu->addElement($element1);
+  * $boxMenu->addElement($element2);
+  * $boxMenu->addElement($element3);
+  * $boxMenu->addElement($elementN);
+  *
+  * After this container is filled with simple objects,
+  * this container object should be passed to the main object using
+  * of the same method.addElement()
+  * $navbarMenuUp->addElement($boxMenu);
+  *
+  * You can also pass simple objects to the main element,
+  * See the info on the ElementNavBar class.
+  *
+  * Properties of simple objects from which a complex object is created,
+  * are set when creating a simple object and further with it
+  * remain until destroyed.
+  *
+  * To make a separating horizontal line, you should
+  * create a simple object with any parameters, but in the constructor
+  * pass the second parameter true;
+  * Such an object will independently set the button with its properties,
+  * but if it is passed to a given complex object that creates
+  * dropdown menu, it will set a horizontal dividing line.
+  */
+
+/**
  * Класс создает выпадающие меню из простых объектов
  * 
  * Для создания объекта из данного класса используем конструктор:

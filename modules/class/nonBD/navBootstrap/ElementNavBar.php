@@ -2,6 +2,67 @@
 namespace class\nonBD\navBootstrap;
 
 /**
+  * The class must create an object that will contain
+  * information about a simple menu item.
+  * There must be a method that returns the finished element.
+  *
+  * The markup line is created in the constructor, so the properties
+  * each menu button can only be set before creating the object.
+  * Therefore, before creating an object, you should configure all the necessary
+  * properties. We are talking about personal properties, such as the name of the button
+  * and link. Style settings are configured once.
+  *
+  * Before creating an object, you must set personal parameters
+  * using the properties of the super class abstract class INavMenu.
+  *
+  * There is already a setter in the superclass, and this class takes it as a parameter
+  * a reference to any previously created INavMenu signature object and at the same
+  * time it must be the object that will be passed to the constructor
+  * of this object.
+  *
+  * Let's say the main object was created like this:
+  * $navbarMenuUp = new NavMenu();
+  *
+  * then the current object should be created like this:
+  * $navbarMenuUp->setProperty('Home','Home'); -- set button caption
+  * $navbarMenuUp->setProperty('link','?1'); -- set button link
+  * $element1 = new ElementNavBar($navbarMenuUp); -- create object
+  *
+  * After creating one object, you can create the necessary
+  * number of objects.
+  *
+  * After creating all the necessary objects, they need to be transferred to the main
+  * object, which of them will build the menu.
+  *Place these objects in the main object nojno with
+  * method:
+  * $navbarMenuUp->addElement($element1);
+  * $navbarMenuUp->addElement($element2);
+  * $navbarMenuUp->addElement($elementN);
+  *
+  * After placing all the required objects in the main object
+  * display the menu using the method of the main object:
+  * echo $navbarMenuUp->writeElement();
+  *
+  * The writeElement() method must be in all objects that inherit
+  * abstract classes INavMenu or INavMenuDiff, but in each
+  * class they will display their information.
+  * In the current class, this is one button, in the BlockNavBar class, this is
+  * drop-down menu, and in the main class NavMenu - this is the output of everything
+  * menu.
+  *
+  * To make a horizontal separator line,
+  * only works when a simple object is passed
+  * the complex one that creates dropdown menus (BoxNavMenu) should
+  * create a simple object with any parameters, but in the constructor
+  * pass the second parameter true;
+  * Such an object will independently set the button with its properties,
+  * but if it is passed to a given complex object that creates
+  * dropdown menu, it will set a horizontal dividing line.
+  *
+  * This navBootstrap library is built according to the rules of the Composite template
+  */
+
+/**
  * Класс должен создать объект, который будет содержать
  * информацию о простом элементе менюшки.
  * Должен быть метод, который возвращает готовый елемент.

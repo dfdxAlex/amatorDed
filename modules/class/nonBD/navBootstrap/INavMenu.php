@@ -2,6 +2,18 @@
 namespace class\nonBD\navBootstrap;
 
 /**
+  * the first abstract class of the Composite pattern
+  * signature is for simple and complex classes
+  * in both classes there will be a nameButton property, it contains
+  * menu item name.
+  * In simple objects, this property will be responsible for
+  * name of a single button, in complex objects it is a property
+  * is an array and contains the names of the expandable item
+  * The getNameButton() method returns a variable in simple classes,
+  * or an array reference in complex classes.
+  */
+
+/**
  * первый абстрактный класс паттерна Composite
  * сигнатура предназначена для простых и сложных классов
  * в обоих классах будет свойство nameButton, оно содержит
@@ -15,10 +27,13 @@ namespace class\nonBD\navBootstrap;
 
 abstract class INavMenu
 {
-    // private $nameButton;
-
     abstract public function writeElement();
-
+    /**
+     * These properties are basically bootstrap navigation menu styling classes
+     * Properties are set to default values that are available to descendants
+     * If there are changes to these properties, they will be done through
+     * property container Singleton.
+     */
     /**
      * Данные свойства - это в основном классы стилизации навмгационного меню от бутстрапа
      * Свойствам заданы значения по умолчанию, которые доступны для потомков
@@ -58,11 +73,20 @@ abstract class INavMenu
     private $home='Home';
 
     /**
+      * property determines whether to put the search field and the Search button from the bootstrap
+      * set by default.
+      */
+    /**
      * свойство определяет ставить ли из бутстрапа поле поиска и кнопку Search
      * по умолчанию ставить.
      */
     private $buttonSearch=true;
-
+    
+    /**
+      * The property stores a link for the next menu item
+      * At the end of the processing of each menu item, the parameter must
+      * fold into the grate.
+      */
     /**
      * Свойство хранит в себе линк для очередного пункта меню
      * В конце обработки каждого пункта меню параметр должен
@@ -81,7 +105,15 @@ abstract class INavMenu
         $realName = $this->valuePatternName($name);
         return $this->$realName;
     }
-
+    
+    /**
+      * In order to use parameters such as
+      * is directly in the navbar example, and this function is needed.
+      * As input, the function accepts a parameter that needs to be changed
+      * in the example and converts it to a variable name that
+      * stores the value of this parameter.
+      * This applies to style classes and the ability to change them.
+      */
     /**
      * Для того, чтобы пользоваться параметрами такими, которые 
      * есть непосредственно в примере navbar, и нужна данная функция.
