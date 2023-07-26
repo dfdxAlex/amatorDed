@@ -182,7 +182,6 @@ namespace class\nonBD\navBootstrap;
                             '.$this->home.'</a>
                          </li>
                          ';
-                         echo 'самостоятельный формат<br>';
         }
          else 
             if (!$this->getHr()) {
@@ -190,7 +189,6 @@ namespace class\nonBD\navBootstrap;
                 $this->in->getProperty('dropdown-item').'" href="'.
                 $this->getLink().'">'.
                 $this->getHome().'</a></li>';
-                echo 'рисуем дроп<br>';
             } else {
                 $this->rez.='<li><hr class="'.
                 $this->in->getProperty('dropdown-divider').'"></li>';

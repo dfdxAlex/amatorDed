@@ -82,6 +82,19 @@ namespace class\nonBD\navBootstrap;
   * $aaa->addElement($list4); - простая кнопка
   * $aaa->addElement($list5); - простая кнопка
   * $aaa->addElement($dropdaun); - выпадающее меню.
+  *
+  * Дополнительно.
+  * Чтобы убрать меню поиска:
+  * $aaa->setProperty('button-search',false);
+  * Чтобы указать название кнопки:
+  * $list1->setProperty('Home','Нажми на меня');
+  * Чтобы указать ссылку для кнопки
+  * $list1->setProperty('link','ссылка');
+
+  * Правило 6.
+  * Чтобы появилось меню необходимо запустить метод:
+  * $aaa->writeElement();
+  *
   */
 
 class NavMenu extends INavMenuDiff
