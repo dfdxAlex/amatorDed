@@ -13,8 +13,11 @@ class NavBarFacade
         $obj->setProperty('button-search',false);
 
         /**
-         * Создается простая кнопка для выпадающего меню
+         * ---------Создается простая кнопка для выпадающего меню------
          * Выпадающее меню Library PHP
+         */
+         /**
+         * Создание объектов кнопок
          */
         $obj->setProperty('Home','Library PHP');
         $obj->setProperty('work-box',true);
@@ -24,23 +27,30 @@ class NavBarFacade
         $obj->setProperty('link','?NavBar');
         $obj->setProperty('work-box',true);
         $button2 = new ElementNavBar($obj);
-
+        /**
+         * Загрузка кнопок в класс-контейнер
+         */
         $oblBox = new BoxNavMenu($obj);
         $oblBox->addElement($button1);
         $oblBox->addElement($button2);
 
         /**
-         * Создание меню patterns
+         * --------------------Создание меню patterns-----------
+         */
+        /**
+         * Создание объектов кнопок
          */
         $obj->setProperty('Home','Patterns');
         $obj->setProperty('work-box',true);
         $patterns1 = new ElementNavBar($obj);
 
         $obj->setProperty('Home','Simple Factory');
-        $obj->setProperty('link','?pattern1');
+        $obj->setProperty('link','?patternSipmpleFactory');
         $obj->setProperty('work-box',true);
         $patterns2 = new ElementNavBar($obj);
-
+        /**
+         * Загрузка кнопок в класс-контейнер
+         */
         $pattersObj = new BoxNavMenu($obj);
         $pattersObj->addElement($patterns1);
         $pattersObj->addElement($patterns2);
@@ -50,8 +60,9 @@ class NavBarFacade
         /**
          * Поместить объекты в главный объект
          */
-        $obj->addElement($oblBox);
         $obj->addElement($pattersObj);
+        $obj->addElement($oblBox);
+        
 
         /**
          * Вывести меню на страницу
