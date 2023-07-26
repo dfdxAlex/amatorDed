@@ -94,6 +94,14 @@ abstract class INavMenu
      */
     private $link = '#';
 
+    /**
+     * Свойство содержит информацию о том, помещен ли листочек (простой объект)
+     * в класс бокса (сложного объекта). Это необходимо потому, что
+     * кнопки рисуются по разному когда они сами по себе или в составе
+     * выпадающего меню.
+     */
+    private $workBox = false;
+
     public function setProperty($nameProperty, $dataProperty)
     {
         $realName = $this->valuePatternName($nameProperty);

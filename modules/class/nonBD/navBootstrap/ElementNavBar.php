@@ -130,6 +130,7 @@ namespace class\nonBD\navBootstrap;
      private $home;
      private $link;
      private $hr; 
+     private $rez; 
 
      public function __construct(INavMenu $in, $hr=false)
      {
@@ -154,22 +155,57 @@ namespace class\nonBD\navBootstrap;
          * Сбросс параметра ссылки сразу, после прочтения.
          */
         $this->in->setProperty('link', '#');
-
-        $this->rez = '
-        <li class="'.
-        $this->in->getProperty('nav-item').'">
-          <a class="'.
-            $this->in->getProperty('nav-link').' '.
-            $this->in->getProperty('active').'" 
-            aria-current="page" 
-            href="'.$this->link.'"
-           >
-           '.$this->home.'</a>
-        </li>';
+        
+        /**
+         * Данное условие проверяет признак свойства $workBox, которое 
+         * может быть false (по умолчанию) или true.
+         * Функция getProperty() работает с классами стилей и поэтому
+         * преобразовавыет 'work-box' в camelCase и разыметовывает в 
+         * переменную.
+         * Если 'work-box'($workBox) равно false, то кнопка работает
+         * как самостоятельный объект.
+         * Если 'work-box'($workBox) изменён на true, то кнопка работает
+         * в составе выпадающего меню. Стилевые классы и разметка в 
+         * navbar-е отличается у простой кнопки, в зависимости от 
+         * расположения.
+         */
+        if (!$in->getProperty('work-box')) {
+            $this->rez = '
+                         <li class="'.
+                         $this->in->getProperty('nav-item').'">
+                           <a class="'.
+                             $this->in->getProperty('nav-link').' '.
+                             $this->in->getProperty('active').'" 
+                             aria-current="page" 
+                             href="'.$this->link.'"
+                            >
+                            '.$this->home.'</a>
+                         </li>
+                         ';
+                         echo 'самостоятельный формат<br>';
+        }
+         else 
+            if (!$this->getHr()) {
+                $this->rez.='<li><a class="'.
+                $this->in->getProperty('dropdown-item').'" href="'.
+                $this->getLink().'">'.
+                $this->getHome().'</a></li>';
+                echo 'рисуем дроп<br>';
+            } else {
+                $this->rez.='<li><hr class="'.
+                $this->in->getProperty('dropdown-divider').'"></li>';
+            } 
+            /**
+             * После использования вернуть свойство в свойство по 
+             * умолчанию.
+             */
+            $in->setProperty('work-box',false);
      }
 
      public function writeElement()
      {
+         if (strripos($this->rez,'dropdown')>0)
+             return $this->rez;
          echo $this->rez;
      }
 

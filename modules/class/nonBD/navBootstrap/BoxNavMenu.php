@@ -112,15 +112,7 @@ namespace class\nonBD\navBootstrap;
 
             foreach($this->masObject as $key=>$value) {
                 if ($key!==0) {
-                    if (!$value->getHr()) {
-                        $rez.='<li><a class="'.
-                        $this->in->getProperty('dropdown-item').'" href="'.
-                        $value->getLink().'">'.
-                        $value->getHome().'</a></li>';
-                    } else {
-                        $rez.='<li><hr class="'.
-                        $this->in->getProperty('dropdown-divider').'"></li>';
-                    }
+                        $rez.=$value->writeElement();
                 }
             }
 
