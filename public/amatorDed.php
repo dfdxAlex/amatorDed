@@ -9,6 +9,10 @@
      */
     new \src\lib\php\HeaderFacade();
 
+    /**
+     * Класс, который публикует информацию пока только о патернах
+     */
+    src\lib\php\content\pattern\NewsPattern::news();
 
    /**
     * создать объект navbar
