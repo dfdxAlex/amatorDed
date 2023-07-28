@@ -30,18 +30,23 @@ class NewsPattern
 
                 echo "
                     <section class='container-fluid newPat'>
+                      <div class='row'>
+                        <div class='col-12'>
+                          <p class='news-pattern-p'>$news</p>
+                        </div>
+                      </div>
                       <dir class='row'>
-                        <div class='col-12 col-md-3 col-lg-4'>
-                            <p>$news</p>
-                            <a href='$linkGit' 
-                               target='_blank'
-                            >
-                              Link to GitHub<br>
-                              Ссылка на GitHub
-                            </a>
-                          </div>
-                          <div class='col-12 col-md-9 col-lg-8'>
+                        <div class='col-12'>
                             $linkVideo
+                            <a 
+                              href='$linkGit' 
+                              target='_blank'
+                            >
+                              <p>
+                                Link to GitHub<br>
+                                Ссылка на GitHub
+                              </p>
+                            </a>
                           </div>
                       </div>
                     </section>
