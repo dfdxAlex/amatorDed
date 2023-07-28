@@ -8,7 +8,7 @@ class HeaderFacade
     /**
      * Создать старый класс - Header
      */
-    $headOld =  new \class\nonBD\HtmlHead('../src/css/style.css','MyProject',$classBody='non',$indexMin=0,$indexMax=0);
+    $headOld =  new \class\nonBD\HtmlHead('amatorDed\src\css\style.css','MyProject',$classBody='non',$indexMin=0,$indexMax=0);
     /**
      * Создать новый класс-обёртку Header
      */
