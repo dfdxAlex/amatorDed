@@ -1,24 +1,19 @@
  
  body {
     min-height: 800px;
-    /* background-color: #cccccc; */
     background-image: linear-gradient(#E3F2FD, rgb(142, 142, 8));
 }
 
 /* класс для поля вывода информации о шаблоне со ссылкой на гит
    класс  */
-
 .newPat {
     margin-top: 20px;
-    align-content: center;   
     font-size: 25px; 
     width: 680px;
 }
 
 .news-pattern-p {
-    /* width: 560px; */
     margin: 50px auto 50px;
-    
 }
 
 /* Стилизация заголовка статьи для паттернов при условии
@@ -28,9 +23,6 @@
 .news-pattern-p span,
 .news-pattern-p p {
     display: block;
-    /* border: 1px solid black; */
-    /* border-radius: 15px; */
-    /* background-color: #E3F2FD; */
     width: 80%;
     font-size: 35px;
     margin-bottom: 50px;
@@ -45,7 +37,6 @@
     padding: 5px;
     text-align: left;
 }
-
 
 /* Класс для NavBar */
 .blue-light {

@@ -51,19 +51,35 @@ class NewsPattern
                     $linkGit = '#';
 
                 echo "
-                    <section class='container-fluid newPat'>
+                    <section class='container-fluid'>
                       <div class='row'>
-                        <div class='col-12'>
-                          <div class='news-pattern-p'>$news</div>
+                        <div class='col-sm-0 col-md-1 col-lg-2'>
+                                
+                        </div>
+                        <div class='col-sm-12 col-md-10 col-lg-8'>
+                          <div class='news-pattern-p'>
+                              $news
+                          </div>
+                        </div>
+                        <div class='col-sm-0 col-md-1 col-lg-2'>
+                              
                         </div>
                       </div>
-                      <dir class='row'>
-                        <div class='col-12'>
+
+                      <div class='row'>
+                        <div class='col-sm-0 col-md-1 col-lg-2'>
+                            
+                        </div>
+                        <div class='col-sm-12 col-md-10 col-lg-8 mx-auto'>
                             $linkVideo
                         </div>
+                        <div class='col-sm-0 col-md-1 col-lg-2'>
+                              
+                        </div>
                       </div>
-                      <div class='row'>
-                        <div class='col-12'>
+
+                        <div class='row'>
+                          <div class='col-12'>
                             <a 
                               href='$linkGit' 
                               target='_blank'
@@ -74,7 +90,7 @@ class NewsPattern
                               </p>
                             </a>
                           </div>
-                      </div>
+                        </div>
                     </section>
                 ";
             }
@@ -120,16 +136,6 @@ class NewsPattern
             '<iframe',
             '<div class="mx-auto"><iframe',
             $link
-        );
-        $link = str_replace(
-          '/iframe>',
-          '/iframe></div>',
-          $link
-        );
-        $link = str_replace(
-          '560',
-          '100%',
-          $link
         );
         $this->masLink[] = $link;
     }
