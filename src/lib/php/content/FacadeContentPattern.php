@@ -1,17 +1,43 @@
 <?php
 namespace src\lib\php\content;
 
+/**
+ * Фасад для класса NewsPattern
+ * 
+ * Чтобы стилизовать заголовок статьи, необходимо его заключить
+ * в теги span
+ * Чтобы стилизовать основной текст, его необходимо поместить
+ * в теги <p>
+ */
+
 class FacadeContentPattern
 {
     static public function factoryContentPattern()
     {
         $obj = new pattern\NewsPattern();
 
+        $obj->addGet('patternFactoryMethod');
+        $obj->addLinkGitHub('https://github.com/dfdxAlex/pattern/tree/main/PHP/CreationalPatterns/FactoryMethod');
+        $obj->addLink('<iframe width="560" height="315" src="https://www.youtube.com/embed/KrXFk6KwGv8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>');
+        $obj->addNews("
+            <span>Factory Methode</span><p>
+            This pattern allows you to create different implementations of the same interface. That is
+             if you have an interface or an abstract class with some speedTest() method, then
+             using this template, you can inherit the interface by several descendants and
+             create, respectively, several implementations of the object. See the video for more details.<br><br>
+            </p><p>
+            Этот паттерн позволяет создавать различные реализации одного интерфейса. То есть
+            если у Вас есть интерфейс или абстрактный класс с неким методом speedTest(), то 
+            используя данный шаблон можно отнаследовать интерфейс несколькими потомками и 
+            создать соответственно несколько реализаций объекта. Подробнее смотрите в видео.
+            </p>");
+
         $obj->addGet('patternSipmpleFactory');
         $obj->addLinkGitHub('https://github.com/dfdxAlex/pattern/tree/main/PHP/CreationalPatterns/SimpleFactory');
         $obj->addLink('<iframe width="560" height="315" src="https://www.youtube.com/embed/A-V_uAMFDsk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>');
         $obj->addNews("
-            <h1>Symple Factory</h1>
+            <span>Symple Factory</span>
+            <p>
             The pattern allows you to create objects and return them to the client.
             Depending on the conditions, the object will be returned to the client,
             created from one of the available classes.
@@ -23,6 +49,7 @@ class FacadeContentPattern
             is returned to the client and the client uses the object. If all classes
             under a common interface, then the client does not need to know which
             class created an object, the client simply uses the necessary resources of the object. <br><br>
+            </p><p>
             Паттерн позволяет создавать объекты и возвращать их клиенту.
             В зависимости от условий, клиенту будет возвращен объект,
             созданный по одному из имеющихся классов.
@@ -34,7 +61,7 @@ class FacadeContentPattern
             возвращается клиенту и клиент пользуется объектом. Если все классы
             под общим интерфейсом, то клиенту вообще нет надобности знать по какому
             классу создан объект, клиент просто использует нужные ресурсы объекта.
-       ");
+       </p>");
 
         $obj->news();
     }

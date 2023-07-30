@@ -63,6 +63,11 @@ class NavBarFacade
         $obj->setProperty('work-box',true);
         $patterns2 = new ElementNavBar($obj);
 
+        $obj->setProperty('Home','Factory Method');
+        $obj->setProperty('link','?patternFactoryMethod');
+        $obj->setProperty('work-box',true);
+        $patterns3 = new ElementNavBar($obj);
+
 
         /**
          * Загрузка кнопок в класс-контейнер
@@ -70,6 +75,7 @@ class NavBarFacade
         $pattersObj = new BoxNavMenu($obj);
         $pattersObj->addElement($patterns1);
         $pattersObj->addElement($patterns2);
+        $pattersObj->addElement($patterns3);
 
 
 
