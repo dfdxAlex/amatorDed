@@ -24,6 +24,6 @@
     /**
      * Поставить futter
      */
-    new \src\lib\php\Futter();
+    new \src\lib\php\FutterDecorator();
 
 

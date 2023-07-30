@@ -8,3 +8,5 @@ class Futter
         echo '</body></html>';
     }
 }
+
+

@@ -32,6 +32,7 @@ class NewsPattern
 
     public function news()
     {
+      echo '<section class="container-fluid">';
         foreach($this->masGet as $key=>$val) {
             if (isset($_GET[$val])) {
                 $linkVideo = $this->masLink[$key];
@@ -51,7 +52,7 @@ class NewsPattern
                     $linkGit = '#';
 
                 echo "
-                    <section class='container-fluid'>
+                    
                       <div class='row'>
                         <div class='col-sm-0 col-md-1 col-lg-2'>
                                 
@@ -70,7 +71,12 @@ class NewsPattern
                         <div class='col-sm-0 col-md-1 col-lg-2'>
                             
                         </div>
-                        <div class='col-sm-12 col-md-10 col-lg-8 mx-auto'>
+                        <div class='
+                             col-sm-12 
+                             col-md-10 
+                             col-lg-8 
+                             mx-auto'
+                             >
                             $linkVideo
                         </div>
                         <div class='col-sm-0 col-md-1 col-lg-2'>
@@ -79,22 +85,33 @@ class NewsPattern
                       </div>
 
                         <div class='row'>
-                          <div class='col-12'>
-                            <a 
+                        <div class='col-sm-0 col-md-1 col-lg-2'>
+                            
+                        </div>
+                        <div class='
+                          col-sm-12 
+                          col-md-10 
+                          col-lg-8 
+                          mx-auto
+                          link-futter-git 
+                          '
+                        >
+                            <a  class='shadow-lg p-3 mb-5 bg-white rounded'
                               href='$linkGit' 
                               target='_blank'
                             >
-                              <p>
-                                Link to GitHub<br>
-                                Ссылка на GitHub
-                              </p>
+                                Link to GitHub
                             </a>
                           </div>
+                          <div class='col-sm-0 col-md-1 col-lg-2'>
+                            
+                          </div>
                         </div>
-                    </section>
+                    
                 ";
             }
         }
+        echo '</section>';
     } 
 
     public function addNews($news)
