@@ -1,6 +1,10 @@
 <?php
 namespace src\lib\php;
 
+/**
+ * Класс FutterDecorator расширяет старый класс Futter
+ */
+
 class FutterDecorator extends Futter
 {
     public function __construct()
@@ -27,17 +31,21 @@ class FutterDecorator extends Futter
               </div>
               <br>
               <div class="row">
-                <div class="col-sm-12 col-md-6">
+                <div class="col-sm-12 col-md-4">
                   Technologies used on the page:<br>
                   -PHP<br>
                   -HTML5<br>
                   -CSS3<br>
                 </div>
-                <div class="col-sm-12 col-md-6">
+                <div class="col-sm-12 col-md-4">
                   Used Solutions on the page:<br>
                   -Pattern Composite<br>
                   -Pattern Decorator<br>
                   -Pattern Dependency Injection<br>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                  Frameworks:<br>
+                  -BootStrap 5<br>
                 </div>
               </div>
               </footer>

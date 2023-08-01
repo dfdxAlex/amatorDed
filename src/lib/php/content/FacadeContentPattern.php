@@ -63,6 +63,28 @@ class FacadeContentPattern
             классу создан объект, клиент просто использует нужные ресурсы объекта.
        </p>");
 
+       $obj->addGet('patternAbstractFactory');
+       $obj->addLinkGitHub('https://github.com/dfdxAlex/pattern/tree/main/PHP/CreationalPatterns/AbstractFactory');
+       $obj->addLink('<iframe width="560" height="315" src="https://www.youtube.com/embed/sZt84zG8ILU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>');
+       $obj->addNews("
+           <span>Abstract Factory</span>
+           <p>
+           The Abstract Factory template is designed to create 
+           a group of similar objects. For example, if a customer 
+           selects furniture and checks the Scandinavian type, 
+           then all objects must be created in the Scandinavian type. 
+           The object names are preserved, but their properties and 
+           appearance are changed.
+           <br><br>
+           </p><p>
+           Шаблон Абстрактная Фабрика предназначен для создания 
+           группы похожих объектов. На пример, если клиент выбирает 
+           мебель и ставит галочку против скандинавского типа,
+           то все объекты должны будут быть созданы скандинавского 
+           типа. Имена объектов сохраняются, а их свойства и вид 
+           меняются.
+      </p>");
+
         $obj->news();
     }
 }
