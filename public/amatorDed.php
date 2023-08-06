@@ -30,6 +30,12 @@
      */
     src\lib\php\content\FacadeContentPattern::factoryContentPattern();
 
+    /**
+     * Объект проверяет содержимое адрессной строки браузера и если 
+     * был запрос с параметром signin, объект ставит форму ввода
+     * логина и пароля, для авторизации на сайте
+     */
+    src\lib\php\authorization\login\LoginForm::createFormLogin();
 
     /**
      * Поставить futter
