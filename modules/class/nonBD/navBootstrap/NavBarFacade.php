@@ -91,7 +91,11 @@ class NavBarFacade
         /**
          * Выпадающее меню Pattern
          * Создание объектов кнопок
-         * Правила создания объектов простых и контейнера описаны вверху
+         * Правила создания объектов простых и контейнера описаны 
+         * вверху. 
+         */
+        /**
+         * Creational patterns
          */
         $obj->setProperty('Home','Patterns');
         $obj->setProperty('work-box',true);
@@ -112,6 +116,54 @@ class NavBarFacade
         $obj->setProperty('work-box',true);
         $patterns4 = new ElementNavBar($obj);
 
+        $obj->setProperty('Home','Singleton');
+        $obj->setProperty('link','?patternSingleton');
+        $obj->setProperty('work-box',true);
+        $patterns5 = new ElementNavBar($obj);
+
+        $obj->setProperty('Home','Service Locator');
+        $obj->setProperty('link','?patternServiceLocator');
+        $obj->setProperty('work-box',true);
+        $patterns6 = new ElementNavBar($obj);
+
+        $obj->setProperty('Home','Dependency Injection');
+        $obj->setProperty('link','?patternDependencyInjection');
+        $obj->setProperty('work-box',true);
+        $patterns7 = new ElementNavBar($obj);
+
+        /**
+        * Здесь совершенно не важны все параметра,
+        * так как при создании объекта второй параметр true
+        * означает, что объект будет разделительной чертой
+        */
+        $obj->setProperty('Home','Composite');
+        $obj->setProperty('link','?patternComposite');
+        $obj->setProperty('work-box',true);
+        $patterns8 = new ElementNavBar($obj,true);
+
+        /**
+         * Structural patterns
+         */
+        $obj->setProperty('Home','Composite');
+        $obj->setProperty('link','?patternAbstractComposite');
+        $obj->setProperty('work-box',true);
+        $patterns9 = new ElementNavBar($obj);
+
+        /**
+        * Здесь совершенно не важны все параметра,
+        * так как при создании объекта второй параметр true
+        * означает, что объект будет разделительной чертой
+        */
+        $obj->setProperty('Home','Add Content');
+        $obj->setProperty('link','?addcontent');
+        $obj->setProperty('work-box',true);
+        $patterns10 = new ElementNavBar($obj,true);
+
+        $obj->setProperty('Home','Add Content');
+        $obj->setProperty('link','?addcontent');
+        $obj->setProperty('work-box',true);
+        $patterns11 = new ElementNavBar($obj);
+
         /**
          * Загрузка кнопок в класс-контейнер
          */
@@ -120,7 +172,21 @@ class NavBarFacade
         $pattersObj->addElement($patterns2);
         $pattersObj->addElement($patterns3);
         $pattersObj->addElement($patterns4);
+        $pattersObj->addElement($patterns5);
+        $pattersObj->addElement($patterns6);
+        $pattersObj->addElement($patterns7);
+        $pattersObj->addElement($patterns8);
+        $pattersObj->addElement($patterns9);
+        $pattersObj->addElement($patterns10);
+        $pattersObj->addElement($patterns11);
         ////////////////////////////////////////////
+
+        /**
+         * Добавляем новую кнопку входа на сайт
+         */
+        $obj->setProperty('Home','Sign in');
+        $obj->setProperty('link','?signin');
+        $signIn = new ElementNavBar($obj);
 
         /**
          * Поместить объекты в главный объект
@@ -131,6 +197,7 @@ class NavBarFacade
         $obj->addElement($home);
         $obj->addElement($pattersObj);
         $obj->addElement($oblBox);
+        $obj->addElement($signIn);
 
         /**
          * Вывести меню на страницу
