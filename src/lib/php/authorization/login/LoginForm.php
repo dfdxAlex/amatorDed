@@ -10,12 +10,12 @@ class LoginForm
 {
     static public function createFormLogin()
     {
-        if (isset($_GET['signin'])) {
+        if (isset($_GET['signin']) && $_SESSION['statusAD']==0) {
             echo '
             <form class="form-login" method="post">
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Login</label>
-                <input name="login" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input name="login" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
               </div>
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Password</label>

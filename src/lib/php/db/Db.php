@@ -10,6 +10,7 @@ namespace src\lib\php\db;
 
 class Db extends \mysqli
 {
+    
     /**
      * При создании объекта происходит подключение к базе данных dfdx
      */
@@ -69,5 +70,4 @@ class Db extends \mysqli
             }
         }
     }
-
 }

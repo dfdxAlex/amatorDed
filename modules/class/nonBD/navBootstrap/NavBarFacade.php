@@ -184,8 +184,13 @@ class NavBarFacade
         /**
          * Добавляем новую кнопку входа на сайт
          */
-        $obj->setProperty('Home','Sign in');
-        $obj->setProperty('link','?signin');
+        if ($_SESSION['statusAD']==0) {
+            $obj->setProperty('Home','Sign in');
+            $obj->setProperty('link','?signin');
+        } else {
+            $obj->setProperty('Home','Sign out');
+            $obj->setProperty('link','?signout');
+        }
         $signIn = new ElementNavBar($obj);
 
         /**

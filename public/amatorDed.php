@@ -1,4 +1,7 @@
 <?php
+    session_start();
+    if (!isset($_SESSION['statusAD'])) $_SESSION['statusAD']=0;
+    
     /**
      * подключить автозагрузчик классов
      */
@@ -30,6 +33,12 @@
      */
     src\lib\php\content\FacadeContentPattern::factoryContentPattern();
 
+    /**
+     * данный класс проверяет пользователя по базе данных при 
+     * условии, что система перешла на второй шаг авторизации
+     */
+    $login = new src\lib\php\authorization\login\DbForAuthorization();
+    $login->user();
     /**
      * Объект проверяет содержимое адрессной строки браузера и если 
      * был запрос с параметром signin, объект ставит форму ввода
