@@ -14,9 +14,11 @@
     new \src\lib\php\HeaderFacade();
 
     /**
-    * создать объект navbar
-    */
-    class\nonBD\navBootstrap\NavBarFacade::createNavBar();
+     * данный класс проверяет пользователя по базе данных при 
+     * условии, что система перешла на второй шаг авторизации
+     */
+    $login = new src\lib\php\authorization\login\DbForAuthorization();
+    $login->user();
 
     /**
      * Класс наблюдает за запросами и если в запросе будет элемент
@@ -26,8 +28,19 @@
      * отработать раньше чем навигационное меню.
      */
     src\lib\php\authorization\login\SignOut::signOut();
-    
 
+    /**
+    * создать объект navbar
+    */
+    class\nonBD\navBootstrap\NavBarFacade::createNavBar();
+
+    /**
+     * Если появился гет параметр registration, то поставить
+     * форму регистрации
+     */
+    src\lib\php\authorization\registration\RegistrationUserForm::createFormRegistration();
+
+    
     /**
      * Класс, который публикует информацию пока только о патернах
      * Данный метод содержит в себе часть контента жёстко запрограммированную
@@ -44,12 +57,7 @@
     src\lib\php\content\FacadeContentPattern::factoryContentPattern();
 
 
-    /**
-     * данный класс проверяет пользователя по базе данных при 
-     * условии, что система перешла на второй шаг авторизации
-     */
-    $login = new src\lib\php\authorization\login\DbForAuthorization();
-    $login->user();
+
     /**
      * Объект проверяет содержимое адрессной строки браузера и если 
      * был запрос с параметром signin, объект ставит форму ввода

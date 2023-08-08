@@ -14,12 +14,12 @@ class LoginForm
             echo '
             <form class="form-login" method="post">
               <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Login</label>
-                <input name="login" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label for="exampleInputlogin1" class="form-label">Login</label>
+                <input name="login" type="text" class="form-control" id="exampleInputlogin1" aria-describedby="emailHelp">
               </div>
               <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+                <label for="inputPassword1" class="form-label">Password</label>
+                <input name="password" type="password" class="form-control" id="inputPassword1">
               </div>
               <button name="loginLevel2" type="submit" class="btn btn-primary">Submit</button>
             </form>

@@ -153,16 +153,20 @@ class NavBarFacade
         * Здесь совершенно не важны все параметра,
         * так как при создании объекта второй параметр true
         * означает, что объект будет разделительной чертой
+        * Эти две кнопки следует создавать в том случае, 
+        * если пользователь вошел со статусами 3,4,5
         */
-        $obj->setProperty('Home','Add Content');
-        $obj->setProperty('link','?addcontent');
-        $obj->setProperty('work-box',true);
-        $patterns10 = new ElementNavBar($obj,true);
+        if ($_SESSION['statusAD']>2 && $_SESSION['statusAD']<6) {
+            $obj->setProperty('Home','Add Content');
+            $obj->setProperty('link','?addcontent');
+            $obj->setProperty('work-box',true);
+            $patterns10 = new ElementNavBar($obj,true);
 
-        $obj->setProperty('Home','Add Content');
-        $obj->setProperty('link','?addcontent');
-        $obj->setProperty('work-box',true);
-        $patterns11 = new ElementNavBar($obj);
+            $obj->setProperty('Home','Add Content');
+            $obj->setProperty('link','?addcontent');
+            $obj->setProperty('work-box',true);
+            $patterns11 = new ElementNavBar($obj);
+        }
 
         /**
          * Загрузка кнопок в класс-контейнер
@@ -176,9 +180,16 @@ class NavBarFacade
         $pattersObj->addElement($patterns6);
         $pattersObj->addElement($patterns7);
         $pattersObj->addElement($patterns8);
-        $pattersObj->addElement($patterns9);
-        $pattersObj->addElement($patterns10);
-        $pattersObj->addElement($patterns11);
+        $pattersObj->addElement($patterns9); 
+        /**
+         * Данные два объекта будут созданны если пользователь 
+         * вошел со статусом 3,4,5, поэтому и добавлять их в контейнер
+         * следует лишь в том случае, если они созданы.
+         */
+        if ($_SESSION['statusAD']>2 && $_SESSION['statusAD']<6) {
+            $pattersObj->addElement($patterns10);
+            $pattersObj->addElement($patterns11);
+        }
         ////////////////////////////////////////////
 
         /**
@@ -193,6 +204,16 @@ class NavBarFacade
         }
         $signIn = new ElementNavBar($obj);
 
+         /**
+         * Добавляем новую кнопку регистрации на сайт
+         */
+        if ($_SESSION['statusAD']==0) {
+            $obj->setProperty('Home','Registration');
+            $obj->setProperty('link','?registration');
+            $registration = new ElementNavBar($obj);
+        } 
+        
+
         /**
          * Поместить объекты в главный объект
          * После того, как все элементы, как простые-Листочки, так и сложные-контейнеры
@@ -203,6 +224,9 @@ class NavBarFacade
         $obj->addElement($pattersObj);
         $obj->addElement($oblBox);
         $obj->addElement($signIn);
+        if ($_SESSION['statusAD']==0) {
+            $obj->addElement($registration);
+        }
 
         /**
          * Вывести меню на страницу
