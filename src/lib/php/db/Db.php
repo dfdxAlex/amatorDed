@@ -54,6 +54,32 @@ class Db extends \mysqli
     }
 
     /**
+     * Функция проверяет свободен ли логин
+     * true - свободен.
+     * Функция проверяет id запрашиваемого логина, если id существует
+     * то логин занят.
+     */
+    public function searchLogin($login)
+    {
+        $mas = $this->queryAssoc('SELECT id FROM amator_ded_user WHERE login="'.$login.'"');
+        if (isset($mas[0]['id'])) return false;
+        return true;
+    }
+
+    /**
+    * Функция проверяет свободен ли email
+    * true - свободен.
+    * Функция проверяет id запрашиваемого email, если id существует
+    * то email занят.
+    */
+   public function searchEmail($email)
+   {
+       $mas = $this->queryAssoc('SELECT id FROM amator_ded_user WHERE mail="'.$email.'"');
+       if (isset($mas[0]['id'])) return false;
+       return true;
+   }
+
+    /**
      * Метод для отладки кода, выводит всё содержимое
      * введенной, в качестве параметра, таблицы.
      * Для использования метода достаточно ввести название

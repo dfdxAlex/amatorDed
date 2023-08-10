@@ -21,6 +21,17 @@
     $login->user();
 
     /**
+     * Отслежваем пост запрос с параметром $_POST['registration']
+     * Если такой элемент есть в пост массиве, то значит, была 
+     * нажата кнопка регистрации.
+     * Данный класс обрабатывает это нажатие кнопки
+     */
+        $registration = new src\lib\php\authorization\registration\UserData();
+        $rez = $registration->readDataFormRegistration();
+        foreach($rez as $value)
+            echo $value;
+
+    /**
      * Класс наблюдает за запросами и если в запросе будет элемент
      * гет-массива  signout, то есть isset($_GET['signout'])
      * то сбросить признак статуса к нулю.

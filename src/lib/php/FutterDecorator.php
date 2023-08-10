@@ -33,6 +33,7 @@ class FutterDecorator extends Futter
               <div class="row">
                 <div class="col-sm-12 col-md-4">
                   Technologies used on the page:<br>
+                  -MySql<br>
                   -PHP<br>
                   -HTML5<br>
                   -CSS3<br>

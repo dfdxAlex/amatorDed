@@ -23,7 +23,7 @@ class RegistrationUserForm
               </div>
 
               <div class="input-group mb-3">
-                <input name="password1" type="password" class="form-control" placeholder="password" aria-label="password" aria-describedby="basic-addon2">
+                <input name="password2" type="password" class="form-control" placeholder="password" aria-label="password" aria-describedby="basic-addon2">
               </div>
               
               <div class="input-group mb-3">
