@@ -5,7 +5,6 @@ class AddContentForPattern
 {
     public function __construct()
     {
-      \src\lib\php\Statistic::getLinkStatistic()->setPlusOneToIntObj();
         /**
          * Конструктор выводит форму для добавления контента
          * в раздел паттернов.

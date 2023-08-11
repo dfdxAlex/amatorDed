@@ -28,7 +28,6 @@ class DbForAuthorization extends \src\lib\php\db\Db
     use \class\redaktor\interface\trait\TraitInterfaceWorkToBd;
     public function __construct()
     {
-        \src\lib\php\Statistic::getLinkStatistic()->setPlusOneToIntObj();
         /**
          * Подключить конструктор суперкласса
          */

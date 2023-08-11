@@ -1,7 +1,10 @@
 <?php
 define("VER","2023-07-16::special");
 
+require "lib\php\Statistic.php";
+
 spl_autoload_register(function ($class_name) {
+    src\lib\php\Statistic::getLinkStatistic()->setPlusOneToIntObj();
     $hablon='/[^\d\w]/';
     $class_name=preg_replace($hablon,DIRECTORY_SEPARATOR,$class_name);
     

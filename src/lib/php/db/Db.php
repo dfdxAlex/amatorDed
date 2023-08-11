@@ -16,7 +16,6 @@ class Db extends \mysqli
      */
     public function __construct()
     {
-        \src\lib\php\Statistic::getLinkStatistic()->setPlusOneToIntObj();
         parent::__construct("localhost","root","","dfdx");
 
         // Check connection

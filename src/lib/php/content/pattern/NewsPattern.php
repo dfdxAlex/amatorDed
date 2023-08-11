@@ -30,11 +30,6 @@ class NewsPattern
     private $linkGitHub = [];
     private $masGet = [];
 
-    public function __construct()
-    {
-      \src\lib\php\Statistic::getLinkStatistic()->setPlusOneToIntObj();
-    }
-    
     public function news()
     {
       echo '<section class="container-fluid">';
