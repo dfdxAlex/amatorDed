@@ -51,7 +51,7 @@ class FutterDecorator extends Futter
               </div>
               <div class="row">
                  <div class="col-12">
-                   Число созданных объектов: '.
+                   Число подключенных классов: '.
                    Statistic::getLinkStatistic()->getPlusOneToIntObj()
                    .'
                  </div>

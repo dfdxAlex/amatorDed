@@ -53,6 +53,14 @@
      * форму регистрации
      */
     $user->createFormRegistration();
+
+    /**
+     * Смотрим проперти контейнер загруженных классов
+     */
+    // $rez = src\lib\php\Statistic::getLinkStatistic()->getListClass();
+    // foreach($rez as $key=>$val) {
+    //     echo "$key=>$val<br>";
+    // }
     
     /**
      * Класс, который публикует информацию пока только о патернах

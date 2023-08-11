@@ -23,4 +23,9 @@ class PropertyContainer
     {
         $this->property[$name] = $value;
     }
+
+    public function getPropertyMas()
+    {
+        return $this->property;
+    }
 }
