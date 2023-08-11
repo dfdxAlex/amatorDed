@@ -10,7 +10,6 @@ class LoginForm
 {
     static public function createFormLogin()
     {
-        if (isset($_GET['signin'])) {
             echo '
             <form class="form-login" method="post">
               <div class="mb-3">
@@ -24,6 +23,5 @@ class LoginForm
               <button name="loginLevel2" type="submit" class="btn btn-primary">Submit</button>
             </form>
             ';
-        }
     } 
 }
