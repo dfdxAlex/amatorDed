@@ -27,7 +27,7 @@ class Statistic
     {
         throw new \Exception("Cannot unserialize a singleton.");
     }
-    public static function getStatistic()
+    public static function getLinkStatistic()
     {
         if (is_null(self::$instances)) 
             self::$instances = new self();

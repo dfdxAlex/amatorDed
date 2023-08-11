@@ -9,6 +9,7 @@ class FutterDecorator extends Futter
 {
     public function __construct()
     {
+        \src\lib\php\Statistic::getLinkStatistic()->setPlusOneToIntObj();
         echo '
               <footer>
               <div class="row">
@@ -48,6 +49,13 @@ class FutterDecorator extends Futter
                   Frameworks:<br>
                   -BootStrap 5<br>
                 </div>
+              </div>
+              <div class="row">
+                 <div class="col-12">
+                   Число созданных объектов: '.
+                   Statistic::getLinkStatistic()->getPlusOneToIntObj()
+                   .'
+                 </div>
               </div>
               </footer>
         ';

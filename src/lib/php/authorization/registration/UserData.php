@@ -26,6 +26,10 @@ class UserData extends \src\lib\php\db\Db
     private $email;
     private $masError = [];
 
+    public function __construct()
+    {
+        \src\lib\php\Statistic::getLinkStatistic()->setPlusOneToIntObj();
+    }
     /**
      * Метод принимает из пост запроссов пароли.
      * Метод проверяет существует ли нужный пост параметр,

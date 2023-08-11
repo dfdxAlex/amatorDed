@@ -23,6 +23,10 @@ namespace src\lib\php\content;
 
 class FacadeContentPattern
 {
+    public function __construct()
+    {
+        \src\lib\php\Statistic::getLinkStatistic()->setPlusOneToIntObj();
+    }
     static public function factoryContentPattern()
     {
         $obj = new pattern\NewsPattern();

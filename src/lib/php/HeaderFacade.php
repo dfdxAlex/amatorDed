@@ -5,6 +5,7 @@ class HeaderFacade
 {
     public function __construct()
     {
+    \src\lib\php\Statistic::getLinkStatistic()->setPlusOneToIntObj();
     /**
      * Создать старый класс - Header
      */

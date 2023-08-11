@@ -11,6 +11,10 @@ namespace src\lib\php\authorization;
  */
 class UserFacade
 {
+    public function __construct()
+    {
+        \src\lib\php\Statistic::getLinkStatistic()->setPlusOneToIntObj();
+    }
     /**
      * Объект проверяет содержимое адрессной строки браузера и если 
      * был запрос с параметром signin, объект ставит форму ввода
