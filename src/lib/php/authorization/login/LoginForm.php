@@ -10,7 +10,7 @@ class LoginForm
 {
     static public function createFormLogin()
     {
-        if (isset($_GET['signin']) && $_SESSION['statusAD']==0) {
+        if (isset($_GET['signin'])) {
             echo '
             <form class="form-login" method="post">
               <div class="mb-3">

@@ -57,7 +57,6 @@ class UserData extends \src\lib\php\db\Db
             $this->masError[] = "Password field 2 cannot be empty";
         if ($_POST['password1']!=$_POST['password2'])
             $this->masError[] = 'Password mismatch';
-
     }
 
     /**
@@ -118,12 +117,10 @@ class UserData extends \src\lib\php\db\Db
 
     public function readDataFormRegistration()
     {
-        if (isset($_POST['registration'])) {
             $this->setLogin();
             $this->setPassword();
             $this->setEmail();
-        }
-        return $this->masError;
+            return $this->masError;
     }
 
     public function getLogin()

@@ -11,7 +11,6 @@ class RegistrationUserForm
 {
     static public function createFormRegistration()
     {
-        if (isset($_GET['registration'])) {
             echo '
             <form method="post">
               <div class="input-group mb-3">
@@ -36,6 +35,5 @@ class RegistrationUserForm
             </form>
 
             ';
-        }
     }
 }

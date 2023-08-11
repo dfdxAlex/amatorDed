@@ -57,7 +57,6 @@ class DbForAuthorization extends \src\lib\php\db\Db
      */
     public function user()
     {
-        if (isset($_GET['signin']) && isset($_POST['loginLevel2'])) {
             $login = $this->real_escape_string($_POST['login']);
             $password = $this->real_escape_string($_POST['password']);
             $query="SELECT status FROM amator_ded_user WHERE login='$login' AND password='$password'";
@@ -65,9 +64,8 @@ class DbForAuthorization extends \src\lib\php\db\Db
             if (isset($mas[0]['status']) && !is_null($mas[0]['status'])) {
                 $_SESSION['statusAD']=$mas[0]['status'];
             } else {
-                $_SESSION['statusAD']; //???????????????????7
+                $_SESSION['statusAD']=0;
             }
-        }
     }
 
 }

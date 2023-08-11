@@ -7,29 +7,32 @@
      */
     include_once "../src/autoloader.php";
 
-
     /**
      * Поставить header
      */
     new \src\lib\php\HeaderFacade();
 
     /**
-     * данный класс проверяет пользователя по базе данных при 
-     * условии, что система перешла на второй шаг авторизации
+     * Создается объект фасад для упрощения и оптимизации работы
+     * с системой авторизации и регистрации.
      */
-    $login = new src\lib\php\authorization\login\DbForAuthorization();
-    $login->user();
-
+    $user = new src\lib\php\authorization\UserFacade();
     /**
-     * Отслежваем пост запрос с параметром $_POST['registration']
-     * Если такой элемент есть в пост массиве, то значит, была 
-     * нажата кнопка регистрации.
-     * Данный класс обрабатывает это нажатие кнопки
+     * Данный метод фасада слушает систему в ожидании нажатия
+     * кнопки входа на сайт. Если нажатие происходит, то создается
+     * другой объект внутри фасада, который проверяет данный пользователя
+     * по базе данных, если такой пользователь есть, то устанавливается
+     * его статус так-же из базы данных
      */
-        $registration = new src\lib\php\authorization\registration\UserData();
-        $rez = $registration->readDataFormRegistration();
-        foreach($rez as $value)
-            echo $value;
+    $user->signIn();
+
+     /**
+      * Отслежваем пост запрос с параметром $_POST['registration']
+      * Если такой элемент есть в пост массиве, то значит, была 
+      * нажата кнопка регистрации.
+      * Данный класс обрабатывает это нажатие кнопки
+      */
+    $user->registration();
 
     /**
      * Класс наблюдает за запросами и если в запросе будет элемент
@@ -38,7 +41,7 @@
      * Так как класс воздействует на навбар меню, то он должен
      * отработать раньше чем навигационное меню.
      */
-    src\lib\php\authorization\login\SignOut::signOut();
+    $user->signOut();
 
     /**
     * создать объект navbar
@@ -49,8 +52,7 @@
      * Если появился гет параметр registration, то поставить
      * форму регистрации
      */
-    src\lib\php\authorization\registration\RegistrationUserForm::createFormRegistration();
-
+    $user->createFormRegistration();
     
     /**
      * Класс, который публикует информацию пока только о патернах
@@ -67,14 +69,12 @@
      */
     src\lib\php\content\FacadeContentPattern::factoryContentPattern();
 
-
-
     /**
      * Объект проверяет содержимое адрессной строки браузера и если 
      * был запрос с параметром signin, объект ставит форму ввода
      * логина и пароля, для авторизации на сайте
      */
-    src\lib\php\authorization\login\LoginForm::createFormLogin();
+    $user->createFormLogin();
 
     /**
      * Поставить futter
