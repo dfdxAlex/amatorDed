@@ -40,15 +40,13 @@ class DbForAuthorization extends \src\lib\php\db\Db
      */
     use \class\nonBD\error\TraitForError; 
     
-    public function __construct()
-    {
-        /**
-         * Подключить конструктор суперкласса
-         */
-        parent::__construct();
-
-        // echo '--'.$this->kolVoZapisTablice('bd2').'--';
-    }
+    // public function __construct()
+    // {
+    //     /**
+    //      * Подключить конструктор суперкласса
+    //      */
+    //     parent::__construct();
+    // }
 
     /**
      * метод работает если находимся в ссылке с Гетзапросом ?signin
@@ -64,35 +62,17 @@ class DbForAuthorization extends \src\lib\php\db\Db
             $login = $this->real_escape_string($_POST['login']);
             $password = $_POST['password'];
             
-            $query="SELECT password FROM amator_ded_user WHERE login='$login'";
+            $query="SELECT password, status FROM amator_ded_user WHERE login='$login'";
             $hashPassword = $this->queryAssoc($query);
             if ($hashPassword) {
                 $hash = $hashPassword[0]['password'];
                 $rezPassword = password_verify($password, $hash);
                 if ($rezPassword) {
-                    $query="SELECT status FROM amator_ded_user WHERE login='$login'";
-                    $mas = $this->queryAssoc($query);
-                    $_SESSION['statusAD'] = $mas[0]['status'];
+                    $_SESSION['statusAD'] = $hashPassword[0]['status'];
                     $_SESSION['loginAD'] = $login;
                 }
             } else {
                 $this->masError[] = 'Pair login or password is not correct';
             }
-
-            
-
-            
-            // var_dump($rezPassword);
-
-            // $query="SELECT status FROM amator_ded_user WHERE login='$login'";
-            // $mas = $this->queryAssoc($query);
-
-            // if (isset($mas[0]['status']) && !is_null($mas[0]['status'])) {
-            //     $_SESSION['statusAD']=$mas[0]['status'];
-            // } else {
-                
-                
-            // }
     }
-
 }
