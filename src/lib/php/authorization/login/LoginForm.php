@@ -10,7 +10,7 @@ class LoginForm
 {
     static public function createFormLogin()
     {
-            echo '
+            return '
             <form class="form-login" method="post">
               <div class="mb-3">
                 <label for="exampleInputlogin1" class="form-label">Login</label>

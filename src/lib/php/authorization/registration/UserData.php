@@ -25,7 +25,15 @@ class UserData extends \src\lib\php\db\Db
     private $login;
     private $password;
     private $email;
-    private $masError = [];
+
+    /**
+     * В данном трейте содержится инструментарий для работы 
+     * с ошибками, а именно с классом ErrorMas, главной библиотеки
+     * redaktor.
+     * Данный трейт имплементирует массив для хранения ошибок
+     * и методы, для работы с этим массивом.
+     */
+    use \class\nonBD\error\TraitForError; 
 
     /**
      * Метод принимает из пост запроссов пароли.
@@ -53,11 +61,11 @@ class UserData extends \src\lib\php\db\Db
          * Работа с ошибками
          */
         if ($_POST['password1'] == '') 
-            $this->masError[] = "Password field 1 cannot be empty";
+            $this->addError("Password field 1 cannot be empty");
         if ($_POST['password2'] == '') 
-            $this->masError[] = "Password field 2 cannot be empty";
+            $this->addError("Password field 2 cannot be empty");
         if ($_POST['password1']!=$_POST['password2'])
-            $this->masError[] = 'Password mismatch';
+            $this->addError('Password mismatch');
     }
 
     /**
@@ -135,9 +143,5 @@ class UserData extends \src\lib\php\db\Db
     public function getEmail()
     {
         return $this->email;
-    }
-    public function getMassError()
-    {
-        return $this->masError;
     }
 }

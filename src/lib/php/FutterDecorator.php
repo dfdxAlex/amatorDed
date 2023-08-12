@@ -45,6 +45,7 @@ class FutterDecorator extends Futter
                   -Pattern Dependency Injection<br>
                   -Property Container<br>
                   -Singleton<br>
+                  -Facade<br>
                 </div>
                 <div class="col-sm-12 col-md-4">
                   Frameworks:<br>

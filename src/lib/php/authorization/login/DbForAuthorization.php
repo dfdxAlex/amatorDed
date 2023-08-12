@@ -9,7 +9,7 @@ namespace src\lib\php\authorization\login;
 class DbForAuthorization extends \src\lib\php\db\Db
                          implements \class\nonBD\interface\IErrorMas
 {
-    private $masError = [];
+    
     /**
      * Подключение старого трейта, входящего в старую библиотеку redaktor
      * Библиотека не написана по принципам SOLID!
@@ -28,6 +28,16 @@ class DbForAuthorization extends \src\lib\php\db\Db
      * $this->kolVoZapisTablice('amator_ded_user') возвращает число записей в таблице
      */
     use \class\redaktor\interface\trait\TraitInterfaceWorkToBd;
+
+    /**
+     * В данном трейте содержится инструментарий для работы 
+     * с ошибками, а именно с классом ErrorMas, главной библиотеки
+     * redaktor.
+     * Данный трейт имплементирует массив для хранения ошибок
+     * и методы, для работы с этим массивом.
+     */
+    use \class\nonBD\error\TraitForError; 
+    
     public function __construct()
     {
         /**
@@ -69,8 +79,5 @@ class DbForAuthorization extends \src\lib\php\db\Db
                 $this->masError[] = 'Pair login or password is not correct';
             }
     }
-    public function getMassError()
-    {
-        return $this->masError;
-    }
+
 }

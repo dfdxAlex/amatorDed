@@ -19,7 +19,7 @@ class UserFacade
     public function createFormLogin()
     { 
         if (isset($_GET['signin']) && $_SESSION['statusAD']==0) {
-            login\LoginForm::createFormLogin();
+            echo login\LoginForm::createFormLogin();
         }
 
         /**
@@ -57,7 +57,7 @@ class UserFacade
     public function createFormRegistration()
     {
         if (isset($_GET['registration'])  && $_SESSION['statusAD']==0) {
-            registration\RegistrationUserForm::createFormRegistration();
+            echo registration\RegistrationUserForm::createFormRegistration();
         }
 
         /**
@@ -113,7 +113,7 @@ class UserFacade
         if (isset($_POST['registration'])) {
             $registration = new registration\UserData();
             $rez = $registration->readDataFormRegistration();
-                        /**
+            /**
              * Зарегистрировать ссылку на этот объект в контейнер
              * объектов. Ссылка понадобится в другом месте
              * программы.

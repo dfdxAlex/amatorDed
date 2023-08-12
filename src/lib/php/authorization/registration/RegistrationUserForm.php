@@ -11,7 +11,7 @@ class RegistrationUserForm
 {
     static public function createFormRegistration()
     {
-            echo '
+            return '
             <form method="post">
               <div class="input-group mb-3">
                 <input name="username" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
