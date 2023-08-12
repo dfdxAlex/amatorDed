@@ -7,7 +7,9 @@ namespace src\lib\php\authorization\login;
  */
 
 class DbForAuthorization extends \src\lib\php\db\Db
+                         implements \class\nonBD\interface\IErrorMas
 {
+    private $masError = [];
     /**
      * Подключение старого трейта, входящего в старую библиотеку redaktor
      * Библиотека не написана по принципам SOLID!
@@ -48,8 +50,7 @@ class DbForAuthorization extends \src\lib\php\db\Db
     /**
      * метод работает если находимся в ссылке с Гетзапросом ?signin
      * и статус пользователя равен 0, то есть не вошедший на сайт
-     */
-    /**
+     *
      * Метод проверяет пароль и логин пользователя и возвращает
      * true или false.
      * В качестве входного параметра передается логин и пароль
@@ -65,7 +66,11 @@ class DbForAuthorization extends \src\lib\php\db\Db
                 $_SESSION['statusAD']=$mas[0]['status'];
             } else {
                 $_SESSION['statusAD']=0;
+                $this->masError[] = 'Pair login or password is not correct';
             }
     }
-
+    public function getMassError()
+    {
+        return $this->masError;
+    }
 }

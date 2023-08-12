@@ -17,9 +17,36 @@ class UserFacade
      * логина и пароля, для авторизации на сайте
      */
     public function createFormLogin()
-    {
-        if (isset($_GET['signin'])) {
+    { 
+        if (isset($_GET['signin']) && $_SESSION['statusAD']==0) {
             login\LoginForm::createFormLogin();
+        }
+
+        /**
+         * Если произошёл успешный вход в систему, то сообщаем 
+         * об этом.
+         * В момент успешного входа на сайт статус пользователя
+         * изменился, но остался гет запрос в адресной строке 
+         * соответствующий. Этой ситуацией воспользоваться 
+         * для того, чтобы сообщить об успешном входе.
+         */
+        if (isset($_GET['signin'])) {
+         /**
+          * Чтобы вывести ошибки или сообщение об успешнов 
+          * входе нужно передать класс, отвечающий за вход 
+          * пользователя на сайт, классу, отвечающему за 
+          * анализ массива с ошибками. Если ошибок в классе
+          * входа нет, то класс анализа ошибок автоматически выдаст
+          * сообщение об успешной операции
+          */
+          /**
+           * Ссылка на класс, отвечающий за регистрацию получена
+           * из контейнера объектов, в который ранее была помещена
+           * эта ссылка.
+           */
+          $login = \src\lib\php\ContainerObject::getInstance()->getProperty('DbForAuthorization');
+          if ($login)
+              echo new \class\nonBD\error\ErrorMas($login);
         }
     }
 
@@ -29,8 +56,35 @@ class UserFacade
      */
     public function createFormRegistration()
     {
-        if (isset($_GET['registration'])) {
+        if (isset($_GET['registration'])  && $_SESSION['statusAD']==0) {
             registration\RegistrationUserForm::createFormRegistration();
+        }
+
+        /**
+         * Если произошёл успешный вход в систему, то сообщаем 
+         * об этом.
+         * В момент успешного входа на сайт статус пользователя
+         * изменился, но остался гет запрос в адресной строке 
+         * соответствующий. Этой ситуацией воспользоваться 
+         * для того, чтобы сообщить об успешном входе.
+         */
+        if (isset($_GET['registration'])) {
+            /**
+             * Чтобы вывести ошибки или сообщение об успешнов 
+             * входе нужно передать класс, отвечающий за вход 
+             * пользователя на сайт, классу, отвечающему за 
+             * анализ массива с ошибками. Если ошибок в классе
+             * входа нет, то класс анализа ошибок автоматически выдаст
+             * сообщение об успешной операции
+             */
+             /**
+              * Ссылка на класс, отвечающий за регистрацию получена
+              * из контейнера объектов, в который ранее была помещена
+              * эта ссылка.
+              */
+             $login = \src\lib\php\ContainerObject::getInstance()->getProperty('UserData');
+             if ($login)
+                 echo new \class\nonBD\error\ErrorMas($login);
         }
     }
 
@@ -59,6 +113,12 @@ class UserFacade
         if (isset($_POST['registration'])) {
             $registration = new registration\UserData();
             $rez = $registration->readDataFormRegistration();
+                        /**
+             * Зарегистрировать ссылку на этот объект в контейнер
+             * объектов. Ссылка понадобится в другом месте
+             * программы.
+             */
+            \src\lib\php\ContainerObject::getInstance()->setProperty('UserData',$registration);
         }
     }
 
@@ -76,6 +136,12 @@ class UserFacade
              */
             $login = new login\DbForAuthorization();
             $login->user();
+            /**
+             * Зарегистрировать ссылку на этот объект в контейнер
+             * объектов. Ссылка понадобится в другом месте
+             * программы.
+             */
+            \src\lib\php\ContainerObject::getInstance()->setProperty('DbForAuthorization',$login);
         }
     }
 }

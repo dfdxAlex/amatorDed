@@ -19,7 +19,8 @@ namespace src\lib\php\authorization\registration;
  * для него тоже есть геттер.
  */
 
-class UserData extends \src\lib\php\db\Db
+class UserData extends \src\lib\php\db\Db 
+               implements \class\nonBD\interface\IErrorMas
 {
     private $login;
     private $password;

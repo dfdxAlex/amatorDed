@@ -43,6 +43,8 @@ class FutterDecorator extends Futter
                   -Pattern Composite<br>
                   -Pattern Decorator<br>
                   -Pattern Dependency Injection<br>
+                  -Property Container<br>
+                  -Singleton<br>
                 </div>
                 <div class="col-sm-12 col-md-4">
                   Frameworks:<br>
@@ -59,5 +61,13 @@ class FutterDecorator extends Futter
               </footer>
         ';
         parent::__construct();
+        
+        /**
+        * Смотрим проперти контейнер загруженных классов
+        */
+       // $rez = src\lib\php\Statistic::getLinkStatistic()->getListClass();
+       // foreach($rez as $key=>$val) {
+       //     echo "$key=>$val<br>";
+       // }
     }
 }
