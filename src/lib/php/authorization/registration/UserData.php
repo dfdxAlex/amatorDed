@@ -85,8 +85,10 @@ class UserData extends \src\lib\php\db\Db
     private function setLogin()
     {
         // Если существует данный параметр, то забираем его в переменную
-        if (isset($_POST['username']) && $_POST['username']!='')
+        if (isset($_POST['username']) && $_POST['username']!='') {
             $login = $_POST['username'];
+            $_SESSION['loginAD']=$login;
+        }
         else {
             $this->masError[] = 'Name cannot be empty';
             $this->login=false;
@@ -130,7 +132,11 @@ class UserData extends \src\lib\php\db\Db
             $this->email = $email;
         }
     }
-
+    /**
+     * метод читает данные из пост массива и помещает в 
+     * свойства класса
+     * также метод возвращает ссылку на массив с ошибками
+     */
     public function readDataFormRegistration()
     {
             $this->setLogin();

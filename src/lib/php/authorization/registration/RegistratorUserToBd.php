@@ -11,7 +11,6 @@ class RegistratorUserToBd extends \src\lib\php\db\Db
     public function __construct(\src\lib\php\authorization\registration\IRegistratorUser $obj)
     {
         parent::__construct();
-        $this->insertToBd($obj->getLogin(), $obj->getPassword(), $obj->getEmail());
-
+        $_SESSION['statusAD'] = $this->insertToBd($obj->getLogin(), $obj->getPassword(), $obj->getEmail());
     }
 }
