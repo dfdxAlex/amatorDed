@@ -10,6 +10,21 @@ namespace src\lib\php\db;
 
 class Db extends \mysqli
 {
+    /**
+     * Подключение старого трейта, входящего в старую библиотеку redaktor
+     * Библиотека не написана по принципам SOLID!
+     * Данный трейт является божественным, с множеством методов по 
+     * работе с базой данных.
+     * 
+     * У методов ниже, что из трейта TraitInterfaceWorkToBd
+     * свое подключение к базе данных, по процедурному типу.
+     * Подключение происходит автоматически, при запросе к базе
+     * данных или при вызове одного из методов. Соединение создается
+     * по шаблону Singleton.
+     * $this->searcNameTablic('amator_ded_user') проверяет существует ли таблица
+     * $this->kolVoZapisTablice('amator_ded_user') возвращает число записей в таблице
+     */
+    use \class\redaktor\interface\trait\TraitInterfaceWorkToBd;
     
     /**
      * При создании объекта происходит подключение к базе данных dfdx
@@ -79,6 +94,16 @@ class Db extends \mysqli
        return true;
    }
 
+   /**
+    * метод возвращает статус пользователя из базы данных
+    */
+    public function searchStatus($login)
+    {
+        $mas = $this->queryAssoc('SELECT status FROM amator_ded_user WHERE login="'.$login.'"');
+        if (isset($mas[0]['status'])) return $mas[0]['status'];
+        return false;
+    }
+
     /**
      * Метод для отладки кода, выводит всё содержимое
      * введенной, в качестве параметра, таблицы.
@@ -95,5 +120,35 @@ class Db extends \mysqli
                 echo "$key2=>$value2<br>";
             }
         }
+    }
+
+    /**
+     * Метод добавляет пользователя в таблицу amator_ded_user
+     * если в метод приходят все входные параметры.
+     * Если один из входных параметров пустой, то метод
+     * возвращает статус пользователя
+     */
+    public function insertToBd($login, $password='', $mail='')
+    {
+        if ($login!='' && $password!='' && $mail!='') {
+            $id = $this->kolVoZapisTablice('amator_ded_user')+1;
+            $status = time();
+            $query="INSERT INTO amator_ded_user (id, login, password, mail, status) VALUES ($id, '$login', '$password', '$mail', $status)";
+            $this->query($query);
+            /**
+             * после записи пользователя в базу данных запомнить
+             * его логин в переменную сессий
+             */
+            $_SESSION['loginAD'] = $login;
+        }
+        /**
+         * Данный return запрашивает статус пользователя уже из базы
+         * данных, можно использовать метод только для этих целей,
+         * для этого из входных параметров следует указать только
+         * логин.
+         */
+        $loginRez = $this->searchStatus($login);
+        if ($loginRez) return $loginRez;
+        return false;
     }
 }

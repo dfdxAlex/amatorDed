@@ -56,9 +56,7 @@ class UserFacade
      */
     public function createFormRegistration()
     {
-        if (isset($_GET['registration'])  && $_SESSION['statusAD']==0) {
-            echo registration\RegistrationUserForm::createFormRegistration();
-        }
+
 
         /**
          * Если произошёл успешный вход в систему, то сообщаем 
@@ -76,16 +74,29 @@ class UserFacade
              * анализ массива с ошибками. Если ошибок в классе
              * входа нет, то класс анализа ошибок автоматически выдаст
              * сообщение об успешной операции
+             *
+             * Ссылка на класс, отвечающий за регистрацию получена
+             * из контейнера объектов, в который ранее была помещена
+             * эта ссылка.
              */
-             /**
-              * Ссылка на класс, отвечающий за регистрацию получена
-              * из контейнера объектов, в который ранее была помещена
-              * эта ссылка.
-              */
              $login = \src\lib\php\ContainerObject::getInstance()->getProperty('UserData');
-             if ($login)
-                 echo new \class\nonBD\error\ErrorMas($login);
+             if ($login) {
+                 $err = new \class\nonBD\error\ErrorMasPlus($login);
+                 if ($err->searchError()){
+                    $registrator = new registration\RegistratorUserToBd($login);
+                    // $_SESSION['statusAD']=$registrator->insertToBd($_SESSION['loginAD']);
+                 }
+             }
+
+        /** 
+         * Если есть гет массив registration и статус 0
+         * то поставить форму регистрации
+         */
+        if (isset($_GET['registration'])  && $_SESSION['statusAD']==0) {
+            echo registration\RegistrationUserForm::createFormRegistration();
         }
+        }
+
     }
 
     /**
@@ -102,6 +113,22 @@ class UserFacade
         }
     }
 
+    /**
+     * метод проверяет существование пользователя в базе 
+     * данных. Если пользователь там есть, значит регистра-
+     * ционную форму можно удалить
+     * Удаление происходит в другой части скрипта, здесь 
+     * только меняется статус пользователя для того, чтобы
+     * отобразить всё по новому, согласно статуса пользователя
+     */
+    public function searchUser()
+    {
+        if (isset($_GET['registration'])) {
+            $registrator = new \src\lib\php\db\Db;
+            $_SESSION['statusAD']=$registrator->insertToBd($_SESSION['loginAD']);
+        }
+    }
+    
     public function registration()
     {
         /**
@@ -119,6 +146,8 @@ class UserFacade
              * программы.
              */
             \src\lib\php\ContainerObject::getInstance()->setProperty('UserData',$registration);
+
+
         }
     }
 
@@ -144,4 +173,9 @@ class UserFacade
             \src\lib\php\ContainerObject::getInstance()->setProperty('DbForAuthorization',$login);
         }
     }
+
+    // public function searchStatus()
+    // {
+    //     if ($_SESSION['statusAD']==0 && isset($_GET[''])) 
+    // }
 }

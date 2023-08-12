@@ -28,7 +28,7 @@ namespace class\nonBD\error;
 
 class ErrorMas
 {
-    private $in;
+    protected $in;
 
     public function __construct(\class\nonBD\interface\IErrorMas $in) 
     {

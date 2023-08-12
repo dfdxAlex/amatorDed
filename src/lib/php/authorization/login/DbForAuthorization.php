@@ -26,8 +26,11 @@ class DbForAuthorization extends \src\lib\php\db\Db
      * по шаблону Singleton.
      * $this->searcNameTablic('amator_ded_user') проверяет существует ли таблица
      * $this->kolVoZapisTablice('amator_ded_user') возвращает число записей в таблице
+     *
+     * Внимание!! Данный трейд подключается в суперкласс:
+     * \src\lib\php\db\Db, поэтому здесь его можно отключить
      */
-    use \class\redaktor\interface\trait\TraitInterfaceWorkToBd;
+    // use \class\redaktor\interface\trait\TraitInterfaceWorkToBd;
 
     /**
      * В данном трейте содержится инструментарий для работы 

@@ -20,12 +20,9 @@ namespace src\lib\php\authorization\registration;
  */
 
 class UserData extends \src\lib\php\db\Db 
-               implements \class\nonBD\interface\IErrorMas
+               implements \class\nonBD\interface\IErrorMas,
+                          \src\lib\php\authorization\registration\IRegistratorUser
 {
-    private $login;
-    private $password;
-    private $email;
-
     /**
      * В данном трейте содержится инструментарий для работы 
      * с ошибками, а именно с классом ErrorMas, главной библиотеки
@@ -34,6 +31,16 @@ class UserData extends \src\lib\php\db\Db
      * и методы, для работы с этим массивом.
      */
     use \class\nonBD\error\TraitForError; 
+
+    /**
+     * Трейт хранит в себе свойства, в которые данный класс
+     * помещает информацию о пользователе, готовую для записи
+     * в базу данных при регистрации.
+     * Так-же в трейте содержатся метода, для работы с данными
+     * свойствами, которые требуются интерфейсу:
+     * 
+     */
+    use \src\lib\php\authorization\registration\TraitForRegistrator;
 
     /**
      * Метод принимает из пост запроссов пароли.
@@ -132,16 +139,5 @@ class UserData extends \src\lib\php\db\Db
             return $this->masError;
     }
 
-    public function getLogin()
-    {
-        return $this->login;
-    }
-    public function getPassword()
-    {
-        return $this->password;
-    }
-    public function getEmail()
-    {
-        return $this->email;
-    }
+
 }

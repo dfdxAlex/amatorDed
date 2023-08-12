@@ -11,7 +11,9 @@ class SignOut
 {
     static public function signOut()
     {
-        if (isset($_GET['signout']))
+        if (isset($_GET['signout'])) {
             $_SESSION['statusAD']=0;
+            $_SESSION['loginAD']='';
+        }
     }
 }
