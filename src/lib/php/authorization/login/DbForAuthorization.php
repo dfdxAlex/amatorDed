@@ -9,7 +9,6 @@ namespace src\lib\php\authorization\login;
 class DbForAuthorization extends \src\lib\php\db\Db
                          implements \class\nonBD\interface\IErrorMas
 {
-    
     /**
      * Подключение старого трейта, входящего в старую библиотеку redaktor
      * Библиотека не написана по принципам SOLID!
@@ -47,16 +46,7 @@ class DbForAuthorization extends \src\lib\php\db\Db
          * Подключить конструктор суперкласса
          */
         parent::__construct();
-        /**
-         * Проверить существует ли таблица, если нет, то 
-         * создать её. Проверка производится методом из
-         * трейта TraitInterfaceWorkToBd, который входит в 
-         * библиотеку Redaktor
-         */
-        if (!$this->searcNameTablic('amator_ded_user')) {
-            $query = "CREATE TABLE amator_ded_user(id INT, login VARCHAR(30), password VARCHAR(30), mail VARCHAR(50), status INT)";
-            $this->query($query);
-        }
+
         // echo '--'.$this->kolVoZapisTablice('bd2').'--';
     }
 
@@ -72,15 +62,37 @@ class DbForAuthorization extends \src\lib\php\db\Db
     public function user()
     {
             $login = $this->real_escape_string($_POST['login']);
-            $password = $this->real_escape_string($_POST['password']);
-            $query="SELECT status FROM amator_ded_user WHERE login='$login' AND password='$password'";
-            $mas = $this->queryAssoc($query);
-            if (isset($mas[0]['status']) && !is_null($mas[0]['status'])) {
-                $_SESSION['statusAD']=$mas[0]['status'];
+            $password = $_POST['password'];
+            
+            $query="SELECT password FROM amator_ded_user WHERE login='$login'";
+            $hashPassword = $this->queryAssoc($query);
+            if ($hashPassword) {
+                $hash = $hashPassword[0]['password'];
+                $rezPassword = password_verify($password, $hash);
+                if ($rezPassword) {
+                    $query="SELECT status FROM amator_ded_user WHERE login='$login'";
+                    $mas = $this->queryAssoc($query);
+                    $_SESSION['statusAD'] = $mas[0]['status'];
+                    $_SESSION['loginAD'] = $login;
+                }
             } else {
-                $_SESSION['statusAD']=0;
                 $this->masError[] = 'Pair login or password is not correct';
             }
+
+            
+
+            
+            // var_dump($rezPassword);
+
+            // $query="SELECT status FROM amator_ded_user WHERE login='$login'";
+            // $mas = $this->queryAssoc($query);
+
+            // if (isset($mas[0]['status']) && !is_null($mas[0]['status'])) {
+            //     $_SESSION['statusAD']=$mas[0]['status'];
+            // } else {
+                
+                
+            // }
     }
 
 }

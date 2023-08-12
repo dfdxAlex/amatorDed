@@ -22,7 +22,16 @@ class NavBarFacade
          * Создается главный класс
          */
         $obj = new NavMenu();
-        $obj->setProperty('Navbar','AmatorDed');
+        // В зависимости от статуса подобрать логотип к навбару
+        if (isset($_SESSION['loginAD']) 
+          && is_string($_SESSION['loginAD'])
+            && $_SESSION['loginAD']!="" 
+        ) {
+            $amatorDed = 'AmatorDed('.$_SESSION['loginAD'].')';
+        } else {
+            $amatorDed = 'AmatorDed';
+        }
+        $obj->setProperty('Navbar',$amatorDed);
         $obj->setProperty('button-search',false);
         $obj->setProperty('bg-light','blue-light');
         /////////////////////////////////////////////////////

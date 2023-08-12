@@ -38,6 +38,17 @@ class Db extends \mysqli
             echo "Failed to connect to MySQL: " . $this->connect_errno;
             exit();
         }
+
+        /**
+         * Проверить существует ли таблица, если нет, то 
+         * создать её. Проверка производится методом из
+         * трейта TraitInterfaceWorkToBd, который входит в 
+         * библиотеку Redaktor
+         */
+        if (!$this->searcNameTablic('amator_ded_user')) {
+            $query = "CREATE TABLE amator_ded_user(id INT, login VARCHAR(30), password VARCHAR(255), mail VARCHAR(50), status INT)";
+            $this->query($query);
+        }
     }
 
     /**
@@ -65,7 +76,8 @@ class Db extends \mysqli
         if ($query==='') return false;
         $rezObj = $this->query($query);
         $rezReturn = $rezObj->fetch_all(MYSQLI_ASSOC);
-        return $rezReturn;
+        if ($rezReturn) return $rezReturn;
+        return false;
     }
 
     /**
@@ -122,33 +134,5 @@ class Db extends \mysqli
         }
     }
 
-    /**
-     * Метод добавляет пользователя в таблицу amator_ded_user
-     * если в метод приходят все входные параметры.
-     * Если один из входных параметров пустой, то метод
-     * возвращает статус пользователя
-     */
-    public function insertToBd($login, $password='', $mail='')
-    {
-        if ($login!='' && $password!='' && $mail!='') {
-            $id = $this->kolVoZapisTablice('amator_ded_user')+1;
-            $status = time();
-            $query="INSERT INTO amator_ded_user (id, login, password, mail, status) VALUES ($id, '$login', '$password', '$mail', $status)";
-            $this->query($query);
-            /**
-             * после записи пользователя в базу данных запомнить
-             * его логин в переменную сессий
-             */
-            $_SESSION['loginAD'] = $login;
-        }
-        /**
-         * Данный return запрашивает статус пользователя уже из базы
-         * данных, можно использовать метод только для этих целей,
-         * для этого из входных параметров следует указать только
-         * логин.
-         */
-        $loginRez = $this->searchStatus($login);
-        if ($loginRez) return $loginRez;
-        return false;
-    }
+   
 }

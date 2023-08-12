@@ -28,7 +28,7 @@ class UserFacade
          * только меняется статус пользователя для того, чтобы
          * отобразить всё по новому, согласно статуса пользователя
          */
-        $this->searchUser();
+        //$this->searchUser();
 
          /**
           * Данный метод фасада слушает систему в ожидании нажатия
@@ -189,13 +189,13 @@ class UserFacade
      * только меняется статус пользователя для того, чтобы
      * отобразить всё по новому, согласно статуса пользователя
      */
-    private function searchUser()
-    {
-        if (isset($_GET['registration'])) {
-            $registrator = new \src\lib\php\db\Db;
-            $_SESSION['statusAD']=$registrator->insertToBd($_SESSION['loginAD']);
-        }
-    }
+    // private function searchUser()
+    // {
+    //     if (isset($_GET['registration'])) {
+    //         $registrator = new \src\lib\php\db\Db;
+    //         $_SESSION['statusAD']=$registrator->insertToBd($_SESSION['loginAD']);
+    //     }
+    // }
 
     private function registration()
     {
