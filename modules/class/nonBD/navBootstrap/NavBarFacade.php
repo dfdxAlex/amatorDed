@@ -17,6 +17,20 @@ class NavBarFacade
     public static function createNavBar()
     {
 
+        /**
+         * Получить объект - переводчик из контейнера объектов
+         */
+        $translate = \src\lib\php\ContainerObject::getInstance()->getProperty('TranslateFacade');
+        /**
+         * если объекта нет в контейнере, то создать его
+         */
+        // if (!$translate) {
+        //     $translate = new \class\translate\DelegatorLang();
+        //     // $obj->setRedactorLang(true);
+        //     $this->in->control();
+        //     //  $obj->echoDataMas(); //посмотреть или отредактировать базу переводов
+        // }
+
         ////////////////////////////////////////////////////
         /**
          * Создается главный класс
@@ -52,7 +66,8 @@ class NavBarFacade
          * В данном случае передается ссылка на текущую страницу с пустыми GET параметрами.
          * Внимание!! Все параметры необходимо изменить до создания объекта.
          */
-        //$obj->setProperty('Home','Home');
+        
+        $obj->setProperty('Home',$translate->translator('На главную'));
         $obj->setProperty('link','?');
         $home = new ElementNavBar($obj);
         ////////////////////////////////////////////////////

@@ -10,6 +10,12 @@
     include_once "../src/autoloader.php";
 
     /**
+     * Класс для работы с переводом текста на разные языки
+     * Класс из общей библиотеки, но немного переделанный
+     */
+    new src\lib\php\translate\TranslateFacade();
+
+    /**
      * Set header
      * 
      * Поставить header
@@ -44,14 +50,6 @@
     * создать объект navbar
     */
     class\nonBD\navBootstrap\NavBarFacade::createNavBar();
-
-    /**
-     * Класс для работы с переводом текста на разные языки
-     * Класс из общей библиотеки, но немного переделанный
-     */
-    new src\lib\php\translate\TranslateFacade();
-
-
 
     /**
      * To unload the first page part of the system methods

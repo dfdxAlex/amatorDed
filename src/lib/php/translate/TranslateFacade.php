@@ -22,11 +22,14 @@ class TranslateFacade
         * Объект работает с переводами фраз на разные языки
         */
         $this->in = new \class\translate\DelegatorLang();
-
-        // $obj->setRedactorLang(true);
-        $this->in->control();
-        //  $obj->echoDataMas(); //посмотреть или отредактировать базу переводов
         
-        echo $this->in->translator('Вперед');        
+        // зарегистрировать объект - переводчик в контейнере
+        \src\lib\php\ContainerObject::getInstance()->setProperty('TranslateFacade',$this->in);
+        
+        // $this->in->setRedactorLang(true);
+        $this->in->control(false);
+        // $this->in->echoDataMas(); //посмотреть или отредактировать базу переводов
+        
+        // echo $this->in->translator('Вперед');        
     }
 }

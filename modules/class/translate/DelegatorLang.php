@@ -9,12 +9,15 @@ namespace class\translate;
  * 
  * Для использования класса нужно создать объект:
  * $obj = new \src\libraries\DelegatorLang();
- * запустить метод $obj->control(false); // параметр false определяет показывать ли редактор
+ * запустить метод $obj->control(false); // параметр false определяет 
+ * показывать ли редактор
  * и пользоваться после этого методом $go = $obj->translator('Вперед');
  * 
  * Все возможные настройки задаются в свойствах класса и в методе control();
  * 
- * Чтобы перейти в режим добавления данных, свойство  private $redaktor = false;
+ * Чтобы перейти в режим добавления данных, 
+ * свойство  private $redaktor = false;
+ * метод $obj->control(true);
  * нужно заменить на  private $redaktor = true;
  */
 class DelegatorLang

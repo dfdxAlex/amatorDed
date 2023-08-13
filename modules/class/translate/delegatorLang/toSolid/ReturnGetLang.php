@@ -27,7 +27,7 @@ namespace class\translate\delegatorLang\toSolid;
          */
          if (isset($_GET['lang']))
             $_SESSION['get_lang']=$_GET['lang'];
-        else 
+        elseif (!isset($_SESSION['get_lang'])) 
             $_SESSION['get_lang']='en';
         
         return $_SESSION['get_lang'];
