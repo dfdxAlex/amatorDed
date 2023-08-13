@@ -46,6 +46,16 @@
     class\nonBD\navBootstrap\NavBarFacade::createNavBar();
 
     /**
+     * Объект работает с переводами фраз на разные языки
+     */
+    $obj = new class\translate\DelegatorLang();
+
+    // $obj->setRedactorLang(true);
+    $obj->control();
+    //  $obj->echoDataMas(); //посмотреть или отредактировать базу переводов
+
+
+    /**
      * To unload the first page part of the system methods
      * registration and login will fall into this method.
      * This includes the methods that should be run
