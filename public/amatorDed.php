@@ -46,13 +46,11 @@
     class\nonBD\navBootstrap\NavBarFacade::createNavBar();
 
     /**
-     * Объект работает с переводами фраз на разные языки
+     * Класс для работы с переводом текста на разные языки
+     * Класс из общей библиотеки, но немного переделанный
      */
-    $obj = new class\translate\DelegatorLang();
+    new src\lib\php\translate\TranslateFacade();
 
-    // $obj->setRedactorLang(true);
-    $obj->control();
-    //  $obj->echoDataMas(); //посмотреть или отредактировать базу переводов
 
 
     /**

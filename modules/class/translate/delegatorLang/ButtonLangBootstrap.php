@@ -18,36 +18,14 @@ class ButtonLangBootstrap extends ButtonLang
     {
         $this->in = $in;
 
-        /**
-         * Данный блок операторов if нужен для того, чтобы 
-         * вместо работы непосредственно с массивом $_GET(lang)
-         * работать с переменной сессии, и обновлять её в случаях,
-         * когда элемент массива присутствует в адресной строке.
-         */
-        if (!isset($_SESSION['get_lang'])) {
-            $_SESSION['get_lang']='en';
-        } elseif (isset($_GET['lang'])) {
-            $_SESSION['get_lang'] = $_GET['lang'];
-        }
-
         echo '<div class="list-group lang-menu">';
 
         foreach($this->masUrl as $key=>$value) {
             $active='';
-            if ($_SESSION['get_lang'] == $key) $active = "active";
+            if (toSolid\ReturnGetLang::returnGetLang() == $key) $active = "active";
             echo "<a href='$value' class='list-group-item list-group-item-action $active'>$key</a>";
         }
 
         echo '</div>';
     }
 }
-
-
-//   <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-//     Текущий элемент ссылка
-//   </a>
-//   <a href="#" class="list-group-item list-group-item-action">Второй элемент ссылка</a>
-//   <a href="#" class="list-group-item list-group-item-action">Третий элемент ссылка</a>
-//   <a href="#" class="list-group-item list-group-item-action">Четвертый элемент ссылка</a>
-//   <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Отключенный элемент ссылка</a>
-

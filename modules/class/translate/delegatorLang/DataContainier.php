@@ -135,11 +135,11 @@ class DataContainier
     {
         foreach($this->dataMas as $value) {
             if ($value['ru'] === $messages) 
-                return $value[$_GET['lang']];
+                return $value[toSolid\ReturnGetLang::returnGetLang()];
         }
         foreach($this->dataMas as $value) {
             if (mb_strtolower($value['ru']) === $messages) 
-                return $value[$_GET['lang']];
+                return $value[toSolid\ReturnGetLang::returnGetLang()];
         }
     }
 
