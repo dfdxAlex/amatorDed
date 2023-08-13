@@ -27,6 +27,22 @@ class FacadeContentPattern
     {
         $obj = new pattern\NewsPattern();
 
+        /**
+         * Получить объект - переводчик из контейнера объектов
+         */
+        $translate = \src\lib\php\ContainerObject::getInstance()->getProperty('TranslateFacade');
+        /**
+         * если объекта нет в контейнере, то создать его
+         */
+        // if (!$translate) {
+        //     $translate = new \class\translate\DelegatorLang();
+        //     //$obj->setRedactorLang(true);
+        //     $this->in->control();
+        //     //$obj->echoDataMas(); //посмотреть или отредактировать базу переводов
+        //     Для использования сервиса запустить метод:
+        //     $translate->translator('На главную')
+        // }
+
         $obj->addGet('patternFactoryMethod');
         $obj->addLinkGitHub('https://github.com/dfdxAlex/pattern/tree/main/PHP/CreationalPatterns/FactoryMethod');
         $obj->addLink('<iframe width="560" height="315" src="https://www.youtube.com/embed/KrXFk6KwGv8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>');
@@ -95,6 +111,17 @@ class FacadeContentPattern
            типа. Имена объектов сохраняются, а их свойства и вид 
            меняются.
       </p>");
+
+      /**
+       * Дальше контент стал добавляться с использованием системы 
+       * перевода на разные языки
+       */
+      $obj->addGet('patternSingleton');
+      $obj->addLinkGitHub('https://github.com/dfdxAlex/pattern/tree/main/PHP/CreationalPatterns/Singleton');
+      $obj->addLink('<iframe width="560" height="315" src="https://www.youtube.com/embed/Zq0f8lsDuF8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>');
+      $name = "<span>Singleton</span>";
+      $data = $translate->translator('Шаблон Singleton – или одиночка. Суть этого шаблона или решения в том, чтобы создать некий объект только один раз. Реализуется это с помощью создания объекта не оператором new, а с помощью статического метода, который конечно использует new, но внутри класса. Сам метод при первом создании объекта помещает ссылку на него в статическое свойство нового объекта и при повторном обращении к методу, создающему объект, он, метод, возвращает ссылку на созданный ранее объект. Все другие способы создания объекта заблокированы.');
+      $obj->addNews("$name <p>$data</p>");
 
 
         /**

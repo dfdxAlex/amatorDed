@@ -29,6 +29,8 @@ class NavBarFacade
         //     // $obj->setRedactorLang(true);
         //     $this->in->control();
         //     //  $obj->echoDataMas(); //посмотреть или отредактировать базу переводов
+        //     Для использования сервиса запустить метод:
+        //     $translate->translator('На главную')
         // }
 
         ////////////////////////////////////////////////////
@@ -86,7 +88,7 @@ class NavBarFacade
          * чтобы конструктор подтянул нужные ему свойства для создания кнопки.
          * Так как первая кнопка не нуждается в передаче GET параметра, он не указан.
          */
-        $obj->setProperty('Home','Library PHP');
+        $obj->setProperty('Home',$translate->translator('Библиотека PHP'));
         $obj->setProperty('work-box',true);
         $button1 = new ElementNavBar($obj);
         /**
@@ -121,7 +123,7 @@ class NavBarFacade
         /**
          * Creational patterns
          */
-        $obj->setProperty('Home','Patterns');
+        $obj->setProperty('Home',$translate->translator('Шаблоны'));
         $obj->setProperty('work-box',true);
         $patterns1 = new ElementNavBar($obj);
 
@@ -181,12 +183,12 @@ class NavBarFacade
         * если пользователь вошел со статусами 3,4,5
         */
         if ($_SESSION['statusAD']>2 && $_SESSION['statusAD']<6) {
-            $obj->setProperty('Home','Add Content');
+            $obj->setProperty('Home',$translate->translator('Добавить статью'));
             $obj->setProperty('link','?addcontent');
             $obj->setProperty('work-box',true);
             $patterns10 = new ElementNavBar($obj,true);
 
-            $obj->setProperty('Home','Add Content');
+            $obj->setProperty('Home',$translate->translator('Добавить статью'));
             $obj->setProperty('link','?addcontent');
             $obj->setProperty('work-box',true);
             $patterns11 = new ElementNavBar($obj);
@@ -220,10 +222,10 @@ class NavBarFacade
          * Добавляем новую кнопку входа на сайт
          */
         if ($_SESSION['statusAD']==0) {
-            $obj->setProperty('Home','Sign in');
+            $obj->setProperty('Home',$translate->translator('Войти'));
             $obj->setProperty('link','?signin');
         } else {
-            $obj->setProperty('Home','Sign out');
+            $obj->setProperty('Home',$translate->translator('Выйти'));
             $obj->setProperty('link','?signout');
         }
         $signIn = new ElementNavBar($obj);
@@ -232,7 +234,7 @@ class NavBarFacade
          * Добавляем новую кнопку регистрации на сайт
          */
         if ($_SESSION['statusAD']==0) {
-            $obj->setProperty('Home','Registration');
+            $obj->setProperty('Home',$translate->translator('Зарегистрироваться'));
             $obj->setProperty('link','?registration');
             $registration = new ElementNavBar($obj);
         } 
