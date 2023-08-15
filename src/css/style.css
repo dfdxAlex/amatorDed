@@ -80,5 +80,9 @@ footer, footer a {
 */
 .user-lost {
     background-image: url("images/user_lost.jpg");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; 
+    height: 500px;
 }
 

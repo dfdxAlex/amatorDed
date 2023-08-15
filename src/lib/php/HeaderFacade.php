@@ -19,6 +19,9 @@ class HeaderFacade
          * добавлен к тегу body объектом HtmlHead;
          * Данный функционал используется только тогда, когда
          * пользователь на странице игры survive
+         * Имя стилевого класса сначала попадает в переменную
+         * $classBody, а после этого передается в старый класс
+         * \class\nonBD\HtmlHead.
          */
         if (isset($_GET['survive']))
             $classBody = $game->getBGI();

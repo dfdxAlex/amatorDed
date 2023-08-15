@@ -51,7 +51,6 @@ namespace src\lib\php\games\survive;
         /////////////////////////////////////////////////////////
 
 
-        echo $classStyle;
     }
 
 
