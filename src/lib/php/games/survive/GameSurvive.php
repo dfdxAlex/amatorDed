@@ -14,6 +14,7 @@ namespace src\lib\php\games\survive;
      * оттого, где находится персонаж
      */
     private $backgroundForBody = 'non';
+    private $adventure;
 
     public function __construct()
     {
@@ -22,12 +23,26 @@ namespace src\lib\php\games\survive;
          * для игры, если их нет, то создает их.
          */
         new FirstStart();
-        
+
         /**
          * зарегистрировать объект - игра-Выжить в контейнере объектов
          */
          \src\lib\php\ContainerObject::getInstance()->setProperty('SurviveFacade',$this);
+         
+        /**
+         * создается объект путешествия и передается в него 
+         * ссылка на этот объект.
+         */
+        $this->adventure = new Adventure($this);
     }
+
+    // /**
+    //  * метод работает, если игрок находится на улице
+    //  */
+    // public function adventure(ILocationForUser $in)
+    // {
+
+    // }
 
     /**
      * возвращает класс, который необходимо прикрепить к 
@@ -36,5 +51,10 @@ namespace src\lib\php\games\survive;
     public function getBGI()
     {
         return $this->backgroundForBody;
+    }
+
+    public function setBGI($bgi)
+    {
+        $this->backgroundForBody = $bgi;
     }
  }

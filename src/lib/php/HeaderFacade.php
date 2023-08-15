@@ -6,6 +6,7 @@ class HeaderFacade
     private $linkStyle = "amatorDed\src\css\style.css";
     public function __construct()
     {
+        $classBody = 'non';
         /**
          * достаем ссылку на объект игры Выжить из контейнера объектов
          * для того, чтобы получить информацию о фоне, если она есть.
@@ -16,8 +17,11 @@ class HeaderFacade
          * Получить данные от игрового класса о нужном фоне.
          * В качестве информации приходит имя класса, который будет 
          * добавлен к тегу body объектом HtmlHead;
+         * Данный функционал используется только тогда, когда
+         * пользователь на странице игры survive
          */
-        $classBody = $game->getBGI();
+        if (isset($_GET['survive']))
+            $classBody = $game->getBGI();
         /**
          * Создать старый класс - Header
          */

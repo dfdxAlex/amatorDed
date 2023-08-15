@@ -75,3 +75,10 @@ footer, footer a {
     /* float: right; */
 }
 
+/*
+Стили для фона, игра Выжить - Survive
+*/
+.user-lost {
+    background-image: url("images/user_lost.jpg");
+}
+
