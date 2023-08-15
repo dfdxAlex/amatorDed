@@ -46,6 +46,7 @@ class FutterDecorator extends Futter
                   -Property Container<br>
                   -Singleton<br>
                   -Facade<br>
+                  -Service Locator<br>
                 </div>
                 <div class="col-sm-12 col-md-4">
                   Frameworks:<br>

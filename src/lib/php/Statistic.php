@@ -28,7 +28,7 @@ class Statistic
          * Класс создается внутри автозагрузчика, поэтому
          * его файл подключаю вручную.
          */
-        require '..\modules\class\nonBD\propertyContainers\PropertyContainer.php';
+        include '../modules/class/nonBD/propertyContainers/PropertyContainer.php';
         $this->container = new \class\nonBD\propertyContainers\PropertyContainer();
      }
     protected function __clone() { }

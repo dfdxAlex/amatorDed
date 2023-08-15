@@ -18,6 +18,7 @@ class TranslateFacade
     private $in;
     public function __construct()
     {
+        
        /**
         * Объект работает с переводами фраз на разные языки
         */

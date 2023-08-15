@@ -1,7 +1,12 @@
 <?php
     session_start();
     if (!isset($_SESSION['statusAD'])) $_SESSION['statusAD']=0;
-    
+ 
+    /**
+     * Ручное подключение класса, который работает внутри
+     * автозагрузчика
+     */
+    include_once "../src/lib/php/Statistic.php";
     /**
      * connect class autoloader
      * 

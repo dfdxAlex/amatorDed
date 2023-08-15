@@ -31,7 +31,14 @@ class Db extends \mysqli
      */
     public function __construct()
     {
-        parent::__construct("localhost","root","","dfdx");
+        $loadInit = \class\redaktor\DatabaseConn::dBConnection();
+
+        
+        parent::__construct($loadInit->initBdHost(),
+                            $loadInit->initBdLogin(),
+                            $loadInit->initBdParol(),
+                            $loadInit->initBdNameBD());
+        // parent::__construct("localhost","root","","dfdx");
 
         // Check connection
         if ($this->connect_errno) {
