@@ -21,6 +21,11 @@
     new src\lib\php\translate\TranslateFacade();
 
     /**
+     * Класс Фасад для управление игрой Выжить
+     */
+    $games = new src\lib\php\games\survive\SurviveFacade();
+
+    /**
      * Set header
      * 
      * Поставить header
