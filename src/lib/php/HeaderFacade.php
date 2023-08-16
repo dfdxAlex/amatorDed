@@ -30,15 +30,17 @@ class HeaderFacade
          * Получить ссылку на объект, публикующий статьи про паттерны или
          * апи библиотеки php
          */
-        $pattern = \src\lib\php\ContainerObject::getInstance()->getProperty('NewsPattern');
+
+            $pattern = \src\lib\php\ContainerObject::getInstance()->getProperty('NewsPattern');
         /**
          * Если данный класс зарегистрирован в контейнере, значит
          * статья была выведена, можно брать стили для боди
          * Этот блок срабатывает когда пользователь смотрит
          * разделы паттеронв и апи
          */
-        if ($pattern)
-            $classBody = $pattern->returnBGI();
+        if (!isset($_GET['survive']))
+            if ($pattern)
+                $classBody = $pattern->returnBGI();
 
         /**
          * Создать старый класс - Header

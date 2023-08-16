@@ -123,6 +123,7 @@ class DataContainier
     public function loadData()
     {
        $name = $this->obj->getNameFile();
+       
        // прочитать имя файла, усстановленное у потомка
        $this->dataMas = json_decode(file_get_contents($name), true);
     }
@@ -132,8 +133,20 @@ class DataContainier
      * относительно языка, и возвращает перевод
      */
     public function returnMessage($messages)
-    {
+    {   
+        /**
+        * Данный метод возвращает язык, с которым следует работать
+        * toSolid\ReturnGetLang::returnGetLang();
+        */
         foreach($this->dataMas as $value) {
+            /**
+             * Массив $value состоит из нескольких переводов
+             * проверяется русский текст для поиска совпадение
+             * так как русский - это основа и ключ. 
+             * Ну и дальше выбирается тот елемент массива, чей
+             * ключ задан языковым выбором.
+             */
+            
             if ($value['ru'] === $messages) 
                 return $value[toSolid\ReturnGetLang::returnGetLang()];
         }

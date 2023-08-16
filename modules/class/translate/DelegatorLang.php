@@ -69,8 +69,16 @@ class DelegatorLang
         // создать объект
         $this->objLanguageData = new delegatorLang\LanguageData($this);
  
-        // усстановить имя рабочего файла
-         $this->objLanguageData->setupFileName('..\modules\class\translate\json\data.json');
+        /**
+        * усстановить имя рабочего файла
+        * сначала указывается имя с обычным слешем, после этого
+        * обычный слеш меняется на слеш DIRECTORY_SEPARATOR
+        */
+         $name = "../modules/class/translate/json/data.json";
+         $hablon='/\//';
+         $name=preg_replace($hablon,DIRECTORY_SEPARATOR,$name);
+         $this->objLanguageData->setupFileName($name);
+         
         // прочитать данные из файла
         $this->objLanguageData->loadData();
 

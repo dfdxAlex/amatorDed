@@ -26,6 +26,8 @@ class LanguageData extends DataContainier
      * Усстановить имя рабочего файла 
      * Если файл не найден, то создаем пустой файл 
      * с начальной разметкой
+     * Метод только проверяет есть ли файл с базой данных перевода
+     * если нет, то создает его.
     */
     public function setupFileName(string $name)
     {
@@ -35,6 +37,7 @@ class LanguageData extends DataContainier
         if (!file_exists($this->nameFile)) throw new \Exception("Нет файла");
         } catch (\Exception $e) {
 
+            echo 'Не удалось подключить файл с базой переводов';
             /**
              * Блок создает пустой массив, делает из него JSON
              * и записывает на диск
