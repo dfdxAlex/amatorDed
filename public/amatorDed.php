@@ -15,10 +15,21 @@
     include_once "../src/autoloader.php";
 
     /**
+     * фасад для главной страницы, пока там пусто
+     * В конструкторе помещает себя в контейнер объектов
+     */
+    new \src\lib\php\home\HomeFacade();
+
+    /**
      * Класс для работы с переводом текста на разные языки
      * Класс из общей библиотеки, но немного переделанный
+     * Класс DelegatorLang регистрируется в контейнере
+     * Для использования из контейнера запустить метод ->translator()
+     * Чтобы добавить перевод ->control(true);
+     * Чтобы посмотреть или удалить перевод ->echoDataMas(); запустить
+     * \src\lib\php\ContainerObject::getInstance()->getProperty('TranslateFacade');
      */
-    new src\lib\php\translate\TranslateFacade();
+    $translate = new src\lib\php\translate\TranslateFacade();
 
     /**
      * Класс Фасад для управление игрой Выжить
@@ -85,8 +96,20 @@
     * create a navbar object
     * 
     * создать объект navbar
+    * Поставить навигационное меню. Всё, что выводится далее
+    * на странице должно быть ниже этого объекта
     */
     class\nonBD\navBootstrap\NavBarFacade::createNavBar();
+
+    /**
+     * выводится главная страницы, пока пустая
+     */
+    echo \src\lib\php\ContainerObject::getInstance()->getProperty('HomeFacade')->outPage();
+    
+    /**
+     * запуск метода toString главного контейнера-акордиона диалогов
+     */
+    echo \src\lib\php\ContainerObject::getInstance()->getProperty('AccordionContainer');
 
     /**
      * Тест аккордиона

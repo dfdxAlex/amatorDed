@@ -29,7 +29,12 @@ namespace src\lib\php\games\survive;
          * пока не понятно пригодится ли это...
          */
          \src\lib\php\ContainerObject::getInstance()->setProperty('SurviveFacade',$this);
-         
+         /**
+          * создать аккордион контейнер-диалогов
+          * и поместить его в контейнер объектов, для дальнейшего использования
+          */
+         $accordion = new \class\nonBD\accordionBootstrap\AccordionContainer();
+         \src\lib\php\ContainerObject::getInstance()->setProperty('AccordionContainer',$accordion);
         /**
          * создается объект путешествия и передается в него 
          * ссылка на этот объект.
@@ -38,6 +43,7 @@ namespace src\lib\php\games\survive;
          * этого класса.
          */
         $this->adventure = new Adventure($this);
+
     }
 
     /**

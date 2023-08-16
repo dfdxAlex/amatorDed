@@ -70,7 +70,7 @@ class NavBarFacade
          */
         
         $obj->setProperty('Home',$translate->translator('На главную'));
-        $obj->setProperty('link','?');
+        $obj->setProperty('link','?home');
         $home = new ElementNavBar($obj);
         ////////////////////////////////////////////////////
 

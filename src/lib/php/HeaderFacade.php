@@ -30,8 +30,8 @@ class HeaderFacade
          * Получить ссылку на объект, публикующий статьи про паттерны или
          * апи библиотеки php
          */
+        $pattern = \src\lib\php\ContainerObject::getInstance()->getProperty('NewsPattern');
 
-            $pattern = \src\lib\php\ContainerObject::getInstance()->getProperty('NewsPattern');
         /**
          * Если данный класс зарегистрирован в контейнере, значит
          * статья была выведена, можно брать стили для боди
@@ -42,6 +42,12 @@ class HeaderFacade
             if ($pattern)
                 $classBody = $pattern->returnBGI();
 
+        /**
+         * Получить класс фона из главной страницы
+         */
+        if (isset($_GET['home'])) {
+            $classBody = \src\lib\php\ContainerObject::getInstance()->getProperty('HomeFacade')->returnBGI();
+        }
         /**
          * Создать старый класс - Header
          * Класс \class\nonBD\HtmlHead из старой библиотеки,

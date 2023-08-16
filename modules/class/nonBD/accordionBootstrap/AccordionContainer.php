@@ -20,4 +20,11 @@ class AccordionContainer
     private $id = 'accordionExample';
 
 
+    /**
+     * временное решение для задания высоты пустой страницы
+     */
+    public function __toString()
+    {
+        return '<section class="container-fluid"></section>';
+    }
 }

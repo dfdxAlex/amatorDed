@@ -9,7 +9,8 @@ class SurviveFacade
 {
     public function __construct()
     {
-        if (isset($_GET['survive']))
+        if (isset($_GET['survive'])) {
             new GameSurvive();
+        }
     }
 }

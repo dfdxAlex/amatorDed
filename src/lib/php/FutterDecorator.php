@@ -9,7 +9,31 @@ class FutterDecorator extends Futter
 {
     public function __construct()
     {
-        echo '
+    /**
+     * Класс для работы с переводом текста на разные языки
+     * Класс из общей библиотеки, но немного переделанный
+     * Класс DelegatorLang регистрируется в контейнере
+     * Для использования из контейнера запустить метод ->translator()
+     * Чтобы добавить перевод ->control(true);
+     * Чтобы посмотреть или удалить перевод ->echoDataMas(); запустить
+     * \src\lib\php\ContainerObject::getInstance()->getProperty('DelegatorLang');
+     */
+     $nomerToClass = \src\lib\php\ContainerObject::getInstance()
+                                  ->getProperty('TranslateFacade')
+                                  ->translator('Число подключенных классов');
+     $goToYoutube = \src\lib\php\ContainerObject::getInstance()
+                                  ->getProperty('TranslateFacade')
+                                  ->translator('Перейти на Youtube канал');
+     $goToGitHub = \src\lib\php\ContainerObject::getInstance()
+                                  ->getProperty('TranslateFacade')
+                                  ->translator('Перейти на GitHub');
+     $technologies = \src\lib\php\ContainerObject::getInstance()
+                                  ->getProperty('TranslateFacade')
+                                  ->translator('Использованные технологии');
+     $pattern = \src\lib\php\ContainerObject::getInstance()
+                                  ->getProperty('TranslateFacade')
+                                  ->translator('Применённые шаблоны');
+           echo '
               <footer>
               <div class="row">
                 <div class="col-sm-12 col-md-6">
@@ -17,7 +41,7 @@ class FutterDecorator extends Futter
                     href="https://www.youtube.com/channel/UCsIw_8Tx-R3ZKEcwvw5oGzA"
                     target="_blank"
                   >
-                    Go to YouTube channel
+                    '.$goToYoutube.'
                   </a>
                 </div>
                 <div class="col-sm-12 col-md-6">
@@ -25,21 +49,21 @@ class FutterDecorator extends Futter
                     href="https://github.com/dfdxAlex"
                     target="_blank"
                   >
-                    Go to GitHub
+                    '.$goToGitHub.'
                   </a>
                 </div>
               </div>
               <br>
               <div class="row">
                 <div class="col-sm-12 col-md-4">
-                  Technologies used on the page:<br>
+                  '.$technologies.':<br>
                   -MySql<br>
                   -PHP<br>
                   -HTML5<br>
                   -CSS3<br>
                 </div>
                 <div class="col-sm-12 col-md-4">
-                  Used Solutions on the page:<br>
+                  '.$pattern.':<br>
                   -Pattern Composite<br>
                   -Pattern Decorator<br>
                   -Pattern Dependency Injection<br>
@@ -47,6 +71,7 @@ class FutterDecorator extends Futter
                   -Singleton<br>
                   -Facade<br>
                   -Service Locator<br>
+                  -Simple Factory<br>
                 </div>
                 <div class="col-sm-12 col-md-4">
                   Frameworks:<br>
@@ -55,7 +80,7 @@ class FutterDecorator extends Futter
               </div>
               <div class="row">
                  <div class="col-12">
-                   Число подключенных классов: '.
+                   '.$nomerToClass.': '.
                    Statistic::getLinkStatistic()->getPlusOneToIntObj()
                    .'
                  </div>
