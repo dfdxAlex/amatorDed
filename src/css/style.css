@@ -85,4 +85,8 @@ footer, footer a {
     background-size: cover; 
     height: 500px;
 }
+/* Стили для боди, когда смотрим паттерны или апи php */
+.pattern-style {
+    background-image: url("images/design-patterns.png");
+}
 

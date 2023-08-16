@@ -26,22 +26,18 @@ class FacadeContentPattern
     static public function factoryContentPattern()
     {
         $obj = new pattern\NewsPattern();
+        /**
+         * В данном методе создается объект pattern\NewsPattern();
+         * и наполняется контентом. Воспроизводится контент в другом
+         * месте, для этого его и нужно зарегистрировать в котейнере
+         * объектов.
+         */
+        \src\lib\php\ContainerObject::getInstance()->setProperty('NewsPattern',$obj);
 
         /**
          * Получить объект - переводчик из контейнера объектов
          */
         $translate = \src\lib\php\ContainerObject::getInstance()->getProperty('TranslateFacade');
-        /**
-         * если объекта нет в контейнере, то создать его
-         */
-        // if (!$translate) {
-        //     $translate = new \class\translate\DelegatorLang();
-        //     //$obj->setRedactorLang(true);
-        //     $this->in->control();
-        //     //$obj->echoDataMas(); //посмотреть или отредактировать базу переводов
-        //     Для использования сервиса запустить метод:
-        //     $translate->translator('На главную')
-        // }
 
         $obj->addGet('patternFactoryMethod');
         $obj->addLinkGitHub('https://github.com/dfdxAlex/pattern/tree/main/PHP/CreationalPatterns/FactoryMethod');
@@ -146,6 +142,9 @@ class FacadeContentPattern
       $data3 = "$name <p>$data</p> <p>$data2</p>";
       $obj->addNews($data3);
 
+      /**
+       * Функционал ниже пока не работает!!!!!!!!1
+       */
         /**
          * Здесь появится новый код. В коде будет новый объект
          * который подтянет из базы данных информацию и добавит
@@ -171,7 +170,5 @@ class FacadeContentPattern
         /**
          * конец нового кода, он работал используя принцип делегирования
          */
-
-        $obj->news();
     }
 }

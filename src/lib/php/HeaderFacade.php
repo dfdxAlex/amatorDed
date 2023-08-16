@@ -25,8 +25,31 @@ class HeaderFacade
          */
         if (isset($_GET['survive']))
             $classBody = $game->getBGI();
+
+        /**
+         * Получить ссылку на объект, публикующий статьи про паттерны или
+         * апи библиотеки php
+         */
+        $pattern = \src\lib\php\ContainerObject::getInstance()->getProperty('NewsPattern');
+        /**
+         * Если данный класс зарегистрирован в контейнере, значит
+         * статья была выведена, можно брать стили для боди
+         * Этот блок срабатывает когда пользователь смотрит
+         * разделы паттеронв и апи
+         */
+        if ($pattern)
+            $classBody = $pattern->returnBGI();
+
         /**
          * Создать старый класс - Header
+         * Класс \class\nonBD\HtmlHead из старой библиотеки,
+         * ставит начальную разметку, добавляет title и 
+         * подключает стили.
+         * Так-же класс умеет дописывать к боди стилевой класс
+         * который приходит ему в параметре, в данном случае - 
+         * это переменная $classBody. Если передать туда 
+         * значение non, то аттрибут class к body привязан
+         * не будет.
          */
         $headOld =  new \class\nonBD\HtmlHead($this->linkStyle,'MyProject',$classBody,$indexMin=0,$indexMax=0);
         /**

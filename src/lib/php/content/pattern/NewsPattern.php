@@ -23,7 +23,11 @@ namespace src\lib\php\content\pattern;
  *   тег <p> class="mx-auto shadow-lg p-3 mb-5 bg-white rounded"
  */
 
-class NewsPattern
+ /**
+  * интерфейс \src\lib\php\games\survive\bgi\IBGI изначально
+  * был создан для игры Выжить, поэтому там припаркован
+  */
+class NewsPattern implements \src\lib\php\games\survive\bgi\IBGI
 {
     private $masLink = [];
     private $masNews = [];
@@ -32,9 +36,19 @@ class NewsPattern
 
     public function news()
     {
-      echo '<section class="container-fluid">';
+        /**
+         * Перебирает все гет параметры, которые есть в массиве
+         * и сравнивает с текущим гет параметром, который есть
+         * в адресной строке. Если есть совпадение, значит 
+         * нужно вывести новость, соответствующую данному гет параметру
+         * 
+         * Здесь так-же обрабатывается информация из вкладки Библиотека PHP
+         * так как бизнесс логика и инфраструктура одинакова
+         */
         foreach($this->masGet as $key=>$val) {
             if (isset($_GET[$val])) {
+                echo '<section class="container-fluid">';
+               
                 $linkVideo = $this->masLink[$key];
 
                 if (isset($this->masNews[$key])) 
@@ -109,9 +123,10 @@ class NewsPattern
                         </div>
                     
                 ";
+                echo '</section>';
             }
         }
-        echo '</section>';
+        
     } 
 
     public function addNews($news)
@@ -165,5 +180,10 @@ class NewsPattern
     public function addlinkGitHub($linkGitHub)
     {
         $this->linkGitHub[] = $linkGitHub;
+    }
+
+    public function returnBGI()
+    {
+      return 'pattern-style';
     }
 }
