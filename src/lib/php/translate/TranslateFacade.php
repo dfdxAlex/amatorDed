@@ -32,7 +32,7 @@ class TranslateFacade
          * Чтобы добавить слова в control() нужно передать true
          * $this->in->control(true);
          */
-        $this->in->control();
+        $this->in->control(1);
         //$this->in->echoDataMas(); //посмотреть или отредактировать базу переводов
     }
 }

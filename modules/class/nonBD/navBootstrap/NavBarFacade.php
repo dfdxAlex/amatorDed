@@ -21,17 +21,6 @@ class NavBarFacade
          * Получить объект - переводчик из контейнера объектов
          */
         $translate = \src\lib\php\ContainerObject::getInstance()->getProperty('TranslateFacade');
-        /**
-         * если объекта нет в контейнере, то создать его
-         */
-        // if (!$translate) {
-        //     $translate = new \class\translate\DelegatorLang();
-        //     // $obj->setRedactorLang(true);
-        //     $this->in->control();
-        //     //  $obj->echoDataMas(); //посмотреть или отредактировать базу переводов
-        //     Для использования сервиса запустить метод:
-        //     $translate->translator('На главную')
-        // }
 
         ////////////////////////////////////////////////////
         /**
@@ -96,10 +85,25 @@ class NavBarFacade
          * свойства link, так как по бизнес-логике данная кнопка должна в строку адреса
          * добавлять параметр для GET массива.
          */
-        $obj->setProperty('Home','NavBar');
+        $obj->setProperty('Home','NavBar'.$translate->translator('-создать первую кнопку'));
         $obj->setProperty('link','?NavBar');
         $obj->setProperty('work-box',true);
         $button2 = new ElementNavBar($obj);
+
+        $obj->setProperty('Home','NavBar'.$translate->translator('-создать простую кнопку'));
+        $obj->setProperty('link','?NavBarTwo');
+        $obj->setProperty('work-box',true);
+        $button3 = new ElementNavBar($obj);
+
+        $obj->setProperty('Home','NavBar'.$translate->translator('-создать выпадающее меню'));
+        $obj->setProperty('link','?NavBarThree');
+        $obj->setProperty('work-box',true);
+        $button4 = new ElementNavBar($obj);
+
+        $obj->setProperty('Home','NavBar'.$translate->translator('-установка меню'));
+        $obj->setProperty('link','?NavBarFour');
+        $obj->setProperty('work-box',true);
+        $button5 = new ElementNavBar($obj);
         /**
          * Загрузка кнопок в класс-контейнер
          * После того, как все кнопки для определенного контейнера-выпадающего меню, 
@@ -112,6 +116,9 @@ class NavBarFacade
         $oblBox = new BoxNavMenu($obj);
         $oblBox->addElement($button1);
         $oblBox->addElement($button2);
+        $oblBox->addElement($button3);
+        $oblBox->addElement($button4);
+        $oblBox->addElement($button5);
         /////////////////////////////////////////////////////////
 
          /**
