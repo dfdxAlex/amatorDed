@@ -40,37 +40,37 @@ abstract class INavMenu
      * Если будут изменения данных свойств, то они будут делаться через
      * контейнер свойств Синглтон.
      */
-    private $navbar='navbar';
-    private $navbarExpandLg='navbar-expand-lg';
-    private $navbarLight='navbar-light';
-    private $bgLight='bg-light';
-    private $containerFluid='container-fluid';
-    private $navbarBrand='navbar-brand';
-    private $navbarBrandHref='#';
-    private $navbarBrandName='Navbar';
-    private $navbarToggler='navbar-toggler';
-    private $navbarTogglerIcon='navbar-toggler-icon';
-    private $navbarTogglerIconSpan='';
-    private $collapse='collapse';
-    private $navbarCollapse='navbar-collapse';
-    private $navbarNav='navbar-nav';
-    private $meAuto='me-auto';
-    private $mb2='mb-2';
-    private $mbLg0='mb-lg-0';
-    private $navItem='nav-item';
-    private $navLink='nav-link';
-    private $active='active';
-    private $dropdown='dropdown';
-    private $dropdownToggle='dropdown-toggle';
-    private $dropdownMenu='dropdown-menu';
-    private $dropdownDivider='dropdown-divider';
-    private $dropdownItem='dropdown-item';
-    private $dFlex='d-flex';
-    private $formControl='form-control';
-    private $me2='me-2';
-    private $btn='btn';
-    private $btnOutlineSuccess='btn-outline-success';
-    private $home='Home';
+    // private $navbar='navbar';
+    // private $navbarExpandLg='navbar-expand-lg';
+    // private $navbarLight='navbar-light';
+    // private $bgLight='bg-light';
+    // private $containerFluid='container-fluid';
+    // private $navbarBrand='navbar-brand';
+    // private $navbarBrandHref='#';
+    // private $navbarBrandName='Navbar';
+    // private $navbarToggler='navbar-toggler';
+    // private $navbarTogglerIcon='navbar-toggler-icon';
+    // private $navbarTogglerIconSpan='';
+    // private $collapse='collapse';
+    // private $navbarCollapse='navbar-collapse';
+    // private $navbarNav='navbar-nav';
+    // private $meAuto='me-auto';
+    // private $mb2='mb-2';
+    // private $mbLg0='mb-lg-0';
+    // private $navItem='nav-item';
+    // private $navLink='nav-link';
+    // private $active='active';
+    // private $dropdown='dropdown';
+    // private $dropdownToggle='dropdown-toggle';
+    // private $dropdownMenu='dropdown-menu';
+    // private $dropdownDivider='dropdown-divider';
+    // private $dropdownItem='dropdown-item';
+    // private $dFlex='d-flex';
+    // private $formControl='form-control';
+    // private $me2='me-2';
+    // private $btn='btn';
+    // private $btnOutlineSuccess='btn-outline-success';
+    // private $home='Home';
 
     /**
       * property determines whether to put the search field and the Search button from the bootstrap
@@ -108,7 +108,7 @@ abstract class INavMenu
         $this->$realName = $dataProperty;
     }
 
-    protected function getProperty($name)
+    public function getProperty($name)
     {
         $realName = $this->valuePatternName($name);
         return $this->$realName;

@@ -101,6 +101,38 @@ class NavMenu extends INavMenuDiff
 {
     private $masObject = [];
 
+    protected $navbar='navbar';
+    protected $navbarExpandLg='navbar-expand-lg';
+    protected $navbarLight='navbar-light';
+    protected $bgLight='bg-light';
+    protected $containerFluid='container-fluid';
+    protected $navbarBrand='navbar-brand';
+    protected $navbarBrandHref='#';
+    protected $navbarBrandName='Navbar';
+    protected $navbarToggler='navbar-toggler';
+    protected $navbarTogglerIcon='navbar-toggler-icon';
+    protected $navbarTogglerIconSpan='';
+    protected $collapse='collapse';
+    protected $navbarCollapse='navbar-collapse';
+    protected $navbarNav='navbar-nav';
+    protected $meAuto='me-auto';
+    protected $mb2='mb-2';
+    protected $mbLg0='mb-lg-0';
+    protected $navItem='nav-item';
+    protected $navLink='nav-link';
+    protected $active='active';
+    protected $dropdown='dropdown';
+    protected $dropdownToggle='dropdown-toggle';
+    protected $dropdownMenu='dropdown-menu';
+    protected $dropdownDivider='dropdown-divider';
+    protected $dropdownItem='dropdown-item';
+    protected $dFlex='d-flex';
+    protected $formControl='form-control';
+    protected $me2='me-2';
+    protected $btn='btn';
+    protected $btnOutlineSuccess='btn-outline-success';
+    protected $home='Home';
+
     public function writeElement()
     {
         /**
@@ -110,34 +142,44 @@ class NavMenu extends INavMenuDiff
          */
         $this->firstLevel();  
                 
-                /**
-                 * Перебираем массив всех объектов и запускаем 
-                 * метод каждого из них.
-                 * Метод writeElement() рисует либо простую кнопку
-                 * либо выпадающее меню
-                 */
-                foreach ($this->masObject as $value) {
-                    $value->writeElement();
-                }
-
-                /**
-                 * Конец формирования списка меню
-                 */
-                echo '</ul>';
-
-                /**
-                 * Функция выводит внопку Search и поле для ввода поиска, если свойство
-                 * $buttonSearch = true, по умолчанию свойство равно true и устанавливается
-                 * в абстрактном супер-классе
-                 */
-                if ($this->getProperty('buttonSearch'))
-                    $this->lastLevel();
+        /**
+         * Перебираем массив всех объектов и запускаем 
+         * метод каждого из них.
+         * Метод writeElement() рисует либо простую кнопку
+         * либо выпадающее меню
+         */
+        $this->publicButton();
                 
-                /**
-                 * Закрывание формирования всего меню
-                 */
-                echo '</div></div></nav>';
+        /**
+         * Конец формирования списка меню
+         */
+        echo '</ul>';
 
+        /**
+         * Функция выводит внопку Search и поле для ввода поиска, если свойство
+         * $buttonSearch = true, по умолчанию свойство равно true и устанавливается
+         * в абстрактном супер-классе
+         */
+        if ($this->getProperty('buttonSearch'))
+            $this->lastLevel();
+                
+        /**
+         * Закрывание формирования всего меню
+         */
+        echo '</div></div></nav>';
+    }
+
+    protected function publicButton()
+    {
+        /**
+         * Перебираем массив всех объектов и запускаем 
+         * метод каждого из них.
+         * Метод writeElement() рисует либо простую кнопку
+         * либо выпадающее меню
+         */
+        foreach ($this->masObject as $value) {
+          $value->writeElement();
+        }
     }
 
     function firstLevel()
@@ -175,7 +217,6 @@ class NavMenu extends INavMenuDiff
     {
         echo '
               </ul>
-
               <form class="'.
                 $this->getProperty('dFlex').'
               ">

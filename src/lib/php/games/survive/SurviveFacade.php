@@ -11,6 +11,7 @@ class SurviveFacade
     {
         if (isset($_GET['survive'])) {
             new GameSurvive();
+            new \src\lib\php\games\survive\dialog\DialogAccordFacade();
         }
     }
 }

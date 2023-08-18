@@ -105,16 +105,23 @@
      * выводится главная страницы, пока пустая
      */
     echo \src\lib\php\ContainerObject::getInstance()->getProperty('HomeFacade')->outPage();
+
     
     /**
      * запуск метода toString главного контейнера-акордиона диалогов
      */
-    echo \src\lib\php\ContainerObject::getInstance()->getProperty('AccordionContainer');
+    // echo \src\lib\php\ContainerObject::getInstance()->getProperty('AccordionContainer');
 
     /**
      * Тест аккордиона
      */
-    new class\nonBD\accordionBootstrap\AccordionContainer();
+    $accord = \src\lib\php\ContainerObject::getInstance()->getProperty('AccordionContainer');
+    if (isset($_GET['survive']))
+        $accord->writePunkt();
+    // /**
+    //  * Временно запустить вывод аккордиона
+    //  */
+    // \src\lib\php\ContainerObject::getInstance()->getProperty('AccordionContainer')->writePunkt();
 
     /**
      * To unload the first page part of the system methods

@@ -15,7 +15,7 @@ namespace src\lib\php\home;
     
     public function outPage()
     {
-        if (isset($_GET['home']))
+        if (isset($_GET['home']) || count($_GET)==0)
             return '<section class="container-fluid"></section>';
         return '';
     }
