@@ -104,6 +104,11 @@ class NavBarFacade
         $obj->setProperty('link','?NavBarFour');
         $obj->setProperty('work-box',true);
         $button5 = new ElementNavBar($obj);
+
+        $obj->setProperty('Home','Accordion');
+        $obj->setProperty('link','?accordion');
+        $obj->setProperty('work-box',true);
+        $button6 = new ElementNavBar($obj);
         /**
          * Загрузка кнопок в класс-контейнер
          * После того, как все кнопки для определенного контейнера-выпадающего меню, 
@@ -119,6 +124,7 @@ class NavBarFacade
         $oblBox->addElement($button3);
         $oblBox->addElement($button4);
         $oblBox->addElement($button5);
+        $oblBox->addElement($button6);
         /////////////////////////////////////////////////////////
 
          /**

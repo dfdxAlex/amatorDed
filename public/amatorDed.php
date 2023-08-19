@@ -108,21 +108,14 @@
 
     
     /**
-     * запуск метода toString главного контейнера-акордиона диалогов
+     * Запуск системы диалога если вошли в игру
      */
-    // echo \src\lib\php\ContainerObject::getInstance()->getProperty('AccordionContainer');
-
-    /**
-     * Тест аккордиона
-     */
-    $accord = \src\lib\php\ContainerObject::getInstance()->getProperty('AccordionContainer');
-    if (isset($_GET['survive']))
-        $accord->writePunkt();
-    // /**
-    //  * Временно запустить вывод аккордиона
-    //  */
-    // \src\lib\php\ContainerObject::getInstance()->getProperty('AccordionContainer')->writePunkt();
-
+    
+    if (isset($_GET['survive'])) {
+        $accord = \src\lib\php\ContainerObject::getInstance()
+                               ->getProperty('AccordionContainer')
+                               ->writeElement();
+    }
     /**
      * To unload the first page part of the system methods
      * registration and login will fall into this method.

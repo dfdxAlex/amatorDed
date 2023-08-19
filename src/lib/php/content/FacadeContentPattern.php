@@ -65,6 +65,16 @@ class FacadeContentPattern
        */
         new \src\lib\php\content\pattern\extension\NewsPatternThree($obj, $translate);
       
+      /**
+       * Здесь создается статья для первой части по работе с 
+       * Аккордионом от Бутстрапа.
+       * Данный функционал перенесен в отдельный класс NewsAccordion.
+       * Дальнейшее добавление контента в раздел Шаблонов проектирования
+       * следует делать в том классе.
+       */
+        new \src\lib\php\content\pattern\extension\NewsAccordion($obj, $translate);
+      
+
         /**
        * Функционал ниже пока не работает!!!!!!!!1
        */

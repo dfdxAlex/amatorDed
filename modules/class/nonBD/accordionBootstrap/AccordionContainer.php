@@ -14,7 +14,7 @@ namespace class\nonBD\accordionBootstrap;
   * наследуют объект NavBar
   */
 
-class AccordionContainer
+class AccordionContainer extends \class\nonBD\accordionBootstrap\IAccordionPunkt
 {
     private $masObject = [];
 
@@ -37,15 +37,21 @@ class AccordionContainer
     /**
      * Метод выводит пункты меню аккордион
      */
-    public function writePunkt()
+    public function writeElement()
     {
         echo '<section class="container-fluid">
-               <div 
-                 class="accordion  accordion-flush" 
-                 id="accordionExample"
-               >';
-               $this->publicButton();
-        echo '</div></section>';
+                <div class="row">
+                  <aside class="col-12 col-md-4 col-lg-3">
+                    <div 
+                      class="'.$this->getProperty('accordion').
+                      '" id="accordionExample"
+                    >';
+                    $this->publicButton();
+        echo '    </aside>
+                  <main class="col">
+                  </main>
+                </div>
+              </section>';
     } 
 
     protected function publicButton()
@@ -57,7 +63,6 @@ class AccordionContainer
          * либо выпадающее меню
          */
         foreach ($this->masObject as $key=>$value) {
-            echo $key;
           $value->setProperty('id',$key);
           $value->writeElement();
         }
