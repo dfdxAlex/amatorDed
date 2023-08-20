@@ -27,11 +27,12 @@ namespace src\lib\php\games\survive;
          */
         $searchLocationUser = new LocationForUser();
         $location = $searchLocationUser->getLocation();
+        
         /**
          * Метод изменяет локация игрока. Локация меняется
          * в базе данных и в переменной сессий.
          */
-        $searchLocationUser->setLocation(-1);
+        // $searchLocationUser->setLocation(-1);
         //////////////////////////////////////////////
 
         /**
@@ -56,6 +57,16 @@ namespace src\lib\php\games\survive;
         $this->gameSurvive->setBGI($classStyle);
         /////////////////////////////////////////////////////////
 
+        /**
+         * Объект храних данные о состоянии игрока
+         * в своем суперклассе
+         */
+        $state = new state\State();
+        /**
+         * Метод читает данные о пользователе из базы данных,
+         * если их там нет, то создает новые
+         */
+        $state->loadData();
 
     }
 
