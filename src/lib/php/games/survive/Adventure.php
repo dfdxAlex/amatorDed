@@ -27,7 +27,11 @@ namespace src\lib\php\games\survive;
          */
         $searchLocationUser = new LocationForUser();
         $location = $searchLocationUser->getLocation();
-        $searchLocationUser->setLocation(4);
+        /**
+         * Метод изменяет локация игрока. Локация меняется
+         * в базе данных и в переменной сессий.
+         */
+        $searchLocationUser->setLocation(-1);
         //////////////////////////////////////////////
 
         /**

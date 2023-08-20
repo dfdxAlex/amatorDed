@@ -15,7 +15,8 @@ class DataUser extends \src\lib\php\db\Db
     {
         $this->login = $_SESSION['loginAD'];
         parent::__construct();
-        $this->updateUser();
+        $this->updateUserId();
+        $this->updateUserLocation();
     }
     /**
      * Функция обновляет данные пользователя, если их нет
@@ -23,13 +24,19 @@ class DataUser extends \src\lib\php\db\Db
      * Если пользователя нет в базе данных, то создает его,
      * локация при этом становится -1
      */
-    private function updateUser()
+    private function updateUserId()
     {
         if (!isset($_SESSION['user_ID'])) {
-            $query = "SELECT id FROM survive_user WHERE name='$this->login'";
+            /**
+             * дополнительно запрашивается информация о локации location_id
+             * для того, чтобы не делать отдельный запрос, если пользователь
+             * уже есть в базе
+             */
+            $query = "SELECT id, location_id FROM survive_user WHERE name='$this->login'";
             $rez = $this->queryAssoc($query);
             if ($rez) {
                 $_SESSION['user_ID'] = $rez[0]['id'];
+                $_SESSION['location_id'] = $rez[0]['location_id'];
             }
             else {
                $query = "SELECT MAX(id) FROM survive_user WHERE 1";
@@ -45,6 +52,17 @@ class DataUser extends \src\lib\php\db\Db
                if ($rez) {
                    $_SESSION['user_ID'] = $rez[0]['id'];
                }
+            }
+        }
+    }
+    
+    private function updateUserLocation()
+    {
+        if (!isset($_SESSION['location_id'])) {
+            $query = "SELECT location_id FROM survive_user WHERE name='$this->login'";
+            $rez = $this->queryAssoc($query);
+            if ($rez) {
+                $_SESSION['location_id'] = $rez[0]['location_id'];
             }
         }
     } 
