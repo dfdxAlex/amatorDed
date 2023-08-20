@@ -31,7 +31,7 @@ class AccordionContainer extends \class\nonBD\accordionBootstrap\IAccordionPunkt
         /**
          * Зарегистрировать объект в контейнере объектов при создании
          */
-        \src\lib\php\ContainerObject::getInstance()->setProperty('AccordionContainer',$this);
+        // \src\lib\php\ContainerObject::getInstance()->setProperty('AccordionContainer',$this);
     }
 
     /**

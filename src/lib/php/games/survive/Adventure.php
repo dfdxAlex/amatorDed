@@ -23,9 +23,11 @@ namespace src\lib\php\games\survive;
 
         /**
          * Найти локацию пользователя
+         * -1 - игрок ещё никуда не входил
          */
         $searchLocationUser = new LocationForUser();
         $location = $searchLocationUser->getLocation();
+        $searchLocationUser->setLocation(4);
         //////////////////////////////////////////////
 
         /**

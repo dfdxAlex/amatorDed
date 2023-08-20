@@ -11,7 +11,7 @@ class NewsAccordion
       */
       $obj->addGet('accordion');
       $obj->addLinkGitHub('https://github.com/dfdxAlex/amatorDed/tree/main/modules/class/nonBD/accordionBootstrap');
-      $obj->addLink('<iframe width="560" height="315" src="https://www.youtube.com/embed/bjDDQvG-1LQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>');
+      $obj->addLink('<iframe width="560" height="315" src="https://www.youtube.com/embed/wpIx0DjiF10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>');
       $head = $translate->translator('Правила использования модуля Accordion');
       $name = "<span>$head</span>";
       $data = $translate->translator('В этом обзоре рассматривается инструкция использования модуля Accordion от Bootstrap, положенного на PHP код.');
@@ -31,11 +31,12 @@ class NewsAccordion
       $data115 = '$dialog = new AccordionContainer();';
       $data116 = '$dialog->setProperty("accordion","accordion accordion-flush");';
       $data12 = $translate->translator('Теперь остается загрузить созданные ранее пункты-объекты в контейнер.');
+      $data124 = '$dialog = new AccordionContainer();';
       $data125 = '$dialog->addElement(dialog1);';
       $data13 = $translate->translator('Всё готово, для установки accordion необходимо запустить метод контейнера:');
       $data135 = '$dialog->writeElement();';
       $data14 = $translate->translator('Напоследок рассмотрим ещё один режим работы аккордеона – это когда открытие нового пункта не закрывает старые пункты. Чтобы запустить этот режим, при создании отдельных пунктов нужно устанавливать специальный флаг в false.');
-      $data155 = '$dialog1->setProperty("data-bs-parent",false);';
+      $data145 = '$dialog1->setProperty("data-bs-parent",false);';
       $data15 = $translate->translator('Вот и всё. В ролике будет показано на сколько быстро и просто создается Accordion.');
       
       $data3 = "
@@ -55,6 +56,7 @@ class NewsAccordion
                <p>$data10</p>
                <p>$data11</p>
                <p>$data12</p>
+               <strong><p>$data124</p></strong>
                <strong><p>$data125</p></strong>
                <p>$data13</p>
                <strong><p>$data135</p></strong>
