@@ -51,6 +51,16 @@ class DbForAuthorization extends \src\lib\php\db\Db
      */
     public function user()
     {
+            /**
+             * Данный класс проверяет существуют ли все таблицы
+             * которые необходимы для логинирования.
+             * Последняя модификация класса загружает данные игрока
+             * при проверке логина и пароля, для оптимизации запроссов,
+             * поэтому здесь и понадобилась предварительная проверка
+             * наличия всех таблиц.
+             */
+            new \src\lib\php\games\survive\FirstStart;
+
             if (isset($_POST['login']))
                 $login = $this->real_escape_string($_POST['login']);
             else return;
@@ -59,13 +69,21 @@ class DbForAuthorization extends \src\lib\php\db\Db
             else return;
             
             /**
-             * Смысла джойнить не было, так как ID в обоих таблицах одинаков
              * Джойн создан ради тренировки
+             * 
+             * В этом запроссе нужно достать пароль для верификации
+             * пользователя, НО, чтобы потом снова не делать запрос,
+             * вместе с паролем заказано из таблица статус, id игрока
+             * id-локации. Если пароль не совпадёт, то эти данные 
+             * просто не будут использованы, если пароль совпадает,
+             * то эти данные передаются в массив SESSION для дальнейшего
+             * использования в программе.
              */
             $query="SELECT 
                     amator_ded_user.status, 
                     amator_ded_user.password,
-                    survive_user.location_id
+                    survive_user.location_id,
+                    amator_ded_user.id
                     FROM amator_ded_user 
                     INNER JOIN survive_user
                     ON amator_ded_user.id = survive_user.id
@@ -97,6 +115,7 @@ class DbForAuthorization extends \src\lib\php\db\Db
                     $_SESSION['statusAD'] = $hashPassword[0]['status'];
                     $_SESSION['loginAD'] = $login;
                     $_SESSION['location_id'] = $hashPassword[0]['location_id'];
+                    $_SESSION['user_ID'] = $hashPassword[0]['id'];
                 }
             } else {
                 $this->masError[] = 'Pair login or password is not correct';

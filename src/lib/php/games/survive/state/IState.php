@@ -28,6 +28,13 @@ abstract class IState extends \src\lib\php\db\Db
     private $fatiqueMax;     // усталость
     private $lawAbidingMax;  //законопослушность
 
+    private $armorReal;
+    private $attackReal;
+    private $moralityReal;
+    private $luckReal;
+    private $fatiqueReal;     // усталость
+    private $lawAbidingReal;  //законопослушность
+
     private $milisecInput;
 
     abstract public function loadData();
