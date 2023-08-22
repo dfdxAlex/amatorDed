@@ -14,7 +14,6 @@ class FutterDecorator extends Futter
      $nameJs = "/src/lib/js/searchSection";
      $nameJs = \class\nonBD\trait\DirectorySep::insertDirectorySeparator($nameJs);
      $nameJs = "amatorDed".$nameJs.".js";
-     //echo $_SERVER['DOCUMENT_ROOT'];
      echo '<script src="'.$nameJs.'"></script>';
      echo '<script>
              window.addEventListener("load",searchSection,false);
@@ -72,6 +71,7 @@ class FutterDecorator extends Futter
                   -PHP<br>
                   -HTML5<br>
                   -CSS3<br>
+                  -JavaScript
                 </div>
                 <div class="col-sm-12 col-md-4">
                   '.$pattern.':<br>

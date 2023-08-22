@@ -18,8 +18,8 @@
      * фасад для главной страницы, пока там пусто
      * В конструкторе помещает себя в контейнер объектов
      */
-    new \src\lib\php\home\HomeFacade();
-
+    $homeFacade = new \src\lib\php\home\HomeFacade();
+    \src\lib\php\ContainerObject::getInstance()->setProperty('HomeFacade',$homeFacade);
     /**
      * Класс для работы с переводом текста на разные языки
      * Класс из общей библиотеки, но немного переделанный
@@ -104,7 +104,7 @@
     /**
      * выводится главная страницы, пока пустая
      */
-    echo \src\lib\php\ContainerObject::getInstance()->getProperty('HomeFacade')->outPage();
+    // echo \src\lib\php\ContainerObject::getInstance()->getProperty('HomeFacade')->outPage();
 
     
     /**
@@ -116,9 +116,7 @@
                                ->getProperty('AccordionContainer')
                                ->writeElement();
     } 
-    // else {
-    //     echo '<section class=container></section>';
-    // }
+
     /**
      * To unload the first page part of the system methods
      * registration and login will fall into this method.
