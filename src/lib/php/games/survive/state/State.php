@@ -12,6 +12,7 @@ class State extends IState
 {
     public function loadData()
     {
+        
         $login = $_SESSION['loginAD'];
         $user_id = $_SESSION['user_ID'];
 
@@ -19,24 +20,34 @@ class State extends IState
         $rez = $this->queryAssoc($query);
         if ($rez) {
             $this->setProperty('wallet', $rez[0]['wallet']);
-            $this->setProperty('armor', $rez[0]['armor']);
-            $this->setProperty('attack', $rez[0]['attack']);
-            $this->setProperty('morality', $rez[0]['morality']);
-            $this->setProperty('luck', $rez[0]['luck']);
-            $this->setProperty('fatique', $rez[0]['fatique']);
-            $this->setProperty('lawAbiding', $rez[0]['law_abiding']);
+            $this->setProperty('armorMax', $rez[0]['armor_max']);
+            $this->setProperty('attackMax', $rez[0]['attack_max']);
+            $this->setProperty('moralityMax', $rez[0]['morality_max']);
+            $this->setProperty('luckMax', $rez[0]['luck_max']);
+            $this->setProperty('fatiqueMax', $rez[0]['fatique_max']);
+            $this->setProperty('lawAbidingMax', $rez[0]['law_abiding_max']);
+
+
         } else {
             $query = "INSERT INTO survive_parametr_user
-                      (id, wallet, armor, attack, morality, luck, fatique, law_abiding)
+                      (id, wallet, armor_max, attack_max, morality_max, luck_max, fatique_max, law_abiding_max)
                       VALUES ($user_id,0,100,100,100,100,100,100)";
-                      $this->setProperty('wallet', 0);
-                      $this->setProperty('armor', 100);
-                      $this->setProperty('attack', 100);
-                      $this->setProperty('morality', 100);
-                      $this->setProperty('luck', 100);
-                      $this->setProperty('fatique', 100);
-                      $this->setProperty('lawAbiding', 100);
+                      $this->setProperty('wallet_max', 0);
+                      $this->setProperty('armor_max_max', 100);
+                      $this->setProperty('attack_max_max', 100);
+                      $this->setProperty('morality_max', 100);
+                      $this->setProperty('luck_max', 100);
+                      $this->setProperty('fatique_max', 100);
+                      $this->setProperty('lawAbiding_max', 100);
             $this->query($query);
         }
+
+        /**
+         * получить входное значение милисекунд нахождения 
+         * в локации
+         */
+        $query = "SELECT entry_time FROM survive_user WHERE id='$user_id'";
+        $rez = $this->queryAssoc($query);
+        $this->setProperty('milisecInput', $rez[0]['entry_time']);
     }
 }

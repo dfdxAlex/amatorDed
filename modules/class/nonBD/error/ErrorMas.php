@@ -53,9 +53,12 @@ class ErrorMas
 
     public function block($massage)
     {   return "
-        <div class='alert alert-danger' role='alert'>
-        $massage
-        </div>";
+          <div class='alert alert-danger' role='alert'>
+            $massage
+          </div>
+        "
+        ;
+        
     }
 }
 

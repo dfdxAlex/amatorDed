@@ -68,6 +68,20 @@ namespace src\lib\php\games\survive;
          */
         $state->loadData();
 
+        /**
+         * Здесь должен быть сформирован фабрикой объект локации
+         */
+        $location = new location\LocationFirst();
+
+        /**
+         * Объект занимается коррекцией данных о состоянии игрока
+         * Объект принимает объект с данными и объект с локацией
+         * и вносит изменения в объект с данными
+         */
+        $correct = new state\CorrectState($state, $location);
+        echo $correct->getPropertyCorrect('hour');
+        // echo $correct->state->getProperty('milisecInput');
+
     }
 
 

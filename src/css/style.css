@@ -66,6 +66,10 @@ footer, footer a {
     color: antiquewhite;  
 }
 
+/* footer {
+    margin-top: 600px;
+} */
+
 .lang-menu {
     position: fixed;
     top:0;

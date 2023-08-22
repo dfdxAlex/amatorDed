@@ -7,8 +7,19 @@ namespace src\lib\php;
 
 class FutterDecorator extends Futter
 {
+  use \class\nonBD\trait\DirectorySep;
+
     public function __construct()
     {
+     $nameJs = "/src/lib/js/searchSection";
+     $nameJs = \class\nonBD\trait\DirectorySep::insertDirectorySeparator($nameJs);
+     $nameJs = "amatorDed".$nameJs.".js";
+     //echo $_SERVER['DOCUMENT_ROOT'];
+     echo '<script src="'.$nameJs.'"></script>';
+     echo '<script>
+             window.addEventListener("load",searchSection,false);
+             
+           </script>';
     /**
      * Класс для работы с переводом текста на разные языки
      * Класс из общей библиотеки, но немного переделанный
@@ -34,7 +45,7 @@ class FutterDecorator extends Futter
                                   ->getProperty('TranslateFacade')
                                   ->translator('Применённые шаблоны');
            echo '
-              <footer>
+              <footer id="footer">
               <div class="row">
                 <div class="col-sm-12 col-md-6">
                   <a 

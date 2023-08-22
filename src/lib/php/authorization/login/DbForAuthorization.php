@@ -40,14 +40,6 @@ class DbForAuthorization extends \src\lib\php\db\Db
      */
     use \class\nonBD\error\TraitForError; 
     
-    // public function __construct()
-    // {
-    //     /**
-    //      * Подключить конструктор суперкласса
-    //      */
-    //     parent::__construct();
-    // }
-
     /**
      * метод работает если находимся в ссылке с Гетзапросом ?signin
      * и статус пользователя равен 0, то есть не вошедший на сайт
@@ -59,17 +51,52 @@ class DbForAuthorization extends \src\lib\php\db\Db
      */
     public function user()
     {
-            $login = $this->real_escape_string($_POST['login']);
-            $password = $_POST['password'];
+            if (isset($_POST['login']))
+                $login = $this->real_escape_string($_POST['login']);
+            else return;
+            if (isset($_POST['password']))
+                $password = $_POST['password'];
+            else return;
             
-            $query="SELECT password, status FROM amator_ded_user WHERE login='$login'";
+            /**
+             * Смысла джойнить не было, так как ID в обоих таблицах одинаков
+             * Джойн создан ради тренировки
+             */
+            $query="SELECT 
+                    amator_ded_user.status, 
+                    amator_ded_user.password,
+                    survive_user.location_id
+                    FROM amator_ded_user 
+                    INNER JOIN survive_user
+                    ON amator_ded_user.id = survive_user.id
+                    WHERE login='$login'";
+
+            /**
+             * прочитать хеш пароля пользователя
+             */
             $hashPassword = $this->queryAssoc($query);
+            /**
+             * Проверка удалось ли прочитать хеш пароля
+             */
             if ($hashPassword) {
+                /**
+                 * получить сам хеш пароля в переменную $hash
+                 */
                 $hash = $hashPassword[0]['password'];
+                /**
+                 * Функция password_verify проверяет соответствие 
+                 * хеша введенному паролю пользователя
+                 */
                 $rezPassword = password_verify($password, $hash);
+                /**
+                 * Если проверка пароля и его хеша прошли успешно
+                 * то поместить некоторые данные пользователя
+                 * в переменные сессий
+                 */
                 if ($rezPassword) {
                     $_SESSION['statusAD'] = $hashPassword[0]['status'];
                     $_SESSION['loginAD'] = $login;
+                    $_SESSION['location_id'] = $hashPassword[0]['location_id'];
                 }
             } else {
                 $this->masError[] = 'Pair login or password is not correct';

@@ -13,7 +13,8 @@ class DataUser extends \src\lib\php\db\Db
     private $login;
     public function __construct()
     {
-        $this->login = $_SESSION['loginAD'];
+        if (isset($_SESSION['loginAD']))
+            $this->login = $_SESSION['loginAD'];
         parent::__construct();
         $this->updateUserId();
         $this->updateUserLocation();

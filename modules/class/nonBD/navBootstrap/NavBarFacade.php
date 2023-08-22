@@ -279,7 +279,7 @@ class NavBarFacade
          */
         if ($_SESSION['statusAD']==0) {
             $obj->setProperty('Home',$translate->translator('Войти'));
-            $obj->setProperty('link','?signin');
+            $obj->setProperty('link','?signinAD');
         } else {
             $obj->setProperty('Home',$translate->translator('Выйти'));
             $obj->setProperty('link','?signout');

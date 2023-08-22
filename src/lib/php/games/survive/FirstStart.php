@@ -88,30 +88,53 @@ namespace src\lib\php\games\survive;
           'poleT=int',
           'poleS=0',
 
-          'poleN=armor',
+          'poleN=armor_max',
           'poleT=int',
           'poleS=100',
 
-          'poleN=attack',
+          'poleN=attack_max',
           'poleT=int',
           'poleS=100',
 
-          'poleN=morality',
+          'poleN=morality_max',
           'poleT=int',
           'poleS=100',
 
-          'poleN=luck',
+          'poleN=luck_max',
           'poleT=int',
           'poleS=100',
 
-          'poleN=fatique',
+          'poleN=fatique_max',
           'poleT=int',
           'poleS=100',
 
-          'poleN=law_abiding',
+          'poleN=law_abiding_max',
           'poleT=int',
           'poleS=100',
 
+          'poleN=armor_real',
+          'poleT=int',
+          'poleS=10',
+
+          'poleN=attack_real',
+          'poleT=int',
+          'poleS=10',
+
+          'poleN=morality_real',
+          'poleT=int',
+          'poleS=10',
+
+          'poleN=luck_real',
+          'poleT=int',
+          'poleS=10',
+
+          'poleN=fatique_real',
+          'poleT=int',
+          'poleS=10',
+
+          'poleN=law_abiding_real',
+          'poleT=int',
+          'poleS=10',
         );
     }
 

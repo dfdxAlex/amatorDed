@@ -111,11 +111,14 @@
      * Запуск системы диалога если вошли в игру
      */
     
-    if (isset($_GET['survive'])) {
+    if (isset($_GET['survive']) && isset($_SESSION['loginAD'])) {
         $accord = \src\lib\php\ContainerObject::getInstance()
                                ->getProperty('AccordionContainer')
                                ->writeElement();
-    }
+    } 
+    // else {
+    //     echo '<section class=container></section>';
+    // }
     /**
      * To unload the first page part of the system methods
      * registration and login will fall into this method.
@@ -142,5 +145,26 @@
      * Поставить futter
      */
     new \src\lib\php\FutterDecorator();
+
+    /**
+     * Расстояние отступ блока футер footer от верха.
+     * функция searchSection() проверяет сколько есть на станице
+     * классов class="container-fluid". Один такой класс есть 
+     * от навигационного меню, второй должен быть от контента.
+     * Стиль для второго контейнера описан в css файле.
+     * Внимание!!! Чтобы футер не прилипал вверх, на странице 
+     * всегда должен быть контент, кроме навигационного меню, либо
+     * просто пустой тег <section class="container-fluid"></section>
+     * Именно второй <section> отталкивает футер вниз.
+     * Так вот, если второго такого тега нет, то есть кроме навигации
+     * на странице ничего нет, то функция searchSection() - это 
+     * узнает, выбирает футтер по его ID и добавляет ему в свойства
+     * margin-top.
+     * данная функция находится тут:
+     * src\lib\js\searchSection.js
+     * подключается данная функция и запускается через событие
+     * классом FutterDecorator, который находится тут:
+     * src\lib\php\FutterDecorator.php
+     */
 
 

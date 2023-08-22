@@ -38,7 +38,6 @@ class Db extends \mysqli
                             $loadInit->initBdLogin(),
                             $loadInit->initBdParol(),
                             $loadInit->initBdNameBD());
-        // parent::__construct("localhost","root","","dfdx");
 
         // Check connection
         if ($this->connect_errno) {

@@ -87,7 +87,10 @@ class UserFacade
      */
     private function createFormLogin()
     { 
-        if (isset($_GET['signin']) && $_SESSION['statusAD']==0) {
+        if (isset($_GET['signinAD']))
+            if ((isset($_SESSION['statusAD'])
+                 && $_SESSION['statusAD']==0)
+                   || !isset($_SESSION['statusAD'])) {
             echo login\LoginForm::createFormLogin();
         }
 
@@ -99,7 +102,7 @@ class UserFacade
          * соответствующий. Этой ситуацией воспользоваться 
          * для того, чтобы сообщить об успешном входе.
          */
-        if (isset($_GET['signin'])) {
+        if (isset($_GET['signinAD'])) {
          /**
           * Чтобы вывести ошибки или сообщение об успешнов 
           * входе нужно передать класс, отвечающий за вход 
@@ -242,7 +245,7 @@ class UserFacade
          * адресной строке есть гет параметр signin, а в форме
          * ввода логина и пароля нажата кнопка входа loginLevel2
          */
-        if (isset($_GET['signin']) && isset($_POST['loginLevel2'])) {
+        if (isset($_GET['signinAD']) && isset($_POST['loginLevel2'])) {
             /**
              * данный класс проверяет пользователя по базе данных при 
              * условии, что система перешла на второй шаг авторизации

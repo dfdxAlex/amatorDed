@@ -11,5 +11,6 @@ class BGIFactory
     public function factoryReturnBGI($location)
     {
         if ($location==-1) return new bgi\BGILost();
+        return new bgi\BGINon();
     }
 }

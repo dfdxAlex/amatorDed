@@ -11,19 +11,30 @@ namespace src\lib\php\games\survive\state;
 
 abstract class IState extends \src\lib\php\db\Db
 {
-    private $wallet;
-    private $armor;
-    private $attack;
-    private $morality;
-    private $luck;
-    private $fatique;
-    private $lawAbiding;
+    /**
+     * тратится и восстанавливается только усталость 
+     * , остальное прокачивается.
+     * усталость понижает все, кроме законопослушности
+     * усталость упала до нуля, все значения упали до 30 процентов
+     * усталость на уровне 100 процентов, никаких штрафов.
+     * Разные локации по разному расходуют енергию игрока, или 
+     * влияют на усталость
+     */
+    private $wallet; 
+    private $armorMax;
+    private $attackMax;
+    private $moralityMax;
+    private $luckMax;
+    private $fatiqueMax;     // усталость
+    private $lawAbidingMax;  //законопослушность
+
+    private $milisecInput;
 
     abstract public function loadData();
 
     public function getProperty($prop)
     {
-        return $$prop;
+        return $this->$prop;
     }
 
     public function setProperty($prop, $data)

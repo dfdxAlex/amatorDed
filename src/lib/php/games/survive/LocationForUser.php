@@ -12,6 +12,7 @@ namespace src\lib\php\games\survive;
 
      public function getLocation()
      {
+         
          return $_SESSION['location_id'];
      }
      public function setLocation($location)

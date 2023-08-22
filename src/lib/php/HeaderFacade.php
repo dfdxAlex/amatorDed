@@ -23,7 +23,7 @@ class HeaderFacade
          * $classBody, а после этого передается в старый класс
          * \class\nonBD\HtmlHead.
          */
-        if (isset($_GET['survive']))
+        if (isset($_GET['survive']) && isset($_SESSION['loginAD']))
             $classBody = $game->getBGI();
 
         /**
