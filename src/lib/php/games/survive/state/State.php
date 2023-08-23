@@ -41,7 +41,7 @@ class State extends IState
                        fatique_max, law_abiding_max, armor_real, attack_real, 
                        morality_real, luck_real, fatique_real, law_abiding_real)
                       VALUES ($user_id,0,100,100,100,100,100,100,
-                              10,10,10,10,10,10)";
+                              100,100,100,100,10,100)";
                       $this->setProperty('wallet_max', 0);
                       $this->setProperty('armor_max', 100);
                       $this->setProperty('attack_max', 100);
@@ -50,12 +50,12 @@ class State extends IState
                       $this->setProperty('fatique_max', 100);
                       $this->setProperty('lawAbiding_max', 100);
 
-                      $this->setProperty('armor_real', 10);
-                      $this->setProperty('attack_real', 10);
-                      $this->setProperty('morality_real', 10);
-                      $this->setProperty('luck_real', 10);
+                      $this->setProperty('armor_real', 100);
+                      $this->setProperty('attack_real', 100);
+                      $this->setProperty('morality_real', 100);
+                      $this->setProperty('luck_real', 100);
                       $this->setProperty('fatique_real', 10);
-                      $this->setProperty('lawAbiding_real', 10);
+                      $this->setProperty('lawAbiding_real', 100);
             $this->query($query);
         }
 

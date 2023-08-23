@@ -79,7 +79,7 @@ namespace src\lib\php\games\survive;
          * и вносит изменения в объект с данными
          */
         $correct = new state\CorrectState($state, $location);
-        echo $correct->getPropertyCorrect('hour');
+        echo $correct->getPropertyCorrect('fatiqueReal');
         // echo $correct->state->getProperty('milisecInput');
 
     }

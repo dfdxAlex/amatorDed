@@ -72,6 +72,7 @@ class FutterDecorator extends Futter
                   -HTML5<br>
                   -CSS3<br>
                   -JavaScript
+                  -jQuery
                 </div>
                 <div class="col-sm-12 col-md-4">
                   '.$pattern.':<br>

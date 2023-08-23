@@ -114,19 +114,19 @@ namespace src\lib\php\games\survive;
 
           'poleN=armor_real',
           'poleT=int',
-          'poleS=10',
+          'poleS=100',
 
           'poleN=attack_real',
           'poleT=int',
-          'poleS=10',
+          'poleS=100',
 
           'poleN=morality_real',
           'poleT=int',
-          'poleS=10',
+          'poleS=100',
 
           'poleN=luck_real',
           'poleT=int',
-          'poleS=10',
+          'poleS=100',
 
           'poleN=fatique_real',
           'poleT=int',
@@ -134,7 +134,7 @@ namespace src\lib\php\games\survive;
 
           'poleN=law_abiding_real',
           'poleT=int',
-          'poleS=10',
+          'poleS=100',
         );
     }
 

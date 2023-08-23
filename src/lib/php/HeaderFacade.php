@@ -1,11 +1,17 @@
 <?php
 namespace src\lib\php;
 
+use \class\nonBD\jQuerry\ConnectJQuerry;
+
 class HeaderFacade
 {
     private $linkStyle = "amatorDed\src\css\style.css";
+    
     public function __construct()
     {
+        // подключение библиотеки jQuerry
+        ConnectJQuerry::connectJQuerryFronNet();
+
         $classBody = 'non';
         /**
          * достаем ссылку на объект игры Выжить из контейнера объектов

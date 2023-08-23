@@ -7,10 +7,10 @@
 
 function searchSection()
 {
-    
-    var section = document.getElementsByClassName('container-fluid');
-    if (section.length<2) {
-        var footer = document.getElementById('footer');
-        footer.style.marginTop = "600px";
+    var footer = $('#footer');
+    var margin = footer.offset();
+
+    if (margin.top<500) {
+        footer.css('margin-top','600px');
     }
 }
