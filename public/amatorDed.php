@@ -2,6 +2,17 @@
     session_start();
     if (!isset($_SESSION['statusAD'])) $_SESSION['statusAD']=0;
  
+    use \src\lib\php\ContainerObject;
+    use \src\lib\php\home\HomeFacade;
+    use \src\lib\php\translate\TranslateFacade;
+    use \src\lib\php\games\survive\SurviveFacade;
+    use \src\lib\php\content\FacadeContentPattern;
+    use \src\lib\php\HeaderFacade;
+    use \src\lib\php\authorization\UserFacade;
+    use \class\nonBD\navBootstrap\NavBarFacade;
+    use \src\lib\php\games\survive\state\ViewState;
+    use \src\lib\php\FutterDecorator;
+    
     /**
      * Ручное подключение класса, который работает внутри
      * автозагрузчика
@@ -18,8 +29,9 @@
      * фасад для главной страницы, пока там пусто
      * В конструкторе помещает себя в контейнер объектов
      */
-    $homeFacade = new \src\lib\php\home\HomeFacade();
-    \src\lib\php\ContainerObject::getInstance()->setProperty('HomeFacade',$homeFacade);
+    $homeFacade = new HomeFacade();
+    ContainerObject::getInstance()->setProperty('HomeFacade',$homeFacade);
+    
     /**
      * Класс для работы с переводом текста на разные языки
      * Класс из общей библиотеки, но немного переделанный
@@ -29,12 +41,12 @@
      * Чтобы посмотреть или удалить перевод ->echoDataMas(); запустить
      * \src\lib\php\ContainerObject::getInstance()->getProperty('TranslateFacade');
      */
-    $translate = new src\lib\php\translate\TranslateFacade();
+    $translate = new TranslateFacade();
 
     /**
      * Класс Фасад для управление игрой Выжить
      */
-    $games = new src\lib\php\games\survive\SurviveFacade();
+    $games = new SurviveFacade();
 
         /**
      * A class that publishes information so far only about patterns
@@ -61,14 +73,14 @@
      * ничего не выводит, то есть никак не мешает другим объектам
      * строить страницу.
      */
-    src\lib\php\content\FacadeContentPattern::factoryContentPattern();
+    FacadeContentPattern::factoryContentPattern();
 
     /**
      * Set header
      * 
      * Поставить header
      */
-    new \src\lib\php\HeaderFacade();
+    new HeaderFacade();
 
     /**
      * A facade object is created to simplify and optimize work
@@ -77,7 +89,7 @@
      * Создается объект фасад для упрощения и оптимизации работы
      * с системой авторизации и регистрации.
      */
-    $user = new src\lib\php\authorization\UserFacade();
+    $user = new UserFacade();
 
     /**
      * To unload the first page part of the system methods
@@ -99,22 +111,25 @@
     * Поставить навигационное меню. Всё, что выводится далее
     * на странице должно быть ниже этого объекта
     */
-    class\nonBD\navBootstrap\NavBarFacade::createNavBar();
-
-    /**
-     * выводится главная страницы, пока пустая
-     */
-    // echo \src\lib\php\ContainerObject::getInstance()->getProperty('HomeFacade')->outPage();
+    NavBarFacade::createNavBar();
 
     
     /**
+     * Запуск отображения энергий
      * Запуск системы диалога если вошли в игру
      */
     
     if (isset($_GET['survive']) && isset($_SESSION['loginAD'])) {
-        $accord = \src\lib\php\ContainerObject::getInstance()
-                               ->getProperty('AccordionContainer')
-                               ->writeElement();
+        /** отображение енергий */
+        $state = ContainerObject::getInstance()
+                                  ->getProperty('State');
+        $energi = new ViewState($state);
+        $energi->viewParametr();
+        
+        /** диалоги */
+        $accord = ContainerObject::getInstance()
+                                   ->getProperty('AccordionContainer')
+                                   ->writeElement();
     } 
 
     /**
@@ -135,14 +150,16 @@
       * новости паттернов и апи и запустить его метод news()
       * для отображения новостей
       */
-     src\lib\php\ContainerObject::getInstance()->getProperty('NewsPattern')->news();
+     ContainerObject::getInstance()
+                      ->getProperty('NewsPattern')
+                      ->news();
 
     /**
      * put the butter
      * 
      * Поставить futter
      */
-    new \src\lib\php\FutterDecorator();
+    new FutterDecorator();
 
     /**
      * Расстояние отступ блока футер footer от верха.

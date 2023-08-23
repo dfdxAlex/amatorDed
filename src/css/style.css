@@ -94,3 +94,7 @@ footer, footer a {
     background-image: url("images/design-patterns.png");
 }
 
+.view-state {
+    height: 20px;
+}
+

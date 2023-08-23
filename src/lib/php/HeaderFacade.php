@@ -10,7 +10,7 @@ class HeaderFacade
     public function __construct()
     {
         // подключение библиотеки jQuerry
-        ConnectJQuerry::connectJQuerryFronNet();
+        ConnectJQuerry::connectJQuerryFromNet();
 
         $classBody = 'non';
         /**

@@ -62,6 +62,8 @@ namespace src\lib\php\games\survive;
          * в своем суперклассе
          */
         $state = new state\State();
+        \src\lib\php\ContainerObject::getInstance()
+                               ->setProperty('State', $state);
         /**
          * Метод читает данные о пользователе из базы данных,
          * если их там нет, то создает новые
@@ -79,7 +81,7 @@ namespace src\lib\php\games\survive;
          * и вносит изменения в объект с данными
          */
         $correct = new state\CorrectState($state, $location);
-        echo $correct->getPropertyCorrect('fatiqueReal');
+        // echo $correct->getPropertyCorrect('fatiqueReal');
         // echo $correct->state->getProperty('milisecInput');
 
     }
