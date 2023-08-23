@@ -17,6 +17,7 @@ namespace src\lib\php\games\survive\state;
  * Далее придумать зависимость остальных параметров друг от друга
  * например защита зависит от морали и удачи ...
  */
+use \src\lib\php\games\survive\location\ILocation;
 
 class CorrectState
 {
@@ -24,16 +25,20 @@ class CorrectState
     private $location; // объект локации
     private $hour;
 
-    public function __construct(IState $state, \src\lib\php\games\survive\location\ILocation $location)
+    public function __construct(IState $state, ILocation $location)
     {
         $this->state = $state;
         $this->location = $location;
 
         /** Сколько часов находился игрок в текущей локации */
-        $this->hour = (time() - $state->getProperty('milisecInput')) / 3600;
+        $sec = $state->getProperty('milisecInput');
+        if (!$sec) $sec=time()+10;
+        $this->hour = (time() - $sec) / 3600;
+        
         
         /** Возвращаем коэффициент усталости в локации */
         $koef = $location->returnKoefFatique();
+        
 
         /**
          * Считаем усталость, реальное состояние игрока
@@ -42,8 +47,8 @@ class CorrectState
         $fReal = $state->getProperty('fatiqueReal') - $this->hour*$location->returnKoefFatique();
         $fReal = $fReal/100;
         $fReal = $this->normalizeParamrtr($fReal);
-        $state->setProperty('fatiqueReal', $fReal);
-
+        $state->setProperty('fatiqueReal', $fReal*100);
+        
         /**
          * подсчитать броню
          */
@@ -71,6 +76,7 @@ class CorrectState
     private function normalizeParamrtr($param)
     {
         if ($param<0.01) return 0.01;
+        return $param;
     }
 
 }

@@ -12,7 +12,25 @@ class State extends IState
 {
     public function loadData()
     {
-        
+        if ($_SESSION['statusAD']==0) {
+            $this->setProperty('wallet', 0);
+            $this->setProperty('armorMax', 100);
+            $this->setProperty('attackMax', 100);
+            $this->setProperty('moralityMax', 100);
+            $this->setProperty('luckMax', 100);
+            $this->setProperty('fatiqueMax', 100);
+            $this->setProperty('lawAbidingMax', 100);
+
+            $this->setProperty('armorReal', 100);
+            $this->setProperty('attackReal', 100);
+            $this->setProperty('moralityReal', 100);
+            $this->setProperty('luckReal', 100);
+            $this->setProperty('fatiqueReal', 100);
+            $this->setProperty('lawAbidingReal', 100);
+
+            return ;
+        }
+
         $login = $_SESSION['loginAD'];
         $user_id = $_SESSION['user_ID'];
 
@@ -34,7 +52,6 @@ class State extends IState
             $this->setProperty('fatiqueReal', $rez[0]['fatique_real']);
             $this->setProperty('lawAbidingReal', $rez[0]['law_abiding_real']);
 
-
         } else {
             $query = "INSERT INTO survive_parametr_user
                       (id, wallet, armor_max, attack_max, morality_max, luck_max, 
@@ -42,7 +59,7 @@ class State extends IState
                        morality_real, luck_real, fatique_real, law_abiding_real)
                       VALUES ($user_id,0,100,100,100,100,100,100,
                               100,100,100,100,10,100)";
-                      $this->setProperty('wallet_max', 0);
+                      $this->setProperty('wallet', 0);
                       $this->setProperty('armor_max', 100);
                       $this->setProperty('attack_max', 100);
                       $this->setProperty('morality_max', 100);
@@ -65,6 +82,18 @@ class State extends IState
          */
         $query = "SELECT entry_time FROM survive_user WHERE id='$user_id'";
         $rez = $this->queryAssoc($query);
-        $this->setProperty('milisecInput', $rez[0]['entry_time']);
+        if ($rez)
+            $this->setProperty('milisecInput', $rez[0]['entry_time']);
+        else {
+            echo 'нет информации';
+            $timer = time();
+            $query = "INSERT INTO survive_user
+                      (id, name, location_id, entry_time)
+                      VALUES ($user_id,'$login',-1,$timer)";
+            $rez = $this->query($query);
+            if ($rez) {
+                $this->setProperty('milisecInput', $timer);
+            }
+        }
     }
 }

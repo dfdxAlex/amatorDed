@@ -14,6 +14,7 @@ class SignOut
         if (isset($_GET['signout'])) {
             $_SESSION['statusAD']=0;
             $_SESSION['loginAD']='';
+            $_SESSION['user_ID']='';
         }
     }
 }

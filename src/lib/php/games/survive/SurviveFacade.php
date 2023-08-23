@@ -5,6 +5,8 @@ namespace src\lib\php\games\survive;
  * Фасад для управления игрой Выжить
  */
 
+use \src\lib\php\games\survive\dialog\DialogAccordFacade;
+
 class SurviveFacade
 {
     public function __construct()
@@ -12,7 +14,7 @@ class SurviveFacade
         if (!isset($_SESSION['loginAD'])) return ;
         if (isset($_GET['survive'])) {
             new GameSurvive();
-            new \src\lib\php\games\survive\dialog\DialogAccordFacade();
+            new DialogAccordFacade();
         }
     }
 }

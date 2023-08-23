@@ -1,6 +1,8 @@
 <?php
 namespace src\lib\php\games\survive\state;
 
+use \src\lib\php\db\Db;
+
 /**
  * интерфейс для передачи класса State другому классу
  * класс так-же содержит свойства и методы записи и чтения
@@ -9,7 +11,7 @@ namespace src\lib\php\games\survive\state;
  * база данных и таблица survive_parametr_user
  */
 
-abstract class IState extends \src\lib\php\db\Db
+abstract class IState extends Db
 {
     /**
      * тратится и восстанавливается только усталость 
@@ -35,7 +37,7 @@ abstract class IState extends \src\lib\php\db\Db
     private $fatiqueReal;     // усталость
     private $lawAbidingReal;  //законопослушность
 
-    private $milisecInput;
+    private $milisecInput = false;
 
     abstract public function loadData();
 

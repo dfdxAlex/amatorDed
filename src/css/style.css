@@ -1,12 +1,12 @@
  
  body {
     min-height: 800px;
-    background-image: linear-gradient(#E3F2FD, rgb(142, 142, 8));
+    background-image: linear-gradient(#698599, rgb(142, 142, 8));
 }
 
-section {
+/* section {
     min-height: 600px;
-}
+} */
 
 /* класс для поля вывода информации о шаблоне со ссылкой на гит
    класс  */
@@ -96,5 +96,7 @@ footer, footer a {
 
 .view-state {
     height: 20px;
+    /* border: 2px solid white; */
+    padding: 5px;
 }
 

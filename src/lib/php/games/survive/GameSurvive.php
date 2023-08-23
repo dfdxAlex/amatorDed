@@ -5,6 +5,9 @@ namespace src\lib\php\games\survive;
  * Главный класс игры Выжить
  */
 
+ use \src\lib\php\ContainerObject;
+ use \class\nonBD\accordionBootstrap\AccordionContainer;
+
  class GameSurvive
  {
     /**
@@ -36,13 +39,15 @@ namespace src\lib\php\games\survive;
          * зарегистрировать объект - игра-Выжить в контейнере объектов
          * пока не понятно пригодится ли это...
          */
-         \src\lib\php\ContainerObject::getInstance()->setProperty('SurviveFacade',$this);
+         ContainerObject::getInstance()
+                          ->setProperty('SurviveFacade',$this);
          /**
           * создать аккордион контейнер-диалогов
           * и поместить его в контейнер объектов, для дальнейшего использования
           */
-         $accordion = new \class\nonBD\accordionBootstrap\AccordionContainer();
-         \src\lib\php\ContainerObject::getInstance()->setProperty('AccordionContainer',$accordion);
+         $accordion = new AccordionContainer();
+         ContainerObject::getInstance()
+                          ->setProperty('AccordionContainer',$accordion);
         /**
          * создается объект путешествия и передается в него 
          * ссылка на этот объект.

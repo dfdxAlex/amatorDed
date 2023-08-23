@@ -71,8 +71,8 @@ class FutterDecorator extends Futter
                   -PHP<br>
                   -HTML5<br>
                   -CSS3<br>
-                  -JavaScript
-                  -jQuery
+                  -JavaScript<br>
+                  -jQuery<br>
                 </div>
                 <div class="col-sm-12 col-md-4">
                   '.$pattern.':<br>

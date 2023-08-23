@@ -33,12 +33,15 @@ class RegistratorUserToBd extends \src\lib\php\db\Db
             $id = $this->maxIdLubojTablicy('amator_ded_user');
             $status = time();
             $query="INSERT INTO amator_ded_user (id, login, password, mail, status) VALUES ($id, '$login', '$password', '$mail', $status)";
-            $this->query($query);
+            $rezRega = $this->query($query);
             /**
              * после записи пользователя в базу данных запомнить
              * его логин в переменную сессий
              */
-            $_SESSION['loginAD'] = $login;
+            if ($rezRega) {
+                $_SESSION['loginAD'] = $login;
+                $_SESSION['user_ID'] = $id;
+            }
         }
         /**
          * Данный return запрашивает статус пользователя уже из базы

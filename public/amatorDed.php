@@ -12,6 +12,7 @@
     use \class\nonBD\navBootstrap\NavBarFacade;
     use \src\lib\php\games\survive\state\ViewState;
     use \src\lib\php\FutterDecorator;
+    use \src\lib\php\db\Db;
     
     /**
      * Ручное подключение класса, который работает внутри
@@ -124,7 +125,7 @@
         $state = ContainerObject::getInstance()
                                   ->getProperty('State');
         $energi = new ViewState($state);
-        $energi->viewParametr();
+        echo $energi->viewParametr();
         
         /** диалоги */
         $accord = ContainerObject::getInstance()

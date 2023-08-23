@@ -4,7 +4,13 @@ namespace src\lib\php\games\survive;
 /**
  * Класс отвечающий за путешествие и связанные с этим действия
  * 
+ * Вызывается отсюда src\lib\php\games\survive\ GameSurvive
  */
+ 
+ use \src\lib\php\ContainerObject;
+ use \src\lib\php\games\survive\state\State;
+ use \src\lib\php\games\survive\location\LocationFirst;
+ use \src\lib\php\games\survive\state\CorrectState;
 
  class Adventure
  {
@@ -61,29 +67,31 @@ namespace src\lib\php\games\survive;
          * Объект храних данные о состоянии игрока
          * в своем суперклассе
          */
-        $state = new state\State();
-        \src\lib\php\ContainerObject::getInstance()
-                               ->setProperty('State', $state);
+        $state = new State;
+        ContainerObject::getInstance()
+                         ->setProperty('State', $state);
         /**
          * Метод читает данные о пользователе из базы данных,
          * если их там нет, то создает новые
          */
         $state->loadData();
+        
 
         /**
          * Здесь должен быть сформирован фабрикой объект локации
          */
-        $location = new location\LocationFirst();
+        $location = new LocationFirst();
 
         /**
          * Объект занимается коррекцией данных о состоянии игрока
          * Объект принимает объект с данными и объект с локацией
          * и вносит изменения в объект с данными
          */
-        $correct = new state\CorrectState($state, $location);
+        
+        $correct = new CorrectState($state, $location);
         // echo $correct->getPropertyCorrect('fatiqueReal');
         // echo $correct->state->getProperty('milisecInput');
-
+        
     }
 
 
