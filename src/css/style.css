@@ -120,12 +120,17 @@ footer, footer a {
     font-size: 14px;
     font-weight: 900;
 }
-
 .text-for-fatique {
     left:35%;
 }
-
 .text-for-lawAbiding {
     left:20%;
+}
+
+/* кошелек */
+.wallet {
+    position: absolute;
+    top:100;
+
 }
 

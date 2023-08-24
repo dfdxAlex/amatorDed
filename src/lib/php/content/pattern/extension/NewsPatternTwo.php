@@ -38,5 +38,13 @@ class NewsPatternTwo
       $data2 = $translate->translator('Подводя итог, шаблон Composite – это на выходе объект, который может принимать в себя простые или сложные объекты и запускать некий их метод, который задан в интерфейсах. Описание упрощенное, подробнее с примером информация в ролике.');
       $data3 = "$name <p>$data</p> <p>$data2</p>";
       $obj->addNews($data3);
+
+      $obj->addGet('propertycontainer');
+      $obj->addLinkGitHub('https://github.com/dfdxAlex/pattern/tree/main/PHP/CreationalPatterns/PropertyContainer');
+      $obj->addLink('<iframe width="560" height="315" src="https://www.youtube.com/embed/POHjZvWJAts?si=E5q6dGnCsnqYC6DM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>');
+      $name = "<span>Property Container</span>";
+      $data = $translate->translator('В статье рассмотрим паттерн проектирования Property Container. Суть паттерна в том, что создается дополнительный класс-контейнер, который в себе будет хранить массив ассоциативный. Элементы ассоциативного массива используются как свойства. Методы записи и чтения свойств настроены таким образом, что совершенно не понятно записывается свойство в отдельную переменную, либо в ячейку массива. Данный паттерн может использоваться как с самого начала проектирования класса, так и добавлен при расширении класса. Подробнее информация выложена в видео.');
+      $data3 = "$name <p>$data</p>";
+      $obj->addNews($data3);
     }
 }

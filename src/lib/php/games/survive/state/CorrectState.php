@@ -63,6 +63,13 @@ class CorrectState
         $atReal = $state->getProperty('attackReal')*$fReal;
         $atReal = $this->normalizeParamrtr($atReal);
         $state->setProperty('attackReal', $atReal);
+
+        /**
+         * подсчитать дух
+         */
+        $atReal = $state->getProperty('moralityReal')*$fReal;
+        $atReal = $this->normalizeParamrtr($atReal);
+        $state->setProperty('moralityReal', $atReal);
         
     }
 

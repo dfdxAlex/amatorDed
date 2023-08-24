@@ -11,6 +11,7 @@ namespace src\lib\php\games\survive;
  use \src\lib\php\games\survive\state\State;
  use \src\lib\php\games\survive\location\LocationFirst;
  use \src\lib\php\games\survive\state\CorrectState;
+ use \src\lib\php\games\survive\state\wallet\WalletViev;
 
  class Adventure
  {
@@ -92,6 +93,10 @@ namespace src\lib\php\games\survive;
         // echo $correct->getPropertyCorrect('fatiqueReal');
         // echo $correct->state->getProperty('milisecInput');
         
+        /**
+         * объект рисует кошелек
+         */
+        new WalletViev($state);
     }
 
 

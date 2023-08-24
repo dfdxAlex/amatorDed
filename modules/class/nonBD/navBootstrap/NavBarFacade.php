@@ -203,6 +203,11 @@ class NavBarFacade
         $obj->setProperty('work-box',true);
         $patterns5 = new ElementNavBar($obj);
 
+        $obj->setProperty('Home','Property Container');
+        $obj->setProperty('link','?propertycontainer');
+        $obj->setProperty('work-box',true);
+        $patterns55 = new ElementNavBar($obj);
+
         $obj->setProperty('Home','Service Locator');
         $obj->setProperty('link','?patternServiceLocator');
         $obj->setProperty('work-box',true);
@@ -259,6 +264,7 @@ class NavBarFacade
         $pattersObj->addElement($patterns3);
         $pattersObj->addElement($patterns4);
         $pattersObj->addElement($patterns5);
+        $pattersObj->addElement($patterns55);
         $pattersObj->addElement($patterns6);
         $pattersObj->addElement($patterns7);
         $pattersObj->addElement($patterns8);
