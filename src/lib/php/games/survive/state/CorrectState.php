@@ -55,13 +55,15 @@ class CorrectState
         $arReal = $state->getProperty('armorReal')*$fReal;
         $arReal = $this->normalizeParamrtr($arReal);
         $state->setProperty('armorReal', $arReal);
+        
 
         /**
          * подсчитать атаку
          */
-        $atReal = $state->getProperty('armorReal')*$fReal;
+        $atReal = $state->getProperty('attackReal')*$fReal;
         $atReal = $this->normalizeParamrtr($atReal);
         $state->setProperty('attackReal', $atReal);
+        
     }
 
     /** 

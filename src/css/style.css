@@ -96,7 +96,36 @@ footer, footer a {
 
 .view-state {
     height: 20px;
-    /* border: 2px solid white; */
-    padding: 5px;
+    border: 1px solid white;
+    padding: 1px;
+}
+
+#armor-max, #attack-max, #lawAbiding-max,
+#morality-max, #luck-max, #fatique-max {
+    position: relative;
+}
+
+#armor-real, #attack-real, #lawAbiding-real,
+#morality-real, #luck-real, #fatique-real {
+    position: absolute;
+    z-index: 1;
+}
+/* текст в полосе енергии */
+.text-for-energy, .text-for-fatique, .text-for-lawAbiding{
+    position: absolute;
+    font-family: 'Courier New', Courier, monospace;
+    top:-5;
+    left:40%;
+    z-index: 2;
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.text-for-fatique {
+    left:35%;
+}
+
+.text-for-lawAbiding {
+    left:20%;
 }
 

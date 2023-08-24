@@ -44,4 +44,5 @@ function viewState(id, real, max)
     divReal.css('background-color',color);
     divReal.css('width',val+'%');
     divReal.css('height','100%');
+    divReal.css('float','left');
 }

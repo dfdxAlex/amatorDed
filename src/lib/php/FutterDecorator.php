@@ -4,15 +4,17 @@ namespace src\lib\php;
 /**
  * Класс FutterDecorator расширяет старый класс Futter
  */
+use \class\nonBD\trait\DirectorySep;
+use \src\lib\php\ContainerObject;
 
 class FutterDecorator extends Futter
 {
-  use \class\nonBD\trait\DirectorySep;
+
 
     public function __construct()
     {
      $nameJs = "/src/lib/js/searchSection";
-     $nameJs = \class\nonBD\trait\DirectorySep::insertDirectorySeparator($nameJs);
+     $nameJs = DirectorySep::insertDirectorySeparator($nameJs);
      $nameJs = "amatorDed".$nameJs.".js";
      echo '<script src="'.$nameJs.'"></script>';
      echo '<script>
@@ -28,19 +30,19 @@ class FutterDecorator extends Futter
      * Чтобы посмотреть или удалить перевод ->echoDataMas(); запустить
      * \src\lib\php\ContainerObject::getInstance()->getProperty('DelegatorLang');
      */
-     $nomerToClass = \src\lib\php\ContainerObject::getInstance()
+     $nomerToClass = ContainerObject::getInstance()
                                   ->getProperty('TranslateFacade')
                                   ->translator('Число подключенных классов');
-     $goToYoutube = \src\lib\php\ContainerObject::getInstance()
+     $goToYoutube = ContainerObject::getInstance()
                                   ->getProperty('TranslateFacade')
                                   ->translator('Перейти на Youtube канал');
-     $goToGitHub = \src\lib\php\ContainerObject::getInstance()
+     $goToGitHub = ContainerObject::getInstance()
                                   ->getProperty('TranslateFacade')
                                   ->translator('Перейти на GitHub');
-     $technologies = \src\lib\php\ContainerObject::getInstance()
+     $technologies = ContainerObject::getInstance()
                                   ->getProperty('TranslateFacade')
                                   ->translator('Использованные технологии');
-     $pattern = \src\lib\php\ContainerObject::getInstance()
+     $pattern = ContainerObject::getInstance()
                                   ->getProperty('TranslateFacade')
                                   ->translator('Применённые шаблоны');
            echo '

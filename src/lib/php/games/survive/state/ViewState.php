@@ -5,51 +5,72 @@ namespace src\lib\php\games\survive\state;
  * Класс рисует уровни энергий игрока
  */
 use \class\nonBD\trait\DirectorySep;
+use \src\lib\php\ContainerObject;
 class ViewState
 {
     private $link;
+    private $translate;
     public function __construct(IState $link)
     {
         $this->link = $link;
-        
+        $this->translate = ContainerObject::getInstance()
+                     ->getProperty('TranslateFacade');
     }
     public function viewParametr()
     {
         $rez = "
-                <section class='container-fluid'>
+                <section class='container'>
                   <div class='row'>
                     <div class='col-sm-12 col-md-4 col-lg-2 view-state'>
                       <div id='armor-max'>
+                        <div class='text-for-energy'>
+                        ".$this->translate->translator('броня')."
+                        </div>
                         <div id='armor-real'>
                         </div>
                       </div>
                     </div>
                     <div class='col-sm-12 col-md-4 col-lg-2 view-state'>
                       <div id='attack-max'>
+                        <div class='text-for-energy'>
+                        ".$this->translate->translator('сила')."
+                        </div>
                         <div id='attack-real'>
                         </div>
                       </div>
                     </div>
                     <div class='col-sm-12 col-md-4 col-lg-2 view-state'>
                       <div id='morality-max'>
+                        <div class='text-for-energy'>
+                        ".$this->translate->translator('дух')."
+                        </div>
                         <div id='morality-real'>
                         </div>
                       </div>
                     </div>
                     <div class='col-sm-12 col-md-4 col-lg-2 view-state'>
                       <div id='luck-max'>
+                        <div class='text-for-energy'>
+                        ".$this->translate->translator('удача')."
+                        </div>
                         <div id='luck-real'>
                         </div>
                       </div>
                     </div>
                     <div class='col-sm-12 col-md-4 col-lg-2 view-state'>
                       <div id='fatique-max'>
+                        <div class='text-for-fatique'>
+                        ".$this->translate->translator('усталость')."
+                        </div>
                         <div id='fatique-real'>
                         </div>
                       </div>
                     </div>
                     <div class='col-sm-12 col-md-4 col-lg-2 view-state'>
                       <div id='lawAbiding-max'>
+                        <div class='text-for-lawAbiding'>
+                        ".$this->translate->translator('криминальность')."
+                        </div>
                         <div id='lawAbiding-real'>
                         </div>
                       </div>
