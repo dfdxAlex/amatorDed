@@ -131,6 +131,10 @@ footer, footer a {
 .wallet {
     position: absolute;
     top:100;
-
+}
+/* сумка */
+.bag {
+    position: absolute;
+    top:150;
 }
 

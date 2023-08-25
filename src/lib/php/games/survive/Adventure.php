@@ -12,6 +12,8 @@ namespace src\lib\php\games\survive;
  use \src\lib\php\games\survive\location\LocationFirst;
  use \src\lib\php\games\survive\state\CorrectState;
  use \src\lib\php\games\survive\state\wallet\WalletViev;
+ use \src\lib\php\games\survive\state\bag\Bag;
+ use \src\lib\php\games\survive\state\bag\BagViev;
 
  class Adventure
  {
@@ -97,6 +99,20 @@ namespace src\lib\php\games\survive;
          * объект рисует кошелек
          */
         new WalletViev($state);
+
+        /**
+         * Запуск проверки содержимого в куках для поиска
+         * того, что находится в сумке
+         */
+        // setcookie('user_bag_Snikers',0.6,time()+5620);
+        // setcookie('user_bag_Mars',0.6,time()+5620);
+        // setcookie('user_bag_Baunty',0.6,time()+5620);
+        
+
+        /**
+         * Нарисовать сумку
+         */
+        new BagViev(new Bag);
     }
 
 

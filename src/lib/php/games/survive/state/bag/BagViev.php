@@ -1,18 +1,20 @@
 <?php
-namespace src\lib\php\games\survive\state\wallet;
+namespace src\lib\php\games\survive\state\bag;
 
-use src\lib\php\games\survive\state\IState;
+/**
+ * класс выводит сумку
+ */
 
-class WalletViev
+class BagViev
 {
-    public function __construct(IState $link)
+    public function __construct(IBag $link)
     {
         echo '
-        <div class="wallet">
+        <div class="bag">
         <button type="button" class="btn btn-success position-relative">
           $
           <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">
-            '.$link->getProperty('wallet').'
+            '.$link->getProperty('mass').'
             <span class="visually-hidden">unread messages</span>
           </span>
         </button>
