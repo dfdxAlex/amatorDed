@@ -6,6 +6,7 @@ namespace src\lib\php;
  */
 use \class\nonBD\trait\DirectorySep;
 use \src\lib\php\ContainerObject;
+use \src\lib\php\connectFunctionJs\ConnectFunctionJsLoad;
 
 class FutterDecorator extends Futter
 {
@@ -13,14 +14,15 @@ class FutterDecorator extends Futter
 
     public function __construct()
     {
-     $nameJs = "/src/lib/js/searchSection";
-     $nameJs = DirectorySep::insertDirectorySeparator($nameJs);
-     $nameJs = "amatorDed".$nameJs.".js";
-     echo '<script src="'.$nameJs.'"></script>';
-     echo '<script>
-             window.addEventListener("load",searchSection,false);
+    //  $nameJs = "/src/lib/js/searchSection";
+    //  $nameJs = DirectorySep::insertDirectorySeparator($nameJs);
+    //  $nameJs = "amatorDed".$nameJs.".js";
+    //  echo '<script src="'.$nameJs.'"></script>';
+    //  echo '<script>
+    //          window.addEventListener("load",searchSection,false);
              
-           </script>';
+    //        </script>';
+    new ConnectFunctionJsLoad('searchSection');
     /**
      * Класс для работы с переводом текста на разные языки
      * Класс из общей библиотеки, но немного переделанный

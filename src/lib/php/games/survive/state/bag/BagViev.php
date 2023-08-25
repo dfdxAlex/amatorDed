@@ -4,7 +4,7 @@ namespace src\lib\php\games\survive\state\bag;
 /**
  * класс выводит сумку
  */
-use \src\lib\php\connectFunctionJs\ConnectFunctionJsLoad;
+use \src\lib\php\connectFunctionJs\ConnectFunctionJsClick;
 class BagViev
 {
     public function __construct(IBag $link)
@@ -23,7 +23,7 @@ class BagViev
         
         </div>
         ';
-      new ConnectFunctionJsLoad('bagList');
+      new ConnectFunctionJsClick('button-bag','bagList');
 
     }
 }
