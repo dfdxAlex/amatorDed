@@ -28,7 +28,6 @@ class Bag extends PropertyContainer
          */
         $energy = new Energy();
 
-
         foreach($_COOKIE as $key=>$val) {
             if (stripos($key,'user_bag')!==false) {
                 $nameProperty = str_replace('user_bag_','',$key);
@@ -41,9 +40,7 @@ class Bag extends PropertyContainer
         /** получить ссылку на массив из prooerty container */
         $masBag = $this->getPropertyMas();
         foreach($masBag as $key=>$val) {
-            // echo "$key=>$val<br>";
             $this->setProperty('mass', $this->getProperty('mass')+$val);
         }
-        // echo 'Масса в сумке'.$this->getProperty('mass');
     }
 }

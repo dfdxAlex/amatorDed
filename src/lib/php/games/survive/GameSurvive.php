@@ -40,7 +40,7 @@ namespace src\lib\php\games\survive;
          * пока не понятно пригодится ли это...
          */
          ContainerObject::getInstance()
-                          ->setProperty('SurviveFacade',$this);
+                          ->setProperty('GameSurvive',$this);
          /**
           * создать аккордион контейнер-диалогов
           * и поместить его в контейнер объектов, для дальнейшего использования
@@ -76,5 +76,10 @@ namespace src\lib\php\games\survive;
     public function setBGI($bgi)
     {
         $this->backgroundForBody = $bgi;
+    }
+
+    public function __toString()
+    {
+        return 'GameSurvive';
     }
  }

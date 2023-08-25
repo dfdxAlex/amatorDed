@@ -18,7 +18,8 @@ class HeaderFacade
          * для того, чтобы получить информацию о фоне, если она есть.
          * Информация о  фоне будет, если пользователь вошел в режим игры
          */
-        $game = \src\lib\php\ContainerObject::getInstance()->getProperty('SurviveFacade');
+        $game = \src\lib\php\ContainerObject::getInstance()
+                             ->getProperty('GameSurvive');
         /**
          * Получить данные от игрового класса о нужном фоне.
          * В качестве информации приходит имя класса, который будет 
@@ -32,6 +33,7 @@ class HeaderFacade
         if (isset($_GET['survive']) && isset($_SESSION['loginAD']))
             $classBody = $game->getBGI();
 
+        // echo $classBody;
         /**
          * Получить ссылку на объект, публикующий статьи про паттерны или
          * апи библиотеки php

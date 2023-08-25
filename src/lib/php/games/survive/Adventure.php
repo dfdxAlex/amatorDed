@@ -108,7 +108,6 @@ namespace src\lib\php\games\survive;
         // setcookie('user_bag_Mars',0.6,time()+5620);
         // setcookie('user_bag_Baunty',0.6,time()+5620);
         
-
         /**
          * Нарисовать сумку
          */
