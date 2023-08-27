@@ -5,7 +5,7 @@ namespace src\lib\php\games\survive\state\bag;
  * класс выводит сумку
  */
 use \src\lib\php\ContainerObject;
-
+use \class\nonBD\cripto\CodingStr;
 class BagViev
 {
     public function __construct(IBag $link)
@@ -37,7 +37,9 @@ class BagViev
        * По сути это дополнительная система кодирования,
        * 1-Сумка и дальше будет
        */
-      if ($bag == "Сумка") $bag=1;
+      // if ($bag == "Сумка") $bag=1;
+
+      $bag = CodingStr::coding($bag);
 
       setcookie('translate_bag','"'.$bag.'"',time()+65);
 

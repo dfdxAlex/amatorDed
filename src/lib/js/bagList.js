@@ -12,7 +12,7 @@ function bagList()
     /**куки приходят строкой, переделать их в массив */
     masCoocks = document.cookie.split(';')
 
-
+    // console.log(masCoocks);
 
 
     /** вернуть в это свойство перевод слова Сумка 
@@ -60,5 +60,5 @@ function userBagList()
          }
         );
 
-        congole.log(masCoocksWork);
+    congole.log(masCoocksWork);
 }

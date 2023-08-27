@@ -112,6 +112,9 @@ namespace src\lib\php\games\survive;
          * Нарисовать сумку
          */
         new BagViev(new Bag);
+
+        //echo \class\nonBD\cripto\CodingStr::coding('Привет');
+        //echo \class\nonBD\cripto\CodingStr::deCoding(\class\nonBD\cripto\CodingStr::coding('Привет'));
     }
 
 
