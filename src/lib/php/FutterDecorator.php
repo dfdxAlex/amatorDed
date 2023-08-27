@@ -7,6 +7,7 @@ namespace src\lib\php;
 use \class\nonBD\trait\DirectorySep;
 use \src\lib\php\ContainerObject;
 use \src\lib\php\connectFunctionJs\ConnectFunctionJsLoad;
+use src\lib\php\connectFunctionJs\ImportFunctionsJs;
 
 class FutterDecorator extends Futter
 {
@@ -14,15 +15,8 @@ class FutterDecorator extends Futter
 
     public function __construct()
     {
-    //  $nameJs = "/src/lib/js/searchSection";
-    //  $nameJs = DirectorySep::insertDirectorySeparator($nameJs);
-    //  $nameJs = "amatorDed".$nameJs.".js";
-    //  echo '<script src="'.$nameJs.'"></script>';
-    //  echo '<script>
-    //          window.addEventListener("load",searchSection,false);
-             
-    //        </script>';
-    new ConnectFunctionJsLoad('searchSection');
+
+    // new ConnectFunctionJsLoad('searchSection');
     /**
      * Класс для работы с переводом текста на разные языки
      * Класс из общей библиотеки, но немного переделанный
@@ -103,8 +97,17 @@ class FutterDecorator extends Futter
               </div>
               </footer>
         ';
-        parent::__construct();
-        
+
+       new ImportFunctionsJs('load',
+                             'searchSection',
+                             'bagList'
+                            );
+
+       new ImportFunctionsJs('non',
+                             'bagTranslate'
+                            );
+       
+
         /**
         * Смотрим проперти контейнер загруженных классов
         */
@@ -112,5 +115,6 @@ class FutterDecorator extends Futter
        // foreach($rez as $key=>$val) {
        //     echo "$key=>$val<br>";
        // }
+       parent::__construct();
     }
 }

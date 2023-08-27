@@ -14,3 +14,5 @@ function searchSection()
         footer.css('margin-top','600px');
     }
 }
+
+// export default searchSection;
