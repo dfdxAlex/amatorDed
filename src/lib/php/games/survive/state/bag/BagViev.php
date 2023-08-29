@@ -24,24 +24,25 @@ class BagViev
         </div>
         ';
       
-      $translate = ContainerObject::getInstance()
-                   ->getProperty('TranslateFacade');
 
-      $bag = $translate->translator('Сумка');
-
-      /** не все браузеры принимают куки в кирилице
-       * поэтому переводы кодирую номерами.
-       * Если отправить в значение кука translate_bag = 1
-       * то функция JS должна вставить слово Сумка
-       * 
-       * По сути это дополнительная система кодирования,
-       * 1-Сумка и дальше будет
+      /** Класс кодирует переводы различных пунктов сумки
+       * игрока, такие как еда, одежда, оружие и отправляет 
+       * в куки. Дальше JavaScript функции это забирают
+       * из куков и используют.
+       * Подробнее описание в самом классе.ё
        */
-      // if ($bag == "Сумка") $bag=1;
+      new TitleForBag;
 
-      $bag = CodingStr::coding($bag);
+      //временные куки для проверки
+      $name = 'user_bag_'.CodingStr::coding('банан');
+      setcookie($name,0.6,time()+25);
+      $name = 'user_bag_'.CodingStr::coding('бананчик');
+      setcookie($name,0.6,time()+15);
 
-      setcookie('translate_bag','"'.$bag.'"',time()+65);
+      // setcookie('user_bag_Mars',0.6,time()+5);
+      // setcookie('user_bag_Baunty',0.6,time()+5);
+
+      
 
     }
 }

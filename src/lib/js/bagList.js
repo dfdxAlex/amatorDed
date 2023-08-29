@@ -14,12 +14,20 @@ function bagList()
 
     // console.log(masCoocks);
 
+    // onBag(masCoocks);
+
 
     /** вернуть в это свойство перевод слова Сумка 
      * функция bagTranslate() подключается в файле 
      * FutterDecorator.php
     */
-    objTranslate.bag = bagTranslate(masCoocks);
+    mas = bagTranslate(masCoocks);
+    objTranslate.bag = mas[0];
+    objTranslate.food = mas[1];
+    objTranslate.сloth = mas[2];
+    objTranslate.weapon = mas[3];
+    objTranslate.armor = mas[4];
+    objTranslate.other = mas[5];
 
     let modal = `
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -30,7 +38,12 @@ function bagList()
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            ... 
+          `+objTranslate.food+`
+          `+onBag(masCoocks)+`
+          `+objTranslate.сloth+`<br>
+          `+objTranslate.weapon+`<br>
+          `+objTranslate.armor+`<br>
+          `+objTranslate.other+`<br>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
