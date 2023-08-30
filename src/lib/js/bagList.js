@@ -1,10 +1,19 @@
+/**
+ * Функция рисует содержиме сумки.
+ * Кода содержимого
+ * user_bag_ - еда
+ * user_bagCloth - одежда
+ * user_bagWeapon - оружие
+ * user_bagArmor - броня
+ * user_bagOther - другие предметы
+ * 
+ */
+
 function bagList()
 {
 
     /**массив будет хранить все куки */
     let masCoocks = [];
-    /**массив только для рабочих куков */
-    let masCoocksWork = [];
 
     /**массив с переводами */
     let objTranslate = {};
@@ -12,10 +21,7 @@ function bagList()
     /**куки приходят строкой, переделать их в массив */
     masCoocks = document.cookie.split(';')
 
-    // console.log(masCoocks);
-
     // onBag(masCoocks);
-
 
     /** вернуть в это свойство перевод слова Сумка 
      * функция bagTranslate() подключается в файле 
@@ -29,6 +35,46 @@ function bagList()
     objTranslate.armor = mas[4];
     objTranslate.other = mas[5];
 
+    /**
+     * В переменную поместим заголовок с едой, если еда в сумке есть
+     */
+    let blockEats = '';
+    if (onBag(masCoocks)!==false) {
+        blockEats+=objTranslate.food+onBag(masCoocks);
+    }
+
+    /**
+     * В переменную поместим заголовок с сloth, если еда в сумке есть
+     */
+    let blockCloth = '';
+    if (onBag(masCoocks,'user_bagCloth')!==false) {
+      blockCloth+=objTranslate.сloth+onBag(masCoocks,'user_bagCloth');
+    }
+
+    /**
+     * В переменную поместим заголовок с weapon, если еда в сумке есть
+     */
+    let blockWeapon = '';
+    if (onBag(masCoocks,'user_bagWeapon')!==false) {
+      blockWeapon+=objTranslate.weapon+onBag(masCoocks,'user_bagWeapon');
+    }
+
+    /**
+     * В переменную поместим заголовок с weapon, если еда в сумке есть
+     */
+    let blockArmor = '';
+    if (onBag(masCoocks,'user_bagArmor')!==false) {
+      blockArmor+=objTranslate.armor+onBag(masCoocks,'user_bagArmor');
+    }
+
+    /**
+     * В переменную поместим заголовок с weapon, если еда в сумке есть
+     */
+    let blockOther = '';
+    if (onBag(masCoocks,'user_bagOther')!==false) {
+      blockOther+=objTranslate.other+onBag(masCoocks,'user_bagOther');
+    }
+
     let modal = `
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -38,12 +84,11 @@ function bagList()
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-          `+objTranslate.food+`
-          `+onBag(masCoocks)+`
-          `+objTranslate.сloth+`<br>
-          `+objTranslate.weapon+`<br>
-          `+objTranslate.armor+`<br>
-          `+objTranslate.other+`<br>
+          `+blockEats+`<br>
+          `+blockCloth+`<br>
+          `+blockWeapon+`<br>
+          `+blockArmor+`<br>
+          `+blockOther+`<br>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -59,19 +104,20 @@ function bagList()
 }
 
 
-function userBagList() 
-{
-    let masCoocksWork = [];
-    /**просмотреть все куки и найти только куки содержимого
-     * сумки
-     */
-      masCoocks.forEach(
-        (e)=>{
-          if (e.includes('user_bag_')) {
-              masCoocksWork.push(e);
-          }
-         }
-        );
+// function userBagList() 
+// {
+//     let masCoocksWork = [];
+//     /**просмотреть все куки и найти только куки содержимого
+//      * сумки Еда. Куки про еду появились первыми, поэтому они 
+//      * без индекса работают. Все куки с user_bag_ - это еда.
+//      */
+//       masCoocks.forEach(
+//         (e)=>{
+//           if (e.includes('user_bag_')) {
+//               masCoocksWork.push(e);
+//           }
+//          }
+//         );
 
-    congole.log(masCoocksWork);
-}
+//     congole.log(masCoocksWork);
+// }

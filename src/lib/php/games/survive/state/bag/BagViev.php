@@ -2,7 +2,7 @@
 namespace src\lib\php\games\survive\state\bag;
 
 /**
- * класс выводит сумку
+ * класс выводит сумку, открывает сумку.
  */
 use \src\lib\php\ContainerObject;
 use \class\nonBD\cripto\CodingStr;
@@ -36,13 +36,11 @@ class BagViev
       //временные куки для проверки
       $name = 'user_bag_'.CodingStr::coding('банан');
       setcookie($name,0.6,time()+25);
-      $name = 'user_bag_'.CodingStr::coding('бананчик');
+      $name = 'user_bagOther'.CodingStr::coding('бананчик');
       setcookie($name,0.6,time()+15);
 
       // setcookie('user_bag_Mars',0.6,time()+5);
       // setcookie('user_bag_Baunty',0.6,time()+5);
-
-      
 
     }
 }

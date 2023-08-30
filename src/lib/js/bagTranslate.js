@@ -61,6 +61,5 @@ function bagTranslate(masCoocks) {
               }
              }
             );
-            // console.log(masRez);
             return masRez;
       }
