@@ -15,6 +15,7 @@ namespace src\lib\php\games\survive;
  use \src\lib\php\games\survive\state\bag\Bag;
  use \src\lib\php\games\survive\state\bag\BagViev;
  use \src\lib\php\games\survive\state\bag\EventBag;
+ use \src\lib\php\games\survive\state\bag\Energy;
 
  class Adventure
  {
@@ -117,6 +118,9 @@ namespace src\lib\php\games\survive;
         //echo \class\nonBD\cripto\CodingStr::coding('Привет');
         //echo \class\nonBD\cripto\CodingStr::deCoding(\class\nonBD\cripto\CodingStr::coding('Привет'));
         
+        /**объект хранит енергетическую ценность еды */
+        new Energy;
+
         /**
          * Слушаем пост на предмет события Кушать
          */

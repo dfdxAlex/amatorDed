@@ -13,7 +13,7 @@ if (searchCategory=='user_bag_') {
            name="Eat"
            value="${propertyName}"
          >
-           Eat
+           ${searchCookies('user_bagEat')[0].propertyName}
           </button>
        </form>`;
 }

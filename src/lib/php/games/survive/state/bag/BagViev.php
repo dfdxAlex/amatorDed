@@ -52,16 +52,21 @@ class BagViev
        * Одеть
        * Применить
        */
-      $name = 'user_bagEat'.CodingStr::coding('Кушать');
+      $translate = ContainerObject::getInstance()
+                   ->getProperty('TranslateFacade');
+      $name = 'user_bagEat'.CodingStr::coding($translate->translator('Кушать'));
       setcookie($name,0.6,time()+25); 
 
+
+      $zzz = new \src\lib\php\games\survive\state\bag\product\Banan();
+      echo $zzz->getEnergy();
       //временные куки для проверки
-      $name = 'user_bag_'.CodingStr::coding('банан');
-      setcookie($name,0.6,time()+25);
-      $name = 'user_bagOther'.CodingStr::coding('бананчик');
-      setcookie($name,0.6,time()+15);
-      $name = 'user_bag_'.CodingStr::coding('ананас');
-      setcookie($name,0.6,time()+25);
+      $name = 'user_bag_'.CodingStr::coding($translate->translator('Банан'));
+      setcookie($name,0.6,time()+125);
+      // $name = 'user_bagOther'.CodingStr::coding('бананчик');
+      // setcookie($name,0.6,time()+15);
+      // $name = 'user_bag_'.CodingStr::coding('ананас');
+      // setcookie($name,0.6,time()+25);
 
       // setcookie('user_bag_Mars',0.6,time()+5);
       // setcookie('user_bag_Baunty',0.6,time()+5);

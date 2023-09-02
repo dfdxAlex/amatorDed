@@ -33,38 +33,38 @@ function bagListCreate()
     /**
      * В переменную поместим заголовок с едой, если еда в сумке есть
      */
-    if (onBag(masCoocks)!==false) {
-      rez+=objTranslate.food+onBag(masCoocks);
+    if (onBag()!==false) {
+      rez+=objTranslate.food+onBag();
       rez+='<br>';
     }
     
     /**
      * В переменную поместим заголовок с сloth, если еда в сумке есть
      */
-    if (onBag(masCoocks,'user_bagCloth')!==false) {
-      rez+=objTranslate.сloth+onBag(masCoocks,'user_bagCloth');
+    if (onBag('user_bagCloth')!==false) {
+      rez+=objTranslate.сloth+onBag('user_bagCloth');
       rez+='<br>';
     }
     /**
      * В переменную поместим заголовок с weapon, если еда в сумке есть
      */
-    if (onBag(masCoocks,'user_bagWeapon')!==false) {
-      rez+=objTranslate.weapon+onBag(masCoocks,'user_bagWeapon');
+    if (onBag('user_bagWeapon')!==false) {
+      rez+=objTranslate.weapon+onBag('user_bagWeapon');
       rez+='<br>';
     }
     /**
      * В переменную поместим заголовок с weapon, если еда в сумке есть
      */
-    if (onBag(masCoocks,'user_bagArmor')!==false) {
-      rez+=objTranslate.armor+onBag(masCoocks,'user_bagArmor');
+    if (onBag('user_bagArmor')!==false) {
+      rez+=objTranslate.armor+onBag('user_bagArmor');
       rez+='<br>';
     }
     /**
      * В переменную поместим заголовок с Other, если еда в сумке есть
      */
     let blockOther = '';
-    if (onBag(masCoocks,'user_bagOther')!==false) {
-      rez+=objTranslate.other+onBag(masCoocks,'user_bagOther');
+    if (onBag('user_bagOther')!==false) {
+      rez+=objTranslate.other+onBag('user_bagOther');
       rez+='<br>';
     }
     return rez;

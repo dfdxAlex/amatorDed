@@ -7,7 +7,7 @@
  * то функция по прежнему работает с едой.
  */
 
-function onBag(masCoocks, searchCategory = "user_bag_")
+function onBag(searchCategory = "user_bag_")
 {
    let rez='';
    /**
