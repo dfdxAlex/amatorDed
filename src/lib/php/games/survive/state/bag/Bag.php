@@ -14,6 +14,23 @@ namespace src\lib\php\games\survive\state\bag;
   * getPropertyMas()
   */
 
+  /**
+   * Управление сумкой.
+   * Сумка работает на смешанных технологиях php и js.
+   * Сумка получает данные из своих куков, следовательно, чтобы
+   * в сумке что-то появилось необходимо отправить кукис.
+   * 
+   * Чтобы отправить в сумку еду, нужно сделать кукис с 
+   * $name = 'user_bag_'.CodingStr::coding('банан');
+   * setcookie($name,0.6,time()+25);
+   * 
+   * 'user_bag_ - это кук для еды.
+   *  user_bagCloth  - это кук для  одежды
+   *  user_bagWeapon - это кук для  оружия
+   *  user_bagArmor - это кук для  брони
+   *  user_bagOther - это кук для  остальных предметов
+   */
+
 use \class\nonBD\propertyContainers\PropertyContainer;
 use \src\lib\php\games\survive\state\bag\IBag;
 

@@ -14,6 +14,7 @@ namespace src\lib\php\games\survive;
  use \src\lib\php\games\survive\state\wallet\WalletViev;
  use \src\lib\php\games\survive\state\bag\Bag;
  use \src\lib\php\games\survive\state\bag\BagViev;
+ use \src\lib\php\games\survive\state\bag\EventBag;
 
  class Adventure
  {
@@ -115,6 +116,11 @@ namespace src\lib\php\games\survive;
 
         //echo \class\nonBD\cripto\CodingStr::coding('Привет');
         //echo \class\nonBD\cripto\CodingStr::deCoding(\class\nonBD\cripto\CodingStr::coding('Привет'));
+        
+        /**
+         * Слушаем пост на предмет события Кушать
+         */
+        new EventBag;
     }
 
 

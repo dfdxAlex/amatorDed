@@ -4,6 +4,15 @@ namespace src\lib\php\games\survive\state\bag;
 /**
  * класс выводит сумку, открывает сумку.
  */
+/**
+ * Слово Еда или его перевод хранится в куке translate_food
+ * Слово Сумка или его перевод хранится в куке translate_bag
+ * Слово Одежда или его перевод хранится в куке translate_сloth
+ * Слово Оружие или его перевод хранится в куке translate_weapon
+ * Слово Броня или его перевод хранится в куке translate_armor
+ * Слово Другие или его перевод хранится в куке translate_other_items
+ */
+
 use \src\lib\php\ContainerObject;
 use \class\nonBD\cripto\CodingStr;
 class BagViev
@@ -29,15 +38,30 @@ class BagViev
        * игрока, такие как еда, одежда, оружие и отправляет 
        * в куки. Дальше JavaScript функции это забирают
        * из куков и используют.
-       * Подробнее описание в самом классе.ё
+       * Подробнее описание в самом классе.
        */
       new TitleForBag;
+
+      /**
+       * отправить служебные куки с переводами для действий
+       * с предметами сумки, на пример Съесть
+       * Ключи:
+       * Кушать
+       * Одеть
+       * Достать (в смысле оружие из сумки)
+       * Одеть
+       * Применить
+       */
+      $name = 'user_bagEat'.CodingStr::coding('Кушать');
+      setcookie($name,0.6,time()+25); 
 
       //временные куки для проверки
       $name = 'user_bag_'.CodingStr::coding('банан');
       setcookie($name,0.6,time()+25);
       $name = 'user_bagOther'.CodingStr::coding('бананчик');
       setcookie($name,0.6,time()+15);
+      $name = 'user_bag_'.CodingStr::coding('ананас');
+      setcookie($name,0.6,time()+25);
 
       // setcookie('user_bag_Mars',0.6,time()+5);
       // setcookie('user_bag_Baunty',0.6,time()+5);

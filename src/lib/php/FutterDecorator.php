@@ -108,7 +108,9 @@ class FutterDecorator extends Futter
                              'deCoderIntToUTF8',
                              'onBag',
                              'returnMasCuckies',
-                             'bagListCreate'
+                             'bagListCreate',
+                             'addButtonEat',
+                             'searchCookies'
                             );
        
 
