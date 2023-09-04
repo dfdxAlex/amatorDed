@@ -10,9 +10,37 @@ namespace src\lib\php\games\survive\state\bag\product;
  {
     protected $energy=0; // Енергетическая ценность продукта
     protected $massa=0;  // Масса продукта
+    protected $life=0;
 
-    abstract public function getEnergy();
-    abstract protected function setEnergy($energy);
-    abstract public function getMassa();
-    abstract protected function setMassa($massa);
+    public function getPropertyProduct($property)
+    {
+        return $this->$property;
+    }
+
+    protected function setPropertyProduct($property, $energy)
+    {
+        $this->$property = $energy;
+    }
+
+    protected function codingProductToCoocie($product)
+    {
+      $i=0;
+      /**
+       * добавить суфикс для имени куков для предметов в
+       * сумке
+       */
+      $product .= 'UserBag'; 
+
+      if (isset($_COOKIE)) {
+         foreach($_COOKIE as $key=>$val) {
+            if (stripos($key, $product)!==false) $i++;
+         }
+      }
+
+      $product .= '_'.$i;
+
+      setcookie($product,time()+$this->getPropertyProduct('life'));
+
+      echo 'число бананов '.$i;
+    }
  }

@@ -37,7 +37,7 @@ function onBag(searchCategory = "user_bag_")
                           </span>
                         </div>
                         <div class="col-5">
-                          <b>${addButtonEat(searchCategory,e.propertyName)}</b>
+                          <b>${addButtonEat(searchCategory,e)}</b>
                         </div>
                       </div>
                     `;

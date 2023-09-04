@@ -57,12 +57,13 @@ class BagViev
       $name = 'user_bagEat'.CodingStr::coding($translate->translator('Кушать'));
       setcookie($name,0.6,time()+25); 
 
-
+      /**временно тут для теста */
       $zzz = new \src\lib\php\games\survive\state\bag\product\Banan();
-      echo $zzz->getEnergy();
+      
+
       //временные куки для проверки
-      $name = 'user_bag_'.CodingStr::coding($translate->translator('Банан'));
-      setcookie($name,0.6,time()+125);
+      // $name = 'user_bag_'.CodingStr::coding($translate->translator('Банан'));
+      // setcookie($name,0.6,time()+125);
       // $name = 'user_bagOther'.CodingStr::coding('бананчик');
       // setcookie($name,0.6,time()+15);
       // $name = 'user_bag_'.CodingStr::coding('ананас');

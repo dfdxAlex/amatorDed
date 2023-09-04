@@ -11,27 +11,33 @@ class Banan extends IProduct
 {
     public function __construct()
     {
+        /**
+         * Случайная масса банана
+         */
         $massa = rand(80,300);
-        $this->setMassa($massa);
+        $this->setPropertyProduct('massa',$massa);
+
+        /**
+         * композиция, класс с енергией продуктов
+         */
         $energyObj = new Energy;
+
+        /**
+         * Подсчитать и запомнить енергетическую ценность
+         */
         $energyRez = $energyObj->getProperty('banana')/100*$massa;
-        $this->setEnergy($energyRez);
+        $this->setPropertyProduct('energy',$energyRez);
+
+        /**
+         * Запомнить время жизни банана - 3 дня
+         */
+        $this->setPropertyProduct('life','259200');
+
+        /**
+         * Закодировать полученный объект в куки
+         */
+        //$this->codingProductToCoocie('banan');
     }
 
-    public function getEnergy()
-    {
-        return $this->energy;
-    }
-    protected function setEnergy($energy)
-    {
-        $this->energy = $energy;
-    }
-    public function getMassa()
-    {
-        return $this->massa;
-    }
-    protected function setMassa($massa)
-    {
-        $this->massa = $massa;
-    }
+
 }
