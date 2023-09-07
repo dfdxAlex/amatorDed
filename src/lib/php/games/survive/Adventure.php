@@ -95,6 +95,7 @@ namespace src\lib\php\games\survive;
         
         $correct = new CorrectState($state, $location);
         // echo $correct->getPropertyCorrect('fatiqueReal');
+        // echo $correct->getPropertyCorrect('fatiqueReal');
         // echo $correct->state->getProperty('milisecInput');
         
         /**
@@ -124,7 +125,7 @@ namespace src\lib\php\games\survive;
         /**
          * Слушаем пост на предмет события Кушать
          */
-        new EventBag;
+        new EventBag($state);
     }
 
 
