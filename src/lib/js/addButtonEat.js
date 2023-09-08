@@ -1,29 +1,18 @@
 /**
- * функция принимает параметр категории перебираемого кука
- * и имя кука. Если имя из категории user_bag_, то рисуем
- * для него кнопку Есть-Кушать
+ * Функция ставит в сумке кнопку Eat - Есть.
+ * Кнопка ставится только против предметов, которые можно есть.
+ * Если searchCategory = user_bag_, то предмет можно есть.
+ * 
+ * createButtonEat()
+ * Что было съедено - шифруется в значение post запросса от 
+ * кнопки. Value = "имя предмета"+"_"+"энергетическая ценность"
  */
-function addButtonEat(searchCategory,e) {
-let thisE = e;
-let but = '';
-if (searchCategory=='user_bag_') {
-  /**
-   * При прорисовке кнопки, в валью кнопки добавляется имя 
-   * кука и его значение. Значение добавляется для того, чтобы 
-   * php нашел нужный кук. По имени кук не ищу потому, что имя
-   * бывает на кирилице и оно должно быть закодировано при отправки
-   * в кук.
-   */
-  but=`<form method="post">
-         <button 
-           type="submit"
-           class="btn btn-secondary"
-           name="Eat"
-           value="${thisE.propertyName}_${thisE.propertyVal}"
-         >
-           ${searchCookies('user_bagEat')[0].propertyName}
-          </button>
-       </form>`;
-}
-  return but;
+function addButtonEat(food, objFood) {
+
+if (food!=='user_bag_') return '';
+
+let value = objFood.propertyName+'_'+objFood.propertyVal;
+
+return createButtonEat(value);
+
 }

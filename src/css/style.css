@@ -1,12 +1,8 @@
  
  body {
     min-height: 800px;
-    background-image: linear-gradient(#698599, rgb(142, 142, 8));
+    background-image: linear-gradient(#698599, #8e8e08);
 }
-
-/* section {
-    min-height: 600px;
-} */
 
 /* класс для поля вывода информации о шаблоне со ссылкой на гит
    класс  */
