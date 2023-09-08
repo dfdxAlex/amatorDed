@@ -7,24 +7,15 @@
 function bagListCreate()
 {
     let rez = '';
-    /**массив будет хранить все куки */
-    let masCoocks = [];
 
     /**куки приходят строкой, переделать их в массив */
-    masCoocks = returnMasCuckies();
+    let masCoocks = returnMasCuckies();
 
+    /**
+     * Вернуть объект с переводами для типов предметов в сумке,
+     * на пример еда, оружие, одежда ...
+     */
     let objTranslate = translateTitleForBag(masCoocks);
-
-    // /** вернуть в это свойство перевод слова Сумка 
-    //  * функция bagTranslate() 
-    // */
-    // mas = bagTranslate(masCoocks);
-    // objTranslate.bag = mas[0];
-    // objTranslate.food = mas[1];
-    // objTranslate.сloth = mas[2];
-    // objTranslate.weapon = mas[3];
-    // objTranslate.armor = mas[4];
-    // objTranslate.other = mas[5];
 
     /**
      * В переменную поместим заголовок с едой, если еда в сумке есть
@@ -64,23 +55,4 @@ function bagListCreate()
       rez+='<br>';
     }
     return rez;
-}
-
-
-function translateTitleForBag(masCoocks)
-{
-    /** 
-     * Вернуть объект с переводами заголовков сумки
-     * функция bagTranslate() 
-     */
-    let objTranslate = {};
-    mas = bagTranslate(masCoocks);
-    objTranslate.bag = mas[0];
-    objTranslate.food = mas[1];
-    objTranslate.сloth = mas[2];
-    objTranslate.weapon = mas[3];
-    objTranslate.armor = mas[4];
-    objTranslate.other = mas[5];
-
-    return objTranslate;
 }

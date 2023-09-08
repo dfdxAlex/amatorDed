@@ -10,12 +10,10 @@
  */
 /**
  * Функция находит ID дива для сумки и вставляет 
- * в него html сумки
+ * в него html сумки returnHtmlBag()
  */
 function bagList()
 {
   let position = document.getElementById('for-bag');
   position.innerHTML = returnHtmlBag();
 }
-
-
