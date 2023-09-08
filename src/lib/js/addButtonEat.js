@@ -9,10 +9,9 @@
  */
 function addButtonEat(food, objFood) {
 
-if (food!=='user_bag_') return '';
+    if (food!=='user_bag_') return '';
 
-let value = objFood.propertyName+'_'+objFood.propertyVal;
+    let value = objFood.propertyName+'_'+objFood.propertyVal;
 
-return createButtonEat(value);
-
+    return createButtonEat(value);
 }

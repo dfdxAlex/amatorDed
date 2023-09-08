@@ -110,7 +110,9 @@ class FutterDecorator extends Futter
                              'returnMasCuckies',
                              'bagListCreate',
                              'addButtonEat',
-                             'searchCookies'
+                             'searchCookies',
+                             'createButtonEat',
+                             'returnHtmlBag'
                             );
        
 

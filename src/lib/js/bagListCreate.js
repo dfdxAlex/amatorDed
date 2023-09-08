@@ -10,25 +10,21 @@ function bagListCreate()
     /**массив будет хранить все куки */
     let masCoocks = [];
 
-    /**массив с переводами */
-    let objTranslate = {};
-
     /**куки приходят строкой, переделать их в массив */
     masCoocks = returnMasCuckies();
 
-    // onBag(masCoocks);
+    let objTranslate = translateTitleForBag(masCoocks);
 
-    /** вернуть в это свойство перевод слова Сумка 
-     * функция bagTranslate() подключается в файле 
-     * FutterDecorator.php
-    */
-    mas = bagTranslate(masCoocks);
-    objTranslate.bag = mas[0];
-    objTranslate.food = mas[1];
-    objTranslate.сloth = mas[2];
-    objTranslate.weapon = mas[3];
-    objTranslate.armor = mas[4];
-    objTranslate.other = mas[5];
+    // /** вернуть в это свойство перевод слова Сумка 
+    //  * функция bagTranslate() 
+    // */
+    // mas = bagTranslate(masCoocks);
+    // objTranslate.bag = mas[0];
+    // objTranslate.food = mas[1];
+    // objTranslate.сloth = mas[2];
+    // objTranslate.weapon = mas[3];
+    // objTranslate.armor = mas[4];
+    // objTranslate.other = mas[5];
 
     /**
      * В переменную поместим заголовок с едой, если еда в сумке есть
@@ -68,4 +64,23 @@ function bagListCreate()
       rez+='<br>';
     }
     return rez;
+}
+
+
+function translateTitleForBag(masCoocks)
+{
+    /** 
+     * Вернуть объект с переводами заголовков сумки
+     * функция bagTranslate() 
+     */
+    let objTranslate = {};
+    mas = bagTranslate(masCoocks);
+    objTranslate.bag = mas[0];
+    objTranslate.food = mas[1];
+    objTranslate.сloth = mas[2];
+    objTranslate.weapon = mas[3];
+    objTranslate.armor = mas[4];
+    objTranslate.other = mas[5];
+
+    return objTranslate;
 }
