@@ -4,18 +4,6 @@
  * 
  */
 
-
-function addFoodOnBagStringHtml(stringHtml, titleFood)
-{
-    /**
-     * В переменную поместим заголовок с едой, если еда в сумке есть
-     */
-    if (onBag()!==false) {
-      stringHtml+=titleFood.food+onBag()+'<br>';
-    }
-    return stringHtml;
-}
-
 function bagListCreate()
 {
     /**куки приходят строкой, переделать их в массив */
@@ -37,5 +25,3 @@ function bagListCreate()
 
     return returnStringHtmlBag;
 }
-
-

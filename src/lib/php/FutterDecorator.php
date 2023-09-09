@@ -117,7 +117,8 @@ class FutterDecorator extends Futter
                              'addClothOnBagStringHtml',
                              'addWeaponOnBagStringHtml',
                              'addArmorOnBagStringHtml',
-                             'addOtherOnBagStringHtml'
+                             'addOtherOnBagStringHtml',
+                             'addFoodOnBagStringHtml'
                             );
        
 
