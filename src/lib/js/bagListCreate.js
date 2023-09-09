@@ -33,14 +33,8 @@ function bagListCreate()
 
     returnStringHtmlBag = addArmorOnBagStringHtml(returnStringHtmlBag, objTranslate);
 
-    // /**
-    //  * В переменную поместим заголовок с Other, если еда в сумке есть
-    //  */
-    // // let blockOther = '';
-    // if (onBag('user_bagOther')!==false) {
-    //   rez+=objTranslate.other+onBag('user_bagOther');
-    //   rez+='<br>';
-    // }
+    returnStringHtmlBag = addOtherOnBagStringHtml(returnStringHtmlBag, objTranslate);
+
     return returnStringHtmlBag;
 }
 
