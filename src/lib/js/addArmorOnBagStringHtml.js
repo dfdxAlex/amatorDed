@@ -8,4 +8,5 @@ function addArmorOnBagStringHtml(returnStringHtmlBag, objTranslate)
         returnStringHtmlBag+=objTranslate.armor+onBag('user_bagArmor');
         returnStringHtmlBag+='<br>';
     }
+    return returnStringHtmlBag;
 }
