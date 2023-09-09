@@ -31,13 +31,8 @@ function bagListCreate()
 
     returnStringHtmlBag = addWeaponOnBagStringHtml(returnStringHtmlBag, objTranslate);
 
-    // /**
-    //  * В переменную поместим заголовок с weapon, если еда в сумке есть
-    //  */
-    // if (onBag('user_bagArmor')!==false) {
-    //   rez+=objTranslate.armor+onBag('user_bagArmor');
-    //   rez+='<br>';
-    // }
+    returnStringHtmlBag = addArmorOnBagStringHtml(returnStringHtmlBag, objTranslate);
+
     // /**
     //  * В переменную поместим заголовок с Other, если еда в сумке есть
     //  */
