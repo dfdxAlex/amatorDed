@@ -113,7 +113,8 @@ class FutterDecorator extends Futter
                              'searchCookies',
                              'createButtonEat',
                              'returnHtmlBag',
-                             'translateTitleForBag'
+                             'translateTitleForBag',
+                             'addClothOnBagStringHtml'
                             );
        
 
