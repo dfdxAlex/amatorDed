@@ -1,0 +1,64 @@
+
+
+
+
+
+/*
+Стили для фона, игра Выжить - Survive
+*/
+.user-lost {
+    background-image: url("images/user_lost.jpg");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; 
+    height: 500px;
+}
+/* Стили для боди, когда смотрим паттерны или апи php */
+.pattern-style {
+    background-image: url("images/design-patterns.png");
+}
+
+.view-state {
+    height: 20px;
+    border: 1px solid white;
+    padding: 1px;
+}
+
+#armor-max, #attack-max, #lawAbiding-max,
+#morality-max, #luck-max, #fatique-max {
+    position: relative;
+}
+
+#armor-real, #attack-real, #lawAbiding-real,
+#morality-real, #luck-real, #fatique-real {
+    position: absolute;
+    z-index: 1;
+}
+/* текст в полосе енергии */
+.text-for-energy, .text-for-fatique, .text-for-lawAbiding{
+    position: absolute;
+    font-family: 'Courier New', Courier, monospace;
+    top:-5;
+    left:40%;
+    z-index: 2;
+    font-size: 14px;
+    font-weight: 900;
+}
+.text-for-fatique {
+    left:35%;
+}
+.text-for-lawAbiding {
+    left:20%;
+}
+
+/* кошелек */
+.wallet {
+    position: absolute;
+    top:100;
+}
+/* сумка */
+.bag {
+    position: absolute;
+    top:150;
+}
+

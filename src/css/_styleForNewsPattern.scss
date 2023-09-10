@@ -1,0 +1,31 @@
+/* Стилизация заголовка статьи для паттернов при условии
+   что заголовок помещен в <span>
+   Стилизация текста статьи для паттернов при условии
+   что текст помещен в теги <p>
+*/
+
+@mixin headerForNewsByPattern {
+    display: block;
+    width: 80%;
+    font-size: 35px;
+    margin-bottom: 50px;
+    text-align: center;
+    padding: 5px;
+}
+
+.news-pattern-p {
+    margin: 50px auto 50px;
+    span {
+        @include headerForNewsByPattern;
+    }
+    p {
+        @include headerForNewsByPattern;
+        /* Коррекция стилей для основного текста, если он помещен в теги
+        <p> 
+        */
+        font-size: 20px;
+        width: 100%;
+        text-align: left;
+    }
+}
+

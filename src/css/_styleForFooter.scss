@@ -1,0 +1,15 @@
+@mixin for-footer {
+    margin-top: 100px;
+    height: auto;
+    background-color: #3f3c1a;  
+    text-decoration: none;
+    font-size: 20px;
+    color: antiquewhite;  
+}
+
+footer {
+    @include for-footer;
+    a {
+        @include for-footer;
+    }
+}

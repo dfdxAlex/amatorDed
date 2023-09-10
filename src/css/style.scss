@@ -1,0 +1,41 @@
+@import "styleNoRefactoring";
+@import "styleForNewsPattern";
+@import "styleForLinkByGitOnNewsPattern";
+@import "styleForFooter";
+
+
+
+
+
+
+
+/* Класс для NavBar */
+.blue-light {
+    background-color: #e3f2fd;
+}
+
+.lang-menu {
+    position: fixed;
+    top:0;
+    right: 0;
+    width: 50px;
+    z-index: 10;
+}
+
+
+
+body {
+    min-height: 800px;
+    background-image: linear-gradient(#698599, #8e8e08);
+}
+
+
+
+
+
+// Потеряшка
+// .newPat {
+//     margin-top: 20px;
+//     font-size: 25px; 
+//     width: 680px;
+// }
