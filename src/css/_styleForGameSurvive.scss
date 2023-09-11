@@ -1,10 +1,7 @@
 
-
-
-
-
 /*
 Стили для фона, игра Выжить - Survive
+Все остальные стили так-же тут, для игры выжить
 */
 .user-lost {
     background-image: url("images/user_lost.jpg");
@@ -13,10 +10,7 @@
     background-size: cover; 
     height: 500px;
 }
-/* Стили для боди, когда смотрим паттерны или апи php */
-.pattern-style {
-    background-image: url("images/design-patterns.png");
-}
+
 
 .view-state {
     height: 20px;

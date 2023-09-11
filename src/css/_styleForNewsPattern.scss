@@ -13,6 +13,10 @@
     padding: 5px;
 }
 
+.pattern-style {
+    background-image: url("images/design-patterns.png");
+}
+
 .news-pattern-p {
     margin: 50px auto 50px;
     span {
@@ -20,9 +24,6 @@
     }
     p {
         @include headerForNewsByPattern;
-        /* Коррекция стилей для основного текста, если он помещен в теги
-        <p> 
-        */
         font-size: 20px;
         width: 100%;
         text-align: left;

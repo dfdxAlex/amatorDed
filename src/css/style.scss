@@ -1,27 +1,8 @@
-@import "styleNoRefactoring";
+@import "styleForGameSurvive";
 @import "styleForNewsPattern";
 @import "styleForLinkByGitOnNewsPattern";
 @import "styleForFooter";
-
-
-
-
-
-
-
-/* Класс для NavBar */
-.blue-light {
-    background-color: #e3f2fd;
-}
-
-.lang-menu {
-    position: fixed;
-    top:0;
-    right: 0;
-    width: 50px;
-    z-index: 10;
-}
-
+@import "styleForNavBar";
 
 
 body {
