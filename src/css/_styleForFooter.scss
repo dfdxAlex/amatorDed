@@ -1,19 +1,20 @@
 
 $setTextColorForFooter: #eee;
+$setBackGroundColorForFooter: #3f3c1a;
 
-@mixin for-footer ($setTextColor) {
+@mixin for-footer {
     margin-top: 100px;
     height: auto;
-    background-color: #3f3c1a;  
-    text-decoration: none;
+    background-color: $setBackGroundColorForFooter;  
     font-size: 20px;
-    color: $setTextColor;  
+    color: $setTextColorForFooter;  
 }
 
 footer {
-    @include for-footer($setTextColorForFooter);
+    @include for-footer;
     a {
-        @include for-footer($setTextColorForFooter);
+        text-decoration: none;
+        color: $setTextColorForFooter;  
     }
 }
 
