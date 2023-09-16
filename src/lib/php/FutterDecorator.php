@@ -114,11 +114,7 @@ class FutterDecorator extends Futter
                              'createButtonEat',
                              'returnHtmlBag',
                              'translateTitleForBag',
-                             'forBagListCreate\addClothOnBagStringHtml',
-                             'forBagListCreate\addWeaponOnBagStringHtml',
-                             'forBagListCreate\addArmorOnBagStringHtml',
-                             'forBagListCreate\addOtherOnBagStringHtml',
-                             'forBagListCreate\addFoodOnBagStringHtml'
+                             'forBagListCreate\BagListCreate'
                             );
        
 

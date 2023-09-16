@@ -5,6 +5,7 @@
 
 function bagListCreate()
 {
+    const bagList = new BagListCreate();
     /**куки приходят строкой, переделать их в массив */
     let masCoocks = returnMasCuckies();
 
@@ -12,15 +13,15 @@ function bagListCreate()
 
     let returnStringHtmlBag = '';
 
-    returnStringHtmlBag = addFoodOnBagStringHtml(returnStringHtmlBag, objTranslate);
+    returnStringHtmlBag = bagList.addFoodOnBagStringHtml(returnStringHtmlBag, objTranslate);
     
-    returnStringHtmlBag = addClothOnBagStringHtml(returnStringHtmlBag, objTranslate);
+    returnStringHtmlBag = bagList.addClothOnBagStringHtml(returnStringHtmlBag, objTranslate);
 
-    returnStringHtmlBag = addWeaponOnBagStringHtml(returnStringHtmlBag, objTranslate);
+    returnStringHtmlBag = bagList.addWeaponOnBagStringHtml(returnStringHtmlBag, objTranslate);
 
-    returnStringHtmlBag = addArmorOnBagStringHtml(returnStringHtmlBag, objTranslate);
+    returnStringHtmlBag = bagList.addArmorOnBagStringHtml(returnStringHtmlBag, objTranslate);
 
-    returnStringHtmlBag = addOtherOnBagStringHtml(returnStringHtmlBag, objTranslate);
+    returnStringHtmlBag = bagList.addOtherOnBagStringHtml(returnStringHtmlBag, objTranslate);
 
     return returnStringHtmlBag;
 }

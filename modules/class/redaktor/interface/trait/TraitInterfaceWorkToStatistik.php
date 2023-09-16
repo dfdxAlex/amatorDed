@@ -3,7 +3,12 @@ namespace class\redaktor\interface\trait;
 
 trait TraitInterfaceWorkToStatistik
 {
-    public function statistikOnOff()
+
+  use \class\redaktor\interface\trait\toStatistic\TraitLabelStatistika;
+  use \class\redaktor\interface\trait\toStatistic\TraitGetLabelStatistika;
+  use \class\redaktor\interface\trait\toStatistic\TraitGetRequestCount;
+
+  public function statistikOnOff()
     {
         if (isset($_POST['buttonStatistik'])) {
           if ($_POST['buttonStatistik']=='Включить статистику запроссов к БД (функция zaprosSQL)')
@@ -35,33 +40,7 @@ trait TraitInterfaceWorkToStatistik
       return $stroka['d_zapros'];
     }
 
-    public function kolZaprosow()
-    {
-      $rez=$this->zaprosSQL("SELECT n_zapros FROM statistik_dfdx WHERE 1");
-      $stroka=mysqli_fetch_assoc($rez);
-      return $stroka['n_zapros'];
-    }
 
-    public function metkaStatistika($metka)
-    {
-      $rez=$this->zaprosSQL("SELECT id FROM slegka_dfdx WHERE metka='".$metka."'");
-      $stroka=mysqli_fetch_assoc($rez);
-      if ($this->notFalseAndNULL($stroka) && $stroka['id']>0) {
-        $id=$stroka['id'];
-        $rez=$this->zaprosSQL("SELECT zaprosov FROM slegka_dfdx WHERE metka='".$metka."'");
-        $stroka=mysqli_fetch_assoc($rez);
-        $stroka['zaprosov']++;
-        $this->zaprosSQL("UPDATE slegka_dfdx SET zaprosov=".$stroka['zaprosov']." WHERE id=".$id);
-      } else $this->zaprosSQL("INSERT INTO slegka_dfdx(id, metka, zaprosov) VALUES (".$this->maxIdLubojTablicy('slegka_dfdx') .",'".$metka."',1)");
-    }
-
-    public function getMetkaStatistik($metka) // чтение числа запроссов к метке
-    {
-      $rez=$this->zaprosSQL("SELECT zaprosov FROM slegka_dfdx WHERE metka='".$metka."'");
-      $stroka=mysqli_fetch_assoc($rez); 
-      if (!$this->notFalseAndNULL($stroka)) return 0;
-      return $stroka['zaprosov'];
-    }
 
     public function googleAnalitic($src)
     {

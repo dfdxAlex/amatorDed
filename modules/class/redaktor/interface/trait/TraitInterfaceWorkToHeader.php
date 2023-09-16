@@ -1,6 +1,11 @@
 <?php
 namespace class\redaktor\interface\trait;
 
+use class\redaktor\interface\trait\toHeader\HeadStart;
+use class\redaktor\interface\trait\toHeader\HeadBootStrap5;
+use class\redaktor\interface\trait\toHeader\FirstCreationSessionVariables;
+use class\redaktor\interface\trait\toHeader\ShowSiteHeader;
+
 trait TraitInterfaceWorkToHeader
 {
 
@@ -25,12 +30,7 @@ trait TraitInterfaceWorkToHeader
 
     public function firstCreationSessionVariables()
     {
-        if (!isset($_SESSION["resetNameTable"])) $_SESSION["resetNameTable"]=false;
-        if (!isset($_SESSION["regimRaboty"])) $_SESSION["regimRaboty"]=0;
-        if (!isset($_SESSION["status"])) $_SESSION["status"]=0;
-        if (!isset($_SESSION["sSajta"])) $_SESSION["sSajta"]=false;
-        if (!isset($_SESSION["runStrNews"])) $_SESSION["runStrNews"]=false; // если страницу загрузили из модуля news, то значение true, если по прямой ссылке, то остается false
-        if (!isset($_SESSION['redaktiruem'])) $_SESSION['redaktiruem']='';
+        new FirstCreationSessionVariables;
     }
 
     public function resetOperatingMode()
@@ -41,7 +41,7 @@ trait TraitInterfaceWorkToHeader
 
     public function showSiteHeader(string $url)
     {
-        echo '  <img src="'.\class\nonBD\SearchPathFromFile::createObj()->searchPath($url).'" alt="Картинка должна называться image/hapka2.png размер 300 на 300"/>';
+        new ShowSiteHeader($url);
     }
 
     public function showNumberOfCoins(\class\redaktor\interface\interface\InterfaceWorkToModul $redaktor)
@@ -115,19 +115,12 @@ trait TraitInterfaceWorkToHeader
 
     public function headStart($title)
     {
-        echo '<meta charset="UTF-8">';
-        echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
-        echo '<link rel="shortcut icon" href="image/favicon2.ico" type="image/x-icon">';
-        echo $title;
-        echo '<meta name="Cache-Control" content="no-store">';
+        echo new HeadStart($title);
     }
 
     public function headBootStrap5(array $listFileStyle)
     {
-        echo '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">';
-        
-        foreach($listFileStyle as $value)
-            echo '<link rel="stylesheet" href="'.$value.'"> ';
+        echo new HeadBootStrap5($listFileStyle);
     }
 
 }

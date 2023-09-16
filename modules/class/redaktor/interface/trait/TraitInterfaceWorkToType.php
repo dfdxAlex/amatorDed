@@ -1,8 +1,12 @@
 <?php
 namespace class\redaktor\interface\trait;
 
+
+
 trait TraitInterfaceWorkToType
 {
+    use \class\redaktor\interface\trait\toType\TraitNotFalseAndNULL;
+
     //interface InterfaceWorkToType
 
     public function translitUnicodToCirilCompact($string)
@@ -615,15 +619,6 @@ public function tegAllowed($teg)
     return false;
   }
 
-   //interface InterfaceWorkToType
-   public function notFalseAndNULL($data):bool
-   {
-     if ($data===false) return false;
-     if (is_null($data)) return false;
-     if (!isset($data)) return false;
-     return true;
-   }
-   
    //interface InterfaceWorkToType
    public function printMas($mas)
    {

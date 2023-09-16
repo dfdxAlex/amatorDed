@@ -3,6 +3,8 @@ namespace class\redaktor\interface\trait;
 
 trait TraitInterfaceWorkToBd
 {
+  use \class\redaktor\interface\trait\toBD\TraitZaprosSQL;
+  
   public function connectToBd()
   {
       /**  Объект по шаблону Singleton, ищет и хранит в себе путь к искомому файлу
@@ -284,11 +286,6 @@ trait TraitInterfaceWorkToBd
          return $boolRez; 
       }
       
-     public function zaprosSQL($zapros)
-     {
-        return \class\redaktor\DatabaseQuery::createDbQuery()->dbQuery($zapros);
-     }
-
      public function killZapisTablicy($nameTablice,$were) 
      {
         $zapros="DELETE FROM ".$nameTablice." ".$were;
