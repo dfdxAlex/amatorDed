@@ -111,10 +111,10 @@ class FutterDecorator extends Futter
                              'bagListCreate',
                              'addButtonEat',
                              'searchCookies',
-                             'createButtonEat',
                              'returnHtmlBag',
                              'translateTitleForBag',
-                             'forBagListCreate\BagListCreate'
+                             'forBagListCreate\BagListCreate',
+                             'Bag'
                             );
        
 

@@ -13,5 +13,6 @@ function addButtonEat(food, objFood) {
 
     let value = objFood.propertyName+'_'+objFood.propertyVal;
 
-    return createButtonEat(value);
+    const timeProperty = new Bag();
+    return timeProperty.createButtonEat(value);
 }
