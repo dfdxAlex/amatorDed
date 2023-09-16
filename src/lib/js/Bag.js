@@ -6,66 +6,62 @@ class Bag
   }
   
   /**
-   * Задача функции вернуть из куков категории сумки - еда, одежда ...
+   * Задача функции вернуть из куков категории(перевод) сумки - еда, одежда ...
    * Слово Еда или его перевод хранится в куке translate_food
    * Слово Сумка или его перевод хранится в куке translate_bag
    * Слово Одежда или его перевод хранится в куке translate_сloth
    * Слово Оружие или его перевод хранится в куке translate_weapon
    * Слово Броня или его перевод хранится в куке translate_armor
    * Слово Броня или его перевод хранится в куке translate_other_items
-   * 
-   * Функция принимает массив с грязными куками, выбирает 
-   * тот кук, в котором пришло слово Сумка или его перевод,
-   * очищает, собирает из Юникода в строку и возвращает
    */
 
-   bagTranslate(masCoocks) {
-     let propertyVal;
+   bagTranslate(masCoocks) 
+   {
      let masRez = [];
-     let timeMas;
-     let propertyName;
+     let translateName;
+     let translateVal;
      
        masCoocks.forEach(
           (e)=>{
             if (e.includes('translate_')) {
-                timeMas = e.split('=');
-                propertyName = timeMas[0];
-                propertyVal = timeMas[1];
-                propertyName = propertyName.replace('translate_','');
-                propertyName = propertyName.replaceAll(' ','');
-                
-                /** Очистить значение кука от %22 */
-                propertyVal = propertyVal.replaceAll('%22','');
-                propertyVal = propertyVal.replaceAll(' ','');
+                [translateName,translateVal] = e.split('=');
+                translateName = translateName.replace('translate_','');
+                translateName = translateName.replaceAll(' ','');
+                translateVal = translateVal.replaceAll('%22','');
+                translateVal = translateVal.replaceAll(' ','');
 
-                /** декодировать данные, полученне
-                 * из куков о названии Сумки
-                 */
-                propertyVal = this.coderDeCoder.deCoderIntToUTF8(propertyVal);
+                translateVal = this.coderDeCoder.deCoderIntToUTF8(translateVal);
                 
-                if (propertyName=='bag') {
-                  masRez[0] = propertyVal;
-                }
-                if (propertyName=='food') {
-                  masRez[1] = propertyVal;
-                }
-                if (propertyName=='сloth') {
-                 masRez[2] = propertyVal;
-                }
-                if (propertyName=='weapon') {
-                 masRez[3] = propertyVal;
-                }
-                if (propertyName=='armor') {
-                 masRez[4] = propertyVal;
-                }
-                if (propertyName=='other_items') {
-                 masRez[5] = propertyVal;
-                }
+                this.returnArrayWithTranslate(translateName,translateVal,masRez);
+
                }
               }
              );
              return masRez;
        }
+
+  returnArrayWithTranslate(translateName,translateVal, arrayWithTranslate)
+  {
+      switch (translateName) {
+        case 'bag': 
+            arrayWithTranslate[0] = translateVal;
+            break;
+        case 'food':
+            arrayWithTranslate[1] = translateVal;
+            break;
+        case 'сloth':
+            arrayWithTranslate[2] = translateVal;
+            break;
+        case 'weapon':
+            arrayWithTranslate[3] = translateVal;
+            break;
+        case 'armor':
+            arrayWithTranslate[4] = translateVal;
+            break;
+        case 'other_items':
+            arrayWithTranslate[5] = translateVal;
+      }
+  }
 
     /**
      * Cтавит в сумке кнопку Eat против съедобных предметов в сумке.
@@ -74,7 +70,6 @@ class Bag
      */    
     createButtonEat(value)
     {
-      
       return `<form method="post">
                <button 
                  type="submit"
