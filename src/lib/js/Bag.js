@@ -1,5 +1,10 @@
 class Bag 
 {
+  constructor() {
+    this.coderDeCoder = new CoderDeCoder();
+    this.cookies = new Cookies();
+  }
+  
   /**
    * Задача функции вернуть из куков категории сумки - еда, одежда ...
    * Слово Еда или его перевод хранится в куке translate_food
@@ -19,15 +24,10 @@ class Bag
      let masRez = [];
      let timeMas;
      let propertyName;
-     let timeProperty = new CoderDeCoder();
+     
        masCoocks.forEach(
           (e)=>{
             if (e.includes('translate_')) {
-                /**сделать из конкретной 
-                 * строки кука ещё один
-                 * массив: [0]-имя кука
-                 * [1] - значение кука
-                 */
                 timeMas = e.split('=');
                 propertyName = timeMas[0];
                 propertyVal = timeMas[1];
@@ -41,7 +41,7 @@ class Bag
                 /** декодировать данные, полученне
                  * из куков о названии Сумки
                  */
-                propertyVal = timeProperty.deCoderIntToUTF8(propertyVal);
+                propertyVal = this.coderDeCoder.deCoderIntToUTF8(propertyVal);
                 
                 if (propertyName=='bag') {
                   masRez[0] = propertyVal;
@@ -74,7 +74,7 @@ class Bag
      */    
     createButtonEat(value)
     {
-      const timeProperty = new Cookies();
+      
       return `<form method="post">
                <button 
                  type="submit"
@@ -82,7 +82,7 @@ class Bag
                  name="Eat"
                  value="${value}"
                >
-                 ${timeProperty.searchCookies('user_bagEat')[0].propertyName}
+                 ${this.cookies.searchCookies('user_bagEat')[0].propertyName}
                 </button>
               </form>`;
     }
