@@ -18,7 +18,7 @@ function onBag(searchCategory = "user_bag_")
       */
      masCoocks.forEach(
          (e)=>{
-               const timeProperty = new Bag();
+               const timeProperty = new VievBag();
                rez+=`<div class="row">
                        <div class="col-5">
                          <span

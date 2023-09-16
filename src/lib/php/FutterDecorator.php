@@ -109,7 +109,8 @@ class FutterDecorator extends Futter
                              'Cookies',
                              'returnHtmlBag',
                              'BagListCreate',
-                             'Bag'
+                             'Bag',
+                             'VievBag'
                             );
        
 
