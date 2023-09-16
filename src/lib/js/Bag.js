@@ -1,10 +1,26 @@
-class Bag 
+class Bag  extends Cookies
 {
-  constructor() {
-    this.coderDeCoder = new CoderDeCoder();
-    this.cookies = new Cookies();
-  }
-  
+   
+   /** 
+    * Вернуть объект с переводами заголовков сумки, еда, оружие...
+    * функция bagTranslate() 
+    */  
+
+   translateTitleForBag()
+   {
+       let objTranslate = {};
+       let mas = [];
+       mas = this.bagTranslate(this.returnMasCuckies());
+       objTranslate.bag = mas[0];
+       objTranslate.food = mas[1];
+       objTranslate.сloth = mas[2];
+       objTranslate.weapon = mas[3];
+       objTranslate.armor = mas[4];
+       objTranslate.other = mas[5];  
+ 
+       return objTranslate;
+   }
+
   /**
    * Задача функции вернуть из куков категории(перевод) сумки - еда, одежда ...
    * Слово Еда или его перевод хранится в куке translate_food
@@ -29,7 +45,7 @@ class Bag
 
                 translateVal = translateVal.replaceAll('%22','');
                 translateVal = translateVal.replaceAll(' ','');
-                translateVal = this.coderDeCoder.deCoderIntToUTF8(translateVal);
+                translateVal = this.deCoderIntToUTF8(translateVal);
                 
                 this.returnArrayWithTranslate(translateName,translateVal,masRez);
                }
