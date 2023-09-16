@@ -1,12 +1,10 @@
-class BagListCreate 
+class BagListCreate extends Cookies
 {
 
   returnBagList()
   {
-      const masCookies = new Cookies();
-  
       /**куки приходят строкой, переделать их в массив */
-      let masCoocks = masCookies.returnMasCuckies();
+      let masCoocks = this.returnMasCuckies();
   
       let objTranslate = translateTitleForBag(masCoocks);
   
