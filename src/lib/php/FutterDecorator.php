@@ -108,7 +108,6 @@ class FutterDecorator extends Futter
                              'onBag',
                              'Cookies',
                              'returnHtmlBag',
-                             'translateTitleForBag',
                              'BagListCreate',
                              'Bag'
                             );

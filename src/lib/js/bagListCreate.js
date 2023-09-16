@@ -1,12 +1,34 @@
 class BagListCreate extends Cookies
 {
+  constructor()
+  {
+    super();
+    this.bag = new Bag;
+  }
+  
+   /** 
+    * Вернуть объект с переводами заголовков сумки, еда, оружие...
+    * функция bagTranslate() 
+    */  
+
+  translateTitleForBag()
+  {
+      let objTranslate = {};
+      let mas = [];
+      mas = this.bag.bagTranslate(this.returnMasCuckies());
+      objTranslate.bag = mas[0];
+      objTranslate.food = mas[1];
+      objTranslate.сloth = mas[2];
+      objTranslate.weapon = mas[3];
+      objTranslate.armor = mas[4];
+      objTranslate.other = mas[5];  
+
+      return objTranslate;
+  }
 
   returnBagList()
   {
-      /**куки приходят строкой, переделать их в массив */
-      let masCoocks = this.returnMasCuckies();
-  
-      let objTranslate = translateTitleForBag(masCoocks);
+      let objTranslate = this.translateTitleForBag();
   
       let returnStringHtmlBag = '';
   

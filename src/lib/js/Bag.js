@@ -14,7 +14,6 @@ class Bag
    * Слово Броня или его перевод хранится в куке translate_armor
    * Слово Броня или его перевод хранится в куке translate_other_items
    */
-
    bagTranslate(masCoocks) 
    {
      let masRez = [];
@@ -27,19 +26,19 @@ class Bag
                 [translateName,translateVal] = e.split('=');
                 translateName = translateName.replace('translate_','');
                 translateName = translateName.replaceAll(' ','');
+
                 translateVal = translateVal.replaceAll('%22','');
                 translateVal = translateVal.replaceAll(' ','');
-
                 translateVal = this.coderDeCoder.deCoderIntToUTF8(translateVal);
                 
                 this.returnArrayWithTranslate(translateName,translateVal,masRez);
-
                }
               }
              );
              return masRez;
        }
 
+  /** */
   returnArrayWithTranslate(translateName,translateVal, arrayWithTranslate)
   {
       switch (translateName) {
