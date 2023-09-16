@@ -109,7 +109,6 @@ class FutterDecorator extends Futter
                              'onBag',
                              'returnMasCuckies',
                              'bagListCreate',
-                             'addButtonEat',
                              'searchCookies',
                              'returnHtmlBag',
                              'translateTitleForBag',

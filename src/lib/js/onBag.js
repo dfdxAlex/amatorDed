@@ -17,6 +17,7 @@ function onBag(searchCategory = "user_bag_")
       */
      masCoocks.forEach(
          (e)=>{
+               const timeProperty = new Bag();
                rez+=`<div class="row">
                        <div class="col-5">
                          <span
@@ -33,7 +34,7 @@ function onBag(searchCategory = "user_bag_")
                           </span>
                         </div>
                         <div class="col-5">
-                          <b>${addButtonEat(searchCategory,e)}</b>
+                          <b>${timeProperty.addButtonEat(searchCategory,e)}</b>
                         </div>
                       </div>
                     `;
