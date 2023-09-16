@@ -10,7 +10,8 @@ function onBag(searchCategory = "user_bag_")
     * создать чистый массив с оъектами, содержащими
     * нужные свойства
     */
-     masCoocks = searchCookies(searchCategory);
+     const timeProperty = new Cookies();
+     masCoocks = timeProperty.searchCookies(searchCategory);
 
      /**
       * перебрать массив очищенных куков и построить кнопки

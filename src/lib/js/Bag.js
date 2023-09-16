@@ -8,6 +8,7 @@ class Bag
      */    
     createButtonEat(value)
     {
+      const timeProperty = new Cookies();
       return `<form method="post">
                <button 
                  type="submit"
@@ -15,7 +16,7 @@ class Bag
                  name="Eat"
                  value="${value}"
                >
-                 ${searchCookies('user_bagEat')[0].propertyName}
+                 ${timeProperty.searchCookies('user_bagEat')[0].propertyName}
                 </button>
               </form>`;
     }

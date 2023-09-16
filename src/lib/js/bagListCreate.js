@@ -6,8 +6,10 @@
 function bagListCreate()
 {
     const bagList = new BagListCreate();
+    const masCookies = new Cookies();
+
     /**куки приходят строкой, переделать их в массив */
-    let masCoocks = returnMasCuckies();
+    let masCoocks = masCookies.returnMasCuckies();
 
     let objTranslate = translateTitleForBag(masCoocks);
 
