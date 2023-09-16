@@ -104,7 +104,6 @@ class FutterDecorator extends Futter
                             );
 
        new ImportFunctionsJs('non',
-                             'bagTranslate',
                              'CoderDeCoder',
                              'onBag',
                              'Cookies',

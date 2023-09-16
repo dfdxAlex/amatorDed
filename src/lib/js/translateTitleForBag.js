@@ -5,8 +5,9 @@
 
 function translateTitleForBag(masCoocks)
 {
+    const bagTranslate = new Bag;
     let objTranslate = {};
-    mas = bagTranslate(masCoocks);
+    mas = bagTranslate.bagTranslate(masCoocks);
     objTranslate.bag = mas[0];
     objTranslate.food = mas[1];
     objTranslate.сloth = mas[2];
