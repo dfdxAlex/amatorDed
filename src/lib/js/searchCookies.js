@@ -22,6 +22,7 @@ function searchCookies(searchCategory)
     /**массив для хранения очищенного массива куков */
     let masRez = [];
     let objRez = {};
+    let timeProperty = new CoderDeCoder();
 
     masCookies.forEach(
         (e)=>{
@@ -35,7 +36,7 @@ function searchCookies(searchCategory)
                    objRez.propertyName = timeMas[0];
                    objRez.propertyVal = timeMas[1];
                    objRez.propertyName = objRez.propertyName.replace(searchCategory,'');
-                   objRez.propertyName = deCoderIntToUTF8(objRez.propertyName);
+                   objRez.propertyName = timeProperty.deCoderIntToUTF8(objRez.propertyName);
                    /** Очистить значение кука от %22 */
                    objRez.propertyVal = objRez.propertyVal.replace('%22','');
                    objRez.propertyVal = objRez.propertyVal.replace('%22','');                  

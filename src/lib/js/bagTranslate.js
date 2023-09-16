@@ -17,6 +17,7 @@ function bagTranslate(masCoocks) {
     let masRez = [];
     let timeMas;
     let propertyName;
+    let timeProperty = new CoderDeCoder();
       masCoocks.forEach(
          (e)=>{
            if (e.includes('translate_')) {
@@ -38,7 +39,7 @@ function bagTranslate(masCoocks) {
                /** декодировать данные, полученне
                 * из куков о названии Сумки
                 */
-               propertyVal = deCoderIntToUTF8(propertyVal);
+               propertyVal = timeProperty.deCoderIntToUTF8(propertyVal);
                
                if (propertyName=='bag') {
                  masRez[0] = propertyVal;

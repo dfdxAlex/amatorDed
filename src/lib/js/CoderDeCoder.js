@@ -1,10 +1,12 @@
+class CoderDeCoder
+{
 /**
  * функция раскодирует строку из юникода(UTF-8) в текст
  */
 
-function deCoderIntToUTF8(str)
+deCoderIntToUTF8(str)
 {
-    masStr = str.split('_');
+    let masStr = str.split('_');
     let rez='';
 
     masStr.forEach(element => {
@@ -12,4 +14,6 @@ function deCoderIntToUTF8(str)
     });
 
     return rez;
+}
+
 }

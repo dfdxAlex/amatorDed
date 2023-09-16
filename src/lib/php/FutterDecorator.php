@@ -105,7 +105,7 @@ class FutterDecorator extends Futter
 
        new ImportFunctionsJs('non',
                              'bagTranslate',
-                             'deCoderIntToUTF8',
+                             'CoderDeCoder',
                              'onBag',
                              'returnMasCuckies',
                              'bagListCreate',
