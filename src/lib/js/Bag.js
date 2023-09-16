@@ -20,7 +20,7 @@ class Bag
               </form>`;
     }
 
-    addButtonEat(food, objFood) {    
+    addOnButtonEatParametrValue(food, objFood) {    
         if (food!=='user_bag_') return '';    
         let value = objFood.propertyName+'_'+objFood.propertyVal;    
         return this.createButtonEat(value);

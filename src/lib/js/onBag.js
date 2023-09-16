@@ -34,7 +34,7 @@ function onBag(searchCategory = "user_bag_")
                           </span>
                         </div>
                         <div class="col-5">
-                          <b>${timeProperty.addButtonEat(searchCategory,e)}</b>
+                          <b>${timeProperty.addOnButtonEatParametrValue(searchCategory,e)}</b>
                         </div>
                       </div>
                     `;
