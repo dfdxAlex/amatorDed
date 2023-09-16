@@ -1,6 +1,7 @@
 
 function bagList()
 {
+  let classVievBag = new VievBag;
   let position = document.getElementById('for-bag');
-  position.innerHTML = returnHtmlBag();
+  position.innerHTML = classVievBag.returnHtmlBag();
 }

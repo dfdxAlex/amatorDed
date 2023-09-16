@@ -11,8 +11,6 @@ use src\lib\php\connectFunctionJs\ImportFunctionsJs;
 
 class FutterDecorator extends Futter
 {
-
-
     public function __construct()
     {
 
@@ -107,7 +105,6 @@ class FutterDecorator extends Futter
                              'CoderDeCoder',
                              'onBag',
                              'Cookies',
-                             'returnHtmlBag',
                              'Bag',
                              'VievBag'
                             );
