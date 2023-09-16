@@ -100,7 +100,7 @@ class FacadeContentPattern
         /**
          * Создается подключение к базе данных
          */
-        $objContentPattern = new \src\lib\php\db\Db;
+        //$objContentPattern = new \src\lib\php\db\Db;
         /**
          * Запуск метода, который прочитает информацию из базы данных
          * и поместит ей в нужный массив класса NewsPattern()
@@ -110,7 +110,7 @@ class FacadeContentPattern
          * Создание объекта, который ответственнен за запись нового
          * контента в базу данных
          */
-        $addContent = new pattern\AddContentForPattern();
+        //$addContent = new pattern\AddContentForPattern();
         /**
          * конец нового кода, он работал используя принцип делегирования
          */

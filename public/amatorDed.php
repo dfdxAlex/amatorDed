@@ -6,6 +6,7 @@
     use \src\lib\php\home\HomeFacade;
     use \src\lib\php\translate\TranslateFacade;
     use \src\lib\php\games\survive\SurviveFacade;
+    use \src\lib\php\games\survive\VievSurviveFacade;
     use \src\lib\php\content\FacadeContentPattern;
     use \src\lib\php\HeaderFacade;
     use \src\lib\php\authorization\UserFacade;
@@ -45,6 +46,9 @@
      */
     FacadeContentPattern::factoryContentPattern();
 
+    ////////////////////////////////////////////////////////////////
+    // Viev
+    ///////////////////////////////////////////////////////////////
     /**
      * Поставить header
      */
@@ -55,6 +59,7 @@
 
     NavBarFacade::createNavBar();
 
+    new VievSurviveFacade;
 
     /**
      * To unload the first page part of the system methods
