@@ -102,10 +102,10 @@ class FutterDecorator extends Futter
                             );
 
        new ImportFunctionsJs('non',
-                             'CoderDeCoder',
-                             'Cookies',
-                             'Bag',
-                             'VievBag'
+                             'bag\CoderDeCoder',
+                             'bag\Cookies',
+                             'bag\Bag',
+                             'bag\VievBag'
                             );
        
 
