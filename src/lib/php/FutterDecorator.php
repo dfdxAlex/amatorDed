@@ -103,7 +103,6 @@ class FutterDecorator extends Futter
 
        new ImportFunctionsJs('non',
                              'CoderDeCoder',
-                             'onBag',
                              'Cookies',
                              'Bag',
                              'VievBag'

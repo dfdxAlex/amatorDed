@@ -1,8 +1,50 @@
 class VievBag extends Bag
 {
-    constructor()
+    /** функция создает HTML строку, содержащую разметку с содержимым
+     * сумки заданной категории. Если категории в сумке нет, то 
+     * необходимо вернуть false
+     */    
+
+    onBag(searchCategory = "user_bag_")
     {
-        super();
+       let rez='';
+       let masCoocks = [];
+       /**
+        * создать чистый массив с оъектами, содержащими
+        * нужные свойства
+        */
+         masCoocks = this.searchCookies(searchCategory);    
+
+         /**
+          * перебрать массив очищенных куков и построить кнопки
+          */
+         masCoocks.forEach(
+             (e)=>{
+                   rez+=`<div class="row">
+                           <div class="col-5">
+                             <span
+                               class="btn btn-secondary"
+                             >
+                               ${e.propertyName}
+                             </span>
+                           </div>
+                           <div class="col-2">
+                             <span
+                               class="btn btn-secondary"
+                             >
+                           ${e.propertyVal}
+                              </span>
+                            </div>
+                            <div class="col-5">
+                              <b>${this.addOnButtonEatParametrValue(searchCategory,e)}</b>
+                            </div>
+                          </div>
+                        `;
+                   }
+              );
+              if (rez!='')
+                  return '<section class="container">'+rez+'</section>';
+              else return false;
     }
 
     /**
@@ -80,8 +122,8 @@ class VievBag extends Bag
      */
     addArmorOnBagStringHtml(returnStringHtmlBag, objTranslate)
     {
-        if (onBag('user_bagArmor')!==false) {
-            returnStringHtmlBag+=objTranslate.armor+onBag('user_bagArmor');
+        if (this.onBag('user_bagArmor')!==false) {
+            returnStringHtmlBag+=objTranslate.armor+this.onBag('user_bagArmor');
             returnStringHtmlBag+='<br>';
         }
         return returnStringHtmlBag;
@@ -94,8 +136,8 @@ class VievBag extends Bag
 
     addFoodOnBagStringHtml(stringHtml, titleFood)
     {
-        if (onBag()!==false) {
-          stringHtml+=titleFood.food+onBag()+'<br>';
+        if (this.onBag()!==false) {
+          stringHtml+=titleFood.food+this.onBag()+'<br>';
         }
         return stringHtml;
     }
@@ -107,8 +149,8 @@ class VievBag extends Bag
 
     addClothOnBagStringHtml(returnStringHtmlBag, objTranslate)
     {
-        if (onBag('user_bagCloth')!==false) {
-          returnStringHtmlBag+=objTranslate.сloth+onBag('user_bagCloth');
+        if (this.onBag('user_bagCloth')!==false) {
+          returnStringHtmlBag+=objTranslate.сloth+this.onBag('user_bagCloth');
           returnStringHtmlBag+='<br>';
         }    
 
@@ -122,8 +164,8 @@ class VievBag extends Bag
 
     addOtherOnBagStringHtml(returnStringHtmlBag, objTranslate)
     {
-        if (onBag('user_bagOther')!==false) {
-          returnStringHtmlBag+=objTranslate.other+onBag('user_bagOther');
+        if (this.onBag('user_bagOther')!==false) {
+          returnStringHtmlBag+=objTranslate.other+this.onBag('user_bagOther');
           returnStringHtmlBag+='<br>';
         }
         return returnStringHtmlBag;
@@ -136,8 +178,8 @@ class VievBag extends Bag
 
     addWeaponOnBagStringHtml(returnStringHtmlBag, objTranslate)
     {
-        if (onBag('user_bagWeapon')!==false) {
-          returnStringHtmlBag+=objTranslate.weapon+onBag('user_bagWeapon');
+        if (this.onBag('user_bagWeapon')!==false) {
+          returnStringHtmlBag+=objTranslate.weapon+this.onBag('user_bagWeapon');
           returnStringHtmlBag+='<br>';
         }
         return returnStringHtmlBag;
