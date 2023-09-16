@@ -1,6 +1,13 @@
 <?php
 namespace src\lib\php\content;
 
+use \src\lib\php\content\pattern\NewsPattern;
+use \src\lib\php\ContainerObject;
+use \src\lib\php\content\pattern\extension\NewsPatternOne;
+use \src\lib\php\content\pattern\extension\NewsPatternTwo;
+use \src\lib\php\content\pattern\extension\NewsPatternThree;
+use \src\lib\php\content\pattern\extension\NewsAccordion;
+
 /**
  * Фасад для класса NewsPattern
  * Внимание, данный класс занимается заполнением объекта $obj = new pattern\NewsPattern();
@@ -25,19 +32,23 @@ class FacadeContentPattern
 {
     static public function factoryContentPattern()
     {
-        $obj = new pattern\NewsPattern();
+        $obj = new NewsPattern();
+
         /**
-         * В данном методе создается объект pattern\NewsPattern();
+         * В данном методе создается объект NewsPattern();
          * и наполняется контентом. Воспроизводится контент в другом
          * месте, для этого его и нужно зарегистрировать в котейнере
          * объектов.
          */
-        \src\lib\php\ContainerObject::getInstance()->setProperty('NewsPattern',$obj);
+        ContainerObject::getInstance()->setProperty('NewsPattern',$obj);
+
+        if (isset($_GET['survive'])) return;
 
         /**
          * Получить объект - переводчик из контейнера объектов
          */
-        $translate = \src\lib\php\ContainerObject::getInstance()->getProperty('TranslateFacade');
+        $translate = ContainerObject::getInstance()
+                                    ->getProperty('TranslateFacade');
 
         /**
          * Данному объекту делегировано заполнение массива класса
@@ -45,7 +56,7 @@ class FacadeContentPattern
          * без перевода, только два вариата текста. Поэтому в 
          * объект передается только ссылка на объект NewsPattern
          */
-        new \src\lib\php\content\pattern\extension\NewsPatternOne($obj);
+        new NewsPatternOne($obj);
       
        /**
        * Дальше контент стал добавляться с использованием системы 
@@ -54,7 +65,7 @@ class FacadeContentPattern
        * Дальнейшее добавление контента в раздел Шаблонов проектирования
        * следует делать в том классе.
        */
-        new \src\lib\php\content\pattern\extension\NewsPatternTwo($obj, $translate);
+        new NewsPatternTwo($obj, $translate);
 
        /**
        * Здесь создается статья для первой части по работе с 
@@ -63,7 +74,7 @@ class FacadeContentPattern
        * Дальнейшее добавление контента в раздел Шаблонов проектирования
        * следует делать в том классе.
        */
-        new \src\lib\php\content\pattern\extension\NewsPatternThree($obj, $translate);
+        new NewsPatternThree($obj, $translate);
       
       /**
        * Здесь создается статья для первой части по работе с 
@@ -72,12 +83,12 @@ class FacadeContentPattern
        * Дальнейшее добавление контента в раздел Шаблонов проектирования
        * следует делать в том классе.
        */
-        new \src\lib\php\content\pattern\extension\NewsAccordion($obj, $translate);
+        new NewsAccordion($obj, $translate);
       
 
         /**
-       * Функционал ниже пока не работает!!!!!!!!1
-       */
+         * Функционал ниже пока не работает!!!!!!!!1
+         */
         /**
          * Здесь появится новый код. В коде будет новый объект
          * который подтянет из базы данных информацию и добавит

@@ -42,17 +42,17 @@ class TitleForBag
         * Отправить в куки категории сумки. 
         * Отправляются переводы категорий
         */
-        $bag = CodingStr::coding($bag);
-        setcookie('translate_bag','"'.$bag.'"',time()+65);
-        $food = CodingStr::coding($food);
-        setcookie('translate_food','"'.$food.'"',time()+65);
-        $сloth = CodingStr::coding($сloth);
-        setcookie('translate_сloth','"'.$сloth.'"',time()+65);
-        $weapon = CodingStr::coding($weapon);
-        setcookie('translate_weapon','"'.$weapon.'"',time()+65);
-        $armor = CodingStr::coding($armor);
-        setcookie('translate_armor','"'.$armor.'"',time()+65);
-        $other_items = CodingStr::coding($other_items);
-        setcookie('translate_other_items','"'.$other_items.'"',time()+65);
+        // $bag = CodingStr::coding($bag);
+        // setcookie('translate_bag','"'.$bag.'"',time()+65);
+        // $food = CodingStr::coding($food);
+        // setcookie('translate_food','"'.$food.'"',time()+65);
+        // $сloth = CodingStr::coding($сloth);
+        // setcookie('translate_сloth','"'.$сloth.'"',time()+65);
+        // $weapon = CodingStr::coding($weapon);
+        // setcookie('translate_weapon','"'.$weapon.'"',time()+65);
+        // $armor = CodingStr::coding($armor);
+        // setcookie('translate_armor','"'.$armor.'"',time()+65);
+        // $other_items = CodingStr::coding($other_items);
+        // setcookie('translate_other_items','"'.$other_items.'"',time()+65);
     }
 }
