@@ -1,4 +1,4 @@
-class Cookies 
+class Cookies extends CoderDeCoder
 {
     /**
      * функция ищет все куки заданной категории, то есть с заданным
@@ -6,23 +6,17 @@ class Cookies
      */    
     searchCookies(markerCategory)
     {
-        let masCookies = this.returnMasCuckies();    
-
         let arrayCleaned = [];
         let objRez = {};    
 
-        let timeProperty = new CoderDeCoder();    
-
-        masCookies.forEach(
+        this.returnMasCuckies().forEach(
             (e)=>{
                   if (e.includes(markerCategory)) {
                   let timeMas = e.split('=');
-                       objRez.propertyName = timeMas[0];
-                       objRez.propertyVal = timeMas[1];
-                       objRez.propertyName = objRez.propertyName.replace(markerCategory,'');
-                       objRez.propertyName = timeProperty.deCoderIntToUTF8(objRez.propertyName);
-                       objRez.propertyVal = objRez.propertyVal.replace('%22','');
-                       objRez.propertyVal = objRez.propertyVal.replace('%22','');                  
+                       timeMas[0] = timeMas[0].replace(markerCategory,'');
+                       timeMas[0] = this.deCoderIntToUTF8(timeMas[0]);
+                       timeMas[1] = timeMas[1].replaceAll('%22','');
+                       [objRez.propertyName,objRez.propertyVal] = timeMas;
                        arrayCleaned.push(objRez);
                     }
                 }
