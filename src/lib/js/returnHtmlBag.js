@@ -3,6 +3,7 @@
  */
 function returnHtmlBag()
 {
+  const bagListC = new BagListCreate();
   const masCookies = new Cookies();
   return `
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -13,7 +14,7 @@ function returnHtmlBag()
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            `+bagListCreate()+`<br>
+            `+bagListC.returnBagList()+`<br>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

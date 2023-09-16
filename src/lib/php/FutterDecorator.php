@@ -108,10 +108,9 @@ class FutterDecorator extends Futter
                              'CoderDeCoder',
                              'onBag',
                              'Cookies',
-                             'bagListCreate',
                              'returnHtmlBag',
                              'translateTitleForBag',
-                             'forBagListCreate\BagListCreate',
+                             'BagListCreate',
                              'Bag'
                             );
        

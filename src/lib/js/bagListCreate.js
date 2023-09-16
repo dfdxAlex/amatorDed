@@ -1,29 +1,96 @@
-/**
- * Функция создает содержимое сумки, проверяя все куки в 
- * поиске информации.
- */
-
-function bagListCreate()
+class BagListCreate 
 {
-    const bagList = new BagListCreate();
-    const masCookies = new Cookies();
 
-    /**куки приходят строкой, переделать их в массив */
-    let masCoocks = masCookies.returnMasCuckies();
+  returnBagList()
+  {
+      const masCookies = new Cookies();
+  
+      /**куки приходят строкой, переделать их в массив */
+      let masCoocks = masCookies.returnMasCuckies();
+  
+      let objTranslate = translateTitleForBag(masCoocks);
+  
+      let returnStringHtmlBag = '';
+  
+      returnStringHtmlBag = this.addFoodOnBagStringHtml(returnStringHtmlBag, objTranslate);
+      
+      returnStringHtmlBag = this.addClothOnBagStringHtml(returnStringHtmlBag, objTranslate);
+  
+      returnStringHtmlBag = this.addWeaponOnBagStringHtml(returnStringHtmlBag, objTranslate);
+  
+      returnStringHtmlBag = this.addArmorOnBagStringHtml(returnStringHtmlBag, objTranslate);
+  
+      returnStringHtmlBag = this.addOtherOnBagStringHtml(returnStringHtmlBag, objTranslate);
+  
+      return returnStringHtmlBag;
+  }
 
-    let objTranslate = translateTitleForBag(masCoocks);
+    /**
+     * Функция ищет в куках игрока оружие в сумке, если оно есть,
+     * то формирует строку и возвращает её.
+     */
+    addArmorOnBagStringHtml(returnStringHtmlBag, objTranslate)
+    {
+        if (onBag('user_bagArmor')!==false) {
+            returnStringHtmlBag+=objTranslate.armor+onBag('user_bagArmor');
+            returnStringHtmlBag+='<br>';
+        }
+        return returnStringHtmlBag;
+    }
 
-    let returnStringHtmlBag = '';
+    /**
+     * Функция ищет еду в куках и возвращает html разметку
+     * для помещения найденной еды в сумку
+     */    
 
-    returnStringHtmlBag = bagList.addFoodOnBagStringHtml(returnStringHtmlBag, objTranslate);
-    
-    returnStringHtmlBag = bagList.addClothOnBagStringHtml(returnStringHtmlBag, objTranslate);
+    addFoodOnBagStringHtml(stringHtml, titleFood)
+    {
+        if (onBag()!==false) {
+          stringHtml+=titleFood.food+onBag()+'<br>';
+        }
+        return stringHtml;
+    }
 
-    returnStringHtmlBag = bagList.addWeaponOnBagStringHtml(returnStringHtmlBag, objTranslate);
+     /**
+      * Функция возвращает из куков строку с одеждой.
+      * Эта строка в будущем попадает в содержимое сумки
+      */    
 
-    returnStringHtmlBag = bagList.addArmorOnBagStringHtml(returnStringHtmlBag, objTranslate);
+    addClothOnBagStringHtml(returnStringHtmlBag, objTranslate)
+    {
+        if (onBag('user_bagCloth')!==false) {
+          returnStringHtmlBag+=objTranslate.сloth+onBag('user_bagCloth');
+          returnStringHtmlBag+='<br>';
+        }    
 
-    returnStringHtmlBag = bagList.addOtherOnBagStringHtml(returnStringHtmlBag, objTranslate);
+        return returnStringHtmlBag;
+    }
 
-    return returnStringHtmlBag;
+    /**
+     * Функция добавляет предметы в сумку из куков пользователя
+     * с категорией Другие или Разные
+     */    
+
+    addOtherOnBagStringHtml(returnStringHtmlBag, objTranslate)
+    {
+        if (onBag('user_bagOther')!==false) {
+          returnStringHtmlBag+=objTranslate.other+onBag('user_bagOther');
+          returnStringHtmlBag+='<br>';
+        }
+        return returnStringHtmlBag;
+    }
+
+    /**
+     * Функция ищет в куках сумки игрока предметы типа оружия,
+     * если они есть, то поместить их в отдельную категорию сумки
+     */    
+
+    addWeaponOnBagStringHtml(returnStringHtmlBag, objTranslate)
+    {
+        if (onBag('user_bagWeapon')!==false) {
+          returnStringHtmlBag+=objTranslate.weapon+onBag('user_bagWeapon');
+          returnStringHtmlBag+='<br>';
+        }
+        return returnStringHtmlBag;
+    }
 }
