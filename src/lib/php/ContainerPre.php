@@ -18,18 +18,18 @@ class ContainerPre
     public function __construct()
     {
 
-    $this->createStatusAD();
+        $this->createStatusAD();
 
-    $homeFacade = new HomeFacade();
-    ContainerObject::getInstance()->setProperty('HomeFacade',$homeFacade);
-    
-    new TranslateFacade();
+        $homeFacade = new HomeFacade();
+        ContainerObject::getInstance()->setProperty('HomeFacade',$homeFacade);
+        
+        new TranslateFacade();
 
-    new SurviveFacade();
+        new SurviveFacade();
 
-    FacadeContentPattern::factoryContentForPattern();
+        FacadeContentPattern::factoryContentForPattern();
 
-    new HeaderFacade();
+        new HeaderFacade();
     }
 
     private function createStatusAD()
