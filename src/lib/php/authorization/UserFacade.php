@@ -11,6 +11,10 @@ namespace src\lib\php\authorization;
  */
 class UserFacade
 {
+    public function __construct()
+    {
+        $this->userFacadeLevelUp();
+    }
 
     /**
      * Для разгрузки первой страницы часть методов системы
@@ -18,18 +22,8 @@ class UserFacade
      * Сюда попадают те методы, кторые должны быть запущены 
      * до запуска навигационного меню.
      */
-    public function userFacadeLevelUp()
+    private function userFacadeLevelUp()
     {
-        /**
-         * метод проверяет существование пользователя в базе 
-         * данных. Если пользователь там есть, значит регистра-
-         * ционную форму можно удалить
-         * Удаление происходит в другой части скрипта, здесь 
-         * только меняется статус пользователя для того, чтобы
-         * отобразить всё по новому, согласно статуса пользователя
-         */
-        //$this->searchUser();
-
          /**
           * Данный метод фасада слушает систему в ожидании нажатия
           * кнопки входа на сайт. Если нажатие происходит, то создается
@@ -162,10 +156,6 @@ class UserFacade
                  $err = new \class\nonBD\error\ErrorMasPlus($login);
                  echo $err;
              }
-            //  $registrator = new 
-            //  $_SESSION['statusAD']=$registrator->insertToBd($_SESSION['loginAD']);
-            //  $this->searchUser();
-
         }
 
     }
@@ -183,22 +173,6 @@ class UserFacade
             login\SignOut::signOut();
         }
     }
-
-    /**
-     * метод проверяет существование пользователя в базе 
-     * данных. Если пользователь там есть, значит регистра-
-     * ционную форму можно удалить
-     * Удаление происходит в другой части скрипта, здесь 
-     * только меняется статус пользователя для того, чтобы
-     * отобразить всё по новому, согласно статуса пользователя
-     */
-    // private function searchUser()
-    // {
-    //     if (isset($_GET['registration'])) {
-    //         $registrator = new \src\lib\php\db\Db;
-    //         $_SESSION['statusAD']=$registrator->insertToBd($_SESSION['loginAD']);
-    //     }
-    // }
 
     private function registration()
     {

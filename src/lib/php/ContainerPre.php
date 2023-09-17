@@ -7,6 +7,7 @@ use \src\lib\php\translate\TranslateFacade;
 use \src\lib\php\games\survive\SurviveFacade;
 use \src\lib\php\content\FacadeContentPattern;
 use \src\lib\php\HeaderFacade;
+use \src\lib\php\authorization\UserFacade;
 
 /**
  * Класс содержит другие классы предварительной настройки сайта
@@ -15,9 +16,8 @@ use \src\lib\php\HeaderFacade;
  */
 class ContainerPre
 {
-    public function __construct()
+    public function __construct(&$thisUserFacade)
     {
-
         $this->createStatusAD();
 
         $homeFacade = new HomeFacade();
@@ -30,6 +30,9 @@ class ContainerPre
         FacadeContentPattern::factoryContentForPattern();
 
         new HeaderFacade();
+
+        $thisUserFacade = new UserFacade();
+   
     }
 
     private function createStatusAD()

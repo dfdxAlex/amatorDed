@@ -1,13 +1,8 @@
 <?php
     session_start();
     
- 
     use \src\lib\php\ContainerObject;
-
-
     use \src\lib\php\games\survive\VievSurviveFacade;
-  
-
     use \src\lib\php\ContainerPre;
     use \src\lib\php\authorization\UserFacade;
     use \class\nonBD\navBootstrap\NavBarFacade;
@@ -27,20 +22,13 @@
      */
     include_once "../src/autoloader.php";
 
-    new ContainerPre;
-
-
-
-
-
-
-
-
-    ////////////////////////////////////////////////////////////////
-    // Viev
-    ///////////////////////////////////////////////////////////////
-    $user = new UserFacade();
-    $user->userFacadeLevelUp();
+    $user='';
+    /**
+     * Класс является контейнером лля объектов, отрабатывающих перед
+     * началом вывода разметки. Класс изменяет входящий параметр 
+     * $user и помещает в него ссылку на объект класса UserFacade
+     */
+    new ContainerPre($user);
 
     NavBarFacade::createNavBar();
 
