@@ -1,14 +1,14 @@
 <?php
     session_start();
-    if (!isset($_SESSION['statusAD'])) $_SESSION['statusAD']=0;
+    
  
     use \src\lib\php\ContainerObject;
-    use \src\lib\php\home\HomeFacade;
-    use \src\lib\php\translate\TranslateFacade;
-    use \src\lib\php\games\survive\SurviveFacade;
+
+
     use \src\lib\php\games\survive\VievSurviveFacade;
-    use \src\lib\php\content\FacadeContentPattern;
-    use \src\lib\php\HeaderFacade;
+  
+
+    use \src\lib\php\ContainerPre;
     use \src\lib\php\authorization\UserFacade;
     use \class\nonBD\navBootstrap\NavBarFacade;
     use \src\lib\php\games\survive\state\ViewState;
@@ -27,33 +27,18 @@
      */
     include_once "../src/autoloader.php";
 
-    /**
-     * фасад для главной страницы, пока там пусто
-     * В конструкторе помещает себя в контейнер объектов
-     */
-    $homeFacade = new HomeFacade();
-    ContainerObject::getInstance()->setProperty('HomeFacade',$homeFacade);
-    
-    $translate = new TranslateFacade();
+    new ContainerPre;
 
-    /**
-     * Класс Фасад для управление игрой Выжить
-     */
-    $games = new SurviveFacade();
 
-    /**
-     * Класс выводит информацию о паттернах и о модулях
-     */
-    FacadeContentPattern::factoryContentPattern();
+
+
+
+
+
 
     ////////////////////////////////////////////////////////////////
     // Viev
     ///////////////////////////////////////////////////////////////
-    /**
-     * Поставить header
-     */
-    new HeaderFacade();
-
     $user = new UserFacade();
     $user->userFacadeLevelUp();
 

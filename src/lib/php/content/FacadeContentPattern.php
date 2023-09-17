@@ -30,7 +30,7 @@ use \src\lib\php\content\pattern\extension\NewsAccordion;
 
 class FacadeContentPattern
 {
-    static public function factoryContentPattern()
+    static public function factoryContentForPattern()
     {
         $obj = new NewsPattern();
 
