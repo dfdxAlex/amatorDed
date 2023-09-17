@@ -44,17 +44,13 @@
      * Сюда попадают те методы, кторые должны быть запущены 
      * после запуска навигационного меню.
      */
-    ContainerObject::getInstance()
-                   ->getProperty('UserFacade')
-                   ->userFacadeLevelLast();
+    ContainerObject::getObject('UserFacade')->userFacadeLevelLast();
 
      /**
       * достать из контейнера ссылку на объект, публикующий
       * новости паттернов и апи и запустить его метод news()
       * для отображения новостей
       */
-     ContainerObject::getInstance()
-                      ->getProperty('NewsPattern')
-                      ->news();
+     ContainerObject::getObject('NewsPattern')->news();
 
     new FutterDecorator();

@@ -31,4 +31,13 @@ class ContainerObject extends \class\nonBD\propertyContainers\PropertyContainer
         return self::$instancesContainerObjects;
     }
 
+    public static function getObject($nameObject)
+    {
+        return self::getInstance()->getProperty($nameObject);
+    }
+
+    public static function setObject($nameObject, $linkForObject)
+    {
+        self::getInstance()->setProperty($nameObject, $linkForObject);
+    }
 }
