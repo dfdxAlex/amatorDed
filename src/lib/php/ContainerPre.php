@@ -20,8 +20,7 @@ class ContainerPre
     {
         $this->createStatusAD();
 
-        $homeFacade = new HomeFacade();
-        ContainerObject::setObject('HomeFacade',$homeFacade);
+        ContainerObject::setObject('HomeFacade',new HomeFacade());
         
         new TranslateFacade();
 
@@ -31,8 +30,7 @@ class ContainerPre
 
         new HeaderFacade();
 
-        $thisUserFacade = new UserFacade();
-        ContainerObject::setObject('UserFacade',$thisUserFacade);
+        ContainerObject::setObject('UserFacade', new UserFacade());
     }
 
     private function createStatusAD()

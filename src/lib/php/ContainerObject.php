@@ -39,5 +39,6 @@ class ContainerObject extends \class\nonBD\propertyContainers\PropertyContainer
     public static function setObject($nameObject, $linkForObject)
     {
         self::getInstance()->setProperty($nameObject, $linkForObject);
+        return $linkForObject;
     }
 }

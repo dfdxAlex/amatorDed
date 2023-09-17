@@ -11,29 +11,21 @@ use \class\translate\DelegatorLang;
 use \src\lib\php\ContainerObject;
 class TranslateFacade
 {
-    private $in;
     public function __construct()
     {
-        
-       /**
-        * Объект работает с переводами фраз на разные языки
-        */
-        $this->in = new DelegatorLang();
-        
         // зарегистрировать объект - переводчик в контейнере объектов
-        ContainerObject::getInstance()
-                         ->setProperty('TranslateFacade',$this->in);
+        $in = ContainerObject::setObject('TranslateFacade',new DelegatorLang());
         
-        // $this->in->setRedactorLang(true);
+        // $in->setRedactorLang(true);
         /**
          * Чтобы воспользоватся переводчиком использовать метод
          * translator('Перейти на GitHub')
          */
         /**
          * Чтобы добавить слова в control() нужно передать true
-         * $this->in->control(true);
+         * $in->control(true);
          */
-        $this->in->control();
-        //$this->in->echoDataMas(); //посмотреть или отредактировать базу переводов
+        $in->control();
+        //$in->echoDataMas(); //посмотреть или отредактировать базу переводов
     }
 }
