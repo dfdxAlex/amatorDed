@@ -1,15 +1,16 @@
 <?php
 namespace src\lib\php\authorization;
 
-use login\LoginForm;
 use \src\lib\php\ContainerObject;
-use \class\nonBD\error\ErrorMas;
-use registration\RegistrationUserForm;
-use \class\nonBD\error\ErrorMasPlus;
-use login\SignOut;
-use registration\UserData;
-use registration\RegistratorUserToBd;
-use login\DbForAuthorization;
+use \class\nonBD\error\{ErrorMas,
+                        ErrorMasPlus};
+use \src\lib\php\authorization\login\{SignOut,
+                                      DbForAuthorization,
+                                      LoginForm};
+use \src\lib\php\authorization\registration\{RegistrationUserForm,
+                                             UserData,
+                                             RegistratorUserToBd};
+
 
 /**
  * Класс фасад для инфраструктуры регистрации и авторизации
