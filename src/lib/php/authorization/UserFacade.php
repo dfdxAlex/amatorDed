@@ -1,6 +1,16 @@
 <?php
 namespace src\lib\php\authorization;
 
+use login\LoginForm;
+use \src\lib\php\ContainerObject;
+use \class\nonBD\error\ErrorMas;
+use registration\RegistrationUserForm;
+use \class\nonBD\error\ErrorMasPlus;
+use login\SignOut;
+use registration\UserData;
+use registration\RegistratorUserToBd;
+use login\DbForAuthorization;
+
 /**
  * Класс фасад для инфраструктуры регистрации и авторизации
  * В зависимости от имеющихся параметров данный класс 
@@ -85,7 +95,7 @@ class UserFacade
             if ((isset($_SESSION['statusAD'])
                  && $_SESSION['statusAD']==0)
                    || !isset($_SESSION['statusAD'])) {
-            echo login\LoginForm::createFormLogin();
+            echo LoginForm::createFormLogin();
         }
 
         /**
@@ -110,9 +120,9 @@ class UserFacade
            * из контейнера объектов, в который ранее была помещена
            * эта ссылка.
            */
-          $login = \src\lib\php\ContainerObject::getInstance()->getProperty('DbForAuthorization');
+          $login = ContainerObject::getObject('DbForAuthorization');
           if ($login)
-              echo new \class\nonBD\error\ErrorMas($login);
+              echo new ErrorMas($login);
         }
     }
 
@@ -136,7 +146,7 @@ class UserFacade
              * то поставить форму регистрации
              */
             if (isset($_GET['registration'])  && $_SESSION['statusAD']==0) {
-                echo registration\RegistrationUserForm::createFormRegistration();
+                echo RegistrationUserForm::createFormRegistration();
             }
 
             /**
@@ -151,9 +161,9 @@ class UserFacade
              * из контейнера объектов, в который ранее была помещена
              * эта ссылка.
              */
-             $login = \src\lib\php\ContainerObject::getInstance()->getProperty('UserData');
+             $login = ContainerObject::getObject('UserData');
              if ($login) {
-                 $err = new \class\nonBD\error\ErrorMasPlus($login);
+                 $err = new ErrorMasPlus($login);
                  echo $err;
              }
         }
@@ -170,7 +180,7 @@ class UserFacade
     private function signOut()
     {
         if (isset($_GET['signout'])) {
-            login\SignOut::signOut();
+            SignOut::signOut();
         }
     }
 
@@ -187,7 +197,7 @@ class UserFacade
              * UserData собирает параметры из формы и нормализует их
              * так-же заполняет журнал ошибок, если они есть.
              */
-            $registration = new registration\UserData();
+             $registration = ContainerObject::setObject('UserData',new UserData());
             /**
              * метод забирает данные из пост массивов, обрабатывает 
              * их и помещает в переменные класса.
@@ -199,39 +209,19 @@ class UserFacade
              * классу, который производит запись
              */
             if (count($rez)==0)
-                $registrator = new registration\RegistratorUserToBd($registration);
-
-            /**
-             * Зарегистрировать ссылку на этот объект в контейнер
-             * объектов. Ссылка понадобится в другом месте
-             * программы.
-             */
-            \src\lib\php\ContainerObject::getInstance()->setProperty('UserData',$registration);
-
-
+                new RegistratorUserToBd($registration);
         }
     }
 
     private function signIn() 
     { 
-        /**
-         * Данный метод фасада срабатывает тогда, когда в 
-         * адресной строке есть гет параметр signin, а в форме
-         * ввода логина и пароля нажата кнопка входа loginLevel2
-         */
         if (isset($_GET['signinAD']) && isset($_POST['loginLevel2'])) {
             /**
              * данный класс проверяет пользователя по базе данных при 
              * условии, что система перешла на второй шаг авторизации
              */
-            $login = new login\DbForAuthorization();
-            $login->user();
-            /**
-             * Зарегистрировать ссылку на этот объект в контейнер
-             * объектов. Ссылка понадобится в другом месте
-             * программы.
-             */
-            \src\lib\php\ContainerObject::getInstance()->setProperty('DbForAuthorization',$login);
+            ContainerObject::setObject('DbForAuthorization',new DbForAuthorization())
+                           ->user();
         }
     }
 }

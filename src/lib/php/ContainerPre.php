@@ -35,6 +35,7 @@ class ContainerPre
 
     private function createStatusAD()
     {
-        if (!isset($_SESSION['statusAD'])) $_SESSION['statusAD']=0;
+        if (!isset($_SESSION['statusAD'])) 
+            $_SESSION['statusAD']=0;
     }
 }
