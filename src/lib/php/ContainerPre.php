@@ -16,7 +16,7 @@ use \src\lib\php\authorization\UserFacade;
  */
 class ContainerPre
 {
-    public function __construct(&$thisUserFacade)
+    public function __construct()
     {
         $this->createStatusAD();
 
@@ -32,6 +32,7 @@ class ContainerPre
         new HeaderFacade();
 
         $thisUserFacade = new UserFacade();
+        ContainerObject::getInstance()->setProperty('UserFacade',$thisUserFacade);
    
     }
 

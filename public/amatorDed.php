@@ -22,13 +22,12 @@
      */
     include_once "../src/autoloader.php";
 
-    $user='';
     /**
      * Класс является контейнером лля объектов, отрабатывающих перед
      * началом вывода разметки. Класс изменяет входящий параметр 
      * $user и помещает в него ссылку на объект класса UserFacade
      */
-    new ContainerPre($user);
+    new ContainerPre;
 
     NavBarFacade::createNavBar();
 
@@ -45,7 +44,9 @@
      * Сюда попадают те методы, кторые должны быть запущены 
      * после запуска навигационного меню.
      */
-     $user->userFacadeLevelLast();
+    ContainerObject::getInstance()
+                   ->getProperty('UserFacade')
+                   ->userFacadeLevelLast();
 
      /**
       * достать из контейнера ссылку на объект, публикующий
