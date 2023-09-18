@@ -21,8 +21,8 @@ namespace src\lib\php\authorization\registration;
 
 use \src\lib\php\db\Db;
 use \class\nonBD\interface\IErrorMas;
-use \src\lib\php\authorization\registration\IRegistratorUser;
-use \src\lib\php\authorization\registration\TraitForRegistrator;
+use \src\lib\php\authorization\registration\{IRegistratorUser,
+                                             TraitForRegistrator};
 use \class\nonBD\error\TraitForError;
 use \Exception;
 
