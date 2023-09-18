@@ -7,20 +7,19 @@ namespace src\lib\php\games\survive;
  * то создает её.
  */
 
+use \class\redaktor\interface\trait\TraitInterfaceWorkToBd;
 
  class FirstStart
  {
-    use \class\redaktor\interface\trait\TraitInterfaceWorkToBd;
+    use TraitInterfaceWorkToBd;
+    
     public function __construct()
     {
         /**
-         * проверка присутствия таблицы
          * таблица содержит информацию о пользователе
          * и о его месте нахождения и времени там пребывания.
          * Время входа в локацию записывается в момент входа в
          * миллисекундах от 1970 года.
-         */
-        /**
          * расшифровка таблицы survive_user
          * id - идентификационный номер пользователя
          * name - имя пользователя
@@ -48,10 +47,7 @@ namespace src\lib\php\games\survive;
         );
 
         /**
-         * проверка присутствия таблицы
          * таблица содержит информацию о локациях
-         */
-        /**
          * id - номер локации
          * name - название локации
          */
@@ -137,6 +133,4 @@ namespace src\lib\php\games\survive;
           'poleS=100',
         );
     }
-
-
  }

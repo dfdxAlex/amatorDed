@@ -85,7 +85,6 @@ class State extends IState
         if ($rez)
             $this->setProperty('milisecInput', $rez[0]['entry_time']);
         else {
-            echo 'нет информации';
             $timer = time();
             $query = "INSERT INTO survive_user
                       (id, name, location_id, entry_time)
