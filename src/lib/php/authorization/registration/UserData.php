@@ -19,60 +19,40 @@ namespace src\lib\php\authorization\registration;
  * для него тоже есть геттер.
  */
 
-class UserData extends \src\lib\php\db\Db 
-               implements \class\nonBD\interface\IErrorMas,
-                          \src\lib\php\authorization\registration\IRegistratorUser
+use \src\lib\php\db\Db;
+use \class\nonBD\interface\IErrorMas;
+use \src\lib\php\authorization\registration\IRegistratorUser;
+use \src\lib\php\authorization\registration\TraitForRegistrator;
+use \class\nonBD\error\TraitForError;
+use \Exception;
+
+class UserData extends Db implements IErrorMas, IRegistratorUser
 {
-    /**
-     * В данном трейте содержится инструментарий для работы 
-     * с ошибками, а именно с классом ErrorMas, главной библиотеки
-     * redaktor.
-     * Данный трейт имплементирует массив для хранения ошибок
-     * и методы, для работы с этим массивом.
-     */
-    use \class\nonBD\error\TraitForError; 
+    use TraitForError; 
+    use TraitForRegistrator;
 
-    /**
-     * Трейт хранит в себе свойства, в которые данный класс
-     * помещает информацию о пользователе, готовую для записи
-     * в базу данных при регистрации.
-     * Так-же в трейте содержатся метода, для работы с данными
-     * свойствами, которые требуются интерфейсу:
-     * 
-     */
-    use \src\lib\php\authorization\registration\TraitForRegistrator;
+    private $password;
 
-    /**
-     * Метод принимает из пост запроссов пароли.
-     * Метод проверяет существует ли нужный пост параметр,
-     * являются ли пароли не пустыми и одинаковыми.
-     * Если всё с паролем нормально, он экранируктся, шифруется
-     * и заносится в свою переменную.
-     */
     private function setPassword()
     {
-        /**
-         *  Проверка форм паролей, если всё в порядке, то
-         *  зашифровать пароль и поместить в переменную 
-         */
-        if (isset($_POST['password1']))
-            if (isset($_POST['password2']))
-                if ($_POST['password1']!='')
-                    if ($_POST['password1'] == $_POST['password2']) {
-                        $password = $this->real_escape_string($_POST['password1']);
-                        $this->password = password_hash($password, PASSWORD_DEFAULT);
-                    } else {
-                        $password = false;
-                    }
-        /**
-         * Работа с ошибками
-         */
-        if ($_POST['password1'] == '') 
-            $this->addError("Password field 1 cannot be empty");
-        if ($_POST['password2'] == '') 
-            $this->addError("Password field 2 cannot be empty");
-        if ($_POST['password1']!=$_POST['password2'])
-            $this->addError('Password mismatch');
+        if (!isset($_POST['password1'])) return;
+
+        try {
+
+            if ($_POST['password1'] == '') 
+                throw new Exception("Password field 1 cannot be empty");
+            if ($_POST['password2'] == '') 
+                throw new Exception("Password field 2 cannot be empty");
+            if ($_POST['password1']!=$_POST['password2'])
+                throw new Exception("Password mismatch");
+
+            $password = $this->real_escape_string($_POST['password1']);
+            $this->password = password_hash($password, PASSWORD_DEFAULT);
+
+            } catch (Exception $e) {
+                $this->addError($e->getMessage());
+                $this->password = false;
+            }
     }
 
     /**
@@ -84,19 +64,15 @@ class UserData extends \src\lib\php\db\Db
      */
     private function setLogin()
     {
-        // Если существует данный параметр, то забираем его в переменную
         if (isset($_POST['username']) && $_POST['username']!='') {
             $login = $_POST['username'];
             $_SESSION['loginAD']=$login;
-        }
-        else {
+        } else {
             $this->masError[] = 'Name cannot be empty';
             $this->login=false;
             return;
         }
-        // Экранируем служебные символы, если они были
         $login = $this->real_escape_string($login);
-        // Проверяем существует ли такой пользователь 
         if (!$this->searchLogin($login)) {
             $this->login=false;
             $this->masError[] = 'This name is taken';

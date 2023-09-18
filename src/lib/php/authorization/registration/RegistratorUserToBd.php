@@ -6,12 +6,18 @@ namespace src\lib\php\authorization\registration;
  * данных проекта amatorDed.
  * Пользователи проекта DFDX зарегистрированы отдельно
  */
-class RegistratorUserToBd extends \src\lib\php\db\Db 
+
+ use \src\lib\php\db\Db;
+ use \src\lib\php\authorization\registration\IRegistratorUser;
+
+class RegistratorUserToBd extends Db 
 {
-    public function __construct(\src\lib\php\authorization\registration\IRegistratorUser $obj)
+    public function __construct(IRegistratorUser $obj)
     {
         parent::__construct();
-        $_SESSION['statusAD'] = $this->insertToBd($obj->getLogin(), $obj->getPassword(), $obj->getEmail());
+        $_SESSION['statusAD'] = $this->insertToBd($obj->getLogin(), 
+                                                  $obj->getPassword(), 
+                                                  $obj->getEmail());
     }
 
 
@@ -32,12 +38,9 @@ class RegistratorUserToBd extends \src\lib\php\db\Db
         if ($password!='' && $mail!='') {
             $id = $this->maxIdLubojTablicy('amator_ded_user');
             $status = time();
-            $query="INSERT INTO amator_ded_user (id, login, password, mail, status) VALUES ($id, '$login', '$password', '$mail', $status)";
+            $query="INSERT INTO amator_ded_user (id, login, password, mail, status) 
+                    VALUES ($id, '$login', '$password', '$mail', $status)";
             $rezRega = $this->query($query);
-            /**
-             * после записи пользователя в базу данных запомнить
-             * его логин в переменную сессий
-             */
             if ($rezRega) {
                 $_SESSION['loginAD'] = $login;
                 $_SESSION['user_ID'] = $id;
