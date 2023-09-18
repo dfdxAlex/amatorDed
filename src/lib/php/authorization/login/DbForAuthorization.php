@@ -8,9 +8,11 @@ namespace src\lib\php\authorization\login;
 
 use \class\nonBD\error\TraitForError;
 use \Exception;
+use \src\lib\php\db\Db;
+use \class\nonBD\interface\IErrorMas;
 
-class DbForAuthorization extends \src\lib\php\db\Db
-                         implements \class\nonBD\interface\IErrorMas
+class DbForAuthorization extends Db
+                         implements IErrorMas
 {
     use TraitForError; 
     
