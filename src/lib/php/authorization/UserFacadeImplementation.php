@@ -79,7 +79,8 @@ class UserFacadeImplementation
     { 
         if (isset($_GET['signinAD']) 
             && isset($_POST['loginLevel2'])) {
-            ContainerObject::setObject('DbForAuthorization',new DbForAuthorization())
+            ContainerObject::setObject('DbForAuthorization',
+                                        new DbForAuthorization())
                            ->logIn();
         }
     }

@@ -7,6 +7,7 @@ namespace src\lib\php\authorization\login;
  */
 
 use \class\nonBD\error\TraitForError;
+use \Exception;
 
 class DbForAuthorization extends \src\lib\php\db\Db
                          implements \class\nonBD\interface\IErrorMas
@@ -22,7 +23,7 @@ class DbForAuthorization extends \src\lib\php\db\Db
 
             $this->setDataForUserOrExitClass($userInfo, $login, $password);
 
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->masError[] = $e->getMessage();
             return ;
         }
@@ -40,7 +41,7 @@ class DbForAuthorization extends \src\lib\php\db\Db
             $_SESSION['location_id'] = $userInfo[0]['location_id'];
             $_SESSION['user_ID'] = $userInfo[0]['id'];
         } else {
-            throw new \Exception("Wrong login or password");
+            throw new Exception("Wrong login or password");
         }
     }
 
@@ -61,7 +62,7 @@ class DbForAuthorization extends \src\lib\php\db\Db
         if ($rez) 
             return $rez;
         else 
-            throw new \Exception("Unexpected response from the database. The user may not exist.");
+            throw new Exception("Unexpected response from the database. The user may not exist.");
     }
 
     private function returnLoginAndPasswordOrExitClass()
@@ -71,9 +72,8 @@ class DbForAuthorization extends \src\lib\php\db\Db
             $password = $_POST['password'];
             return [$login,$password];
         } else {
-            throw new \Exception("Pair login or password is not correct");
+            throw new Exception("Pair login or password is not correct");
         }
     }
-    
 }
 
