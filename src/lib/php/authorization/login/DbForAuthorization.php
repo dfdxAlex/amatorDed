@@ -13,16 +13,7 @@ class DbForAuthorization extends \src\lib\php\db\Db
 {
     use TraitForError; 
     
-    /**
-     * метод работает если находимся в ссылке с Гетзапросом ?signin
-     * и статус пользователя равен 0, то есть не вошедший на сайт
-     *
-     * Метод проверяет пароль и логин пользователя и возвращает
-     * true или false.
-     * В качестве входного параметра передается логин и пароль
-     * функция сама знает из какой таблицы проверять данные
-     */
-    public function user()
+    public function logIn()
     {
         try {
             [$login, $password] = $this->returnLoginAndPasswordOrExitClass();
@@ -35,7 +26,6 @@ class DbForAuthorization extends \src\lib\php\db\Db
             $this->masError[] = $e->getMessage();
             return ;
         }
-
     }
 
     private function setDataForUserOrExitClass($userInfo, $login, $password)
